@@ -30,7 +30,6 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-
 /* Επιπλέον στυλ για παράδειγμα */
 a {
     color: #0056b3;
@@ -41,7 +40,33 @@ a:hover {
     text-decoration: underline;
 }
 
-.subscribe-button{
+.form-container{
+     margin-top: 20px;
+     padding: 15px;
+     background-color: white;
+     border: 1px solid #ddd;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Includes padding and border in the element's total width */
+}
+
+.submit-button{
     background-color: #0056b3;
     color: white;
     border: none;
@@ -50,6 +75,6 @@ a:hover {
     cursor: pointer;
 }
 
-.subscribe-button:hover {
+.submit-button:hover {
     background-color: #003a7a;
 }
