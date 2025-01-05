@@ -6,10 +6,20 @@ body {
     line-height: 1.6;
 }
 
-h1 {
+.header-container {
+    margin-bottom: 20px;
+}
+
+.main-heading {
     color: #0056b3;
     border-bottom: 2px solid #eee;
     padding-bottom: 10px;
+}
+
+.sub-heading {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.5;
 }
 
 #tmanager-container {
@@ -20,6 +30,7 @@ h1 {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+
 /* Επιπλέον στυλ για παράδειγμα */
 a {
     color: #0056b3;
@@ -28,4 +39,17 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.subscribe-button{
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.subscribe-button:hover {
+    background-color: #003a7a;
 }
