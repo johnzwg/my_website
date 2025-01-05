@@ -18,14 +18,28 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <h1>Welcome to My TManager Website</h1>
+
+    <div class="header-container">
+        <h1 class="main-heading">Ioannis Zografakis Marketing Analyst</h1>
+        <p class="sub-heading">A graduate of the University of Crete with a degree in Materials Science and Engineering, currently focused on Data Analysis and applying a strong foundation in problem-solving to digital advertising. Proficient in Python, SQL, Tableau, Power BI, and Looker Studio, leveraging these skills to enhance the effectiveness of Google and Meta Ads campaigns. Analytical expertise and attention to detail support the development of strategies that deliver measurable outcomes, integrating interdisciplinary knowledge with actionable data insights in the advertising domain.</p>
+    </div>
+    
     <div id="tmanager-container"></div>
+
+      <button class="subscribe-button">Εγγραφή</button>
+
     <script src="js/tmanager.js"></script>
     <script>
         tmanager.init({
            container_id: 'tmanager-container',
            config_file: "js/config.json"
          });
+
+    const subscribeButton = document.querySelector('.subscribe-button');
+
+     subscribeButton.addEventListener('click', function() {
+            window.location.href = 'mailto:ioannis_zwgrafakis@yahoo.com?subject=New Subscription Request';
+     });
    </script>
 </body>
 </html>
