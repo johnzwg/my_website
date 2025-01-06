@@ -44,14 +44,8 @@
         </form>
     </div>
 
-    <button onclick="redirectToPurchase()">Purchase</button>
+    <button id="purchaseButton">Purchase</button>
 
-    <script>
-        function redirectToPurchase() {
-            window.location.href = 'purchase_success.html?purchase=true';
-        }
-    </script>
-    <!-- Add the EmailJS script -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         // Initialize EmailJS
@@ -83,6 +77,16 @@
                     console.error('Error:', error);
                 });
         });
+
+      const purchaseButton = document.getElementById('purchaseButton');
+    purchaseButton.addEventListener('click', function() {
+    // Push event to dataLayer
+    dataLayer.push({
+        'event': 'purchase_button_click'
+    });
+    // Redirect to purchase success page
+    window.location.href = 'purchase_success.html?purchase=true';
+    });
     </script>
 </body>
 </html>
