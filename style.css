@@ -1,7 +1,9 @@
 body {
     font-family: sans-serif;
     margin: 20px;
-     background: linear-gradient(to bottom, black, #200000);
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     color: #333;
     line-height: 1.6;
 }
