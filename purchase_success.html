@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Επιτυχής Καταχώρηση Παραγγελίας</title>
+</head>
+<body>
+    <h1>Επιτυχής Καταχώρηση Παραγγελίας</h1>
+    <p>Η παραγγελία σας καταχωρήθηκε με επιτυχία!</p>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      if(params.get('purchase') === 'true') {
+        console.log('User clicked Purchase and reached the success page');
+      }
+
+    </script>
+</body>
+</html>
