@@ -44,6 +44,13 @@
         </form>
     </div>
 
+    <button onclick="redirectToPurchase()">Purchase</button>
+
+    <script>
+        function redirectToPurchase() {
+            window.location.href = 'purchase_success.html?purchase=true';
+        }
+    </script>
     <!-- Add the EmailJS script -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
