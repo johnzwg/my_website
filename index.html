@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,13 +12,13 @@
     })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
     <style> 
         body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; display: flex; flex-direction: column; align-items: center; }
-        .product-card-container { display: flex; gap: 40px; margin-top: 20px; }
+        .product-card-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 20px; }
         .product-card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 300px; text-align: center; }
         .product-card img { max-width: 100%; height: auto; border-radius: 4px; margin-bottom: 10px; }
         .submit-button { padding: 10px 15px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; width: 100%; }
         .product-card h2 { color: #2c3e50; }
         .product-card p { color: #7f8c8d; }
-        .quantity-selector { margin-bottom: 15px; padding: 5px; } /* Πρόσθετο στυλ για το select */
+        .quantity-selector { margin-bottom: 15px; padding: 5px; }
     </style>
 </head>
 <body>
@@ -41,7 +41,7 @@
                 <option value="3">3</option>
             </select>
             
-            <button class="submit-button add-to-cart-btn" data-item-id="MKT_STRAT_BNDL">🛒 Add to Cart</button>
+            <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
         </div>
         
         <div class="product-card" data-item-id="DATA_ANALYSIS_RPT">
@@ -59,50 +59,35 @@
                 <option value="5">5</option>
             </select>
 
-            <button class="submit-button add-to-cart-btn" data-item-id="DATA_ANALYSIS_RPT">🛒 Add to Cart</button>
+            <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
         </div>
 
     </div>
 
     <script>
         const productsData = {
-            'MKT_STRAT_BNDL': {
-                'item_id': 'MKT_STRAT_BNDL',
-                'item_name': 'Marketing Strategy Bundle',
-                'item_category': 'Strategy',
-                'price': 399.00,
-                'quantity': 1 // Αυτή η τιμή θα πρέπει να ανανεώνεται δυναμικά
-            },
-            'DATA_ANALYSIS_RPT': {
-                'item_id': 'DATA_ANALYSIS_RPT',
-                'item_name': 'Advanced Data Analysis Report',
-                'item_category': 'Data',
-                'price': 150.00,
-                'quantity': 1 // Αυτή η τιμή θα πρέπει να ανανεώνεται δυναμικά
-            }
+            'MKT_STRAT_BNDL': { 'item_id': 'MKT_STRAT_BNDL', 'item_name': 'Marketing Strategy Bundle', 'price': 399.00 },
+            'DATA_ANALYSIS_RPT': { 'item_id': 'DATA_ANALYSIS_RPT', 'item_name': 'Advanced Data Analysis Report', 'price': 150.00 }
         };
 
-        // 1. View Item List Event (Πυροδοτείται με τη φόρτωση της σελίδας)
+        // 1. View Item List Event
         window.dataLayer = window.dataLayer || [];
+        const viewListItems = Object.values(productsData).map(item => ({...item, quantity: 1}));
         window.dataLayer.push({
             'event': 'view_item_list', 
-            'ecommerce': {
-                'items': Object.values(productsData) // Στέλνει τα δεδομένα και των δύο προϊόντων
-            }
+            'ecommerce': { 'items': viewListItems }
         });
-        console.log('GTM Event Fired: view_item_list for two products');
+        console.log('GTM Event Fired: view_item_list');
 
-
-        // 2. Add to Cart Action (Ανακατεύθυνση)
+        // 2. Add to Cart Action (Redirection)
         document.querySelectorAll('.add-to-cart-btn').forEach(button => {
             button.addEventListener('click', function() {
-                const itemId = this.getAttribute('data-item-id');
-                
-                // ΣΗΜΕΙΩΣΗ: Προς το παρόν, η ποσότητα δεν χρησιμοποιείται.
-                // Θα το φτιάξουμε στο επόμενο βήμα!
+                const parentCard = this.closest('.product-card');
+                const itemId = parentCard.getAttribute('data-item-id');
+                const selectedQuantity = parentCard.querySelector('.quantity-selector').value;
 
-                // Ανακατεύθυνση στη σελίδα του καλαθιού, μεταφέροντας το ID του προϊόντος
-                window.location.href = `cart_page.html?item_added_id=${itemId}`;
+                // Στέλνουμε το ID και την ΠΟΣΟΤΗΤΑ στο URL
+                window.location.href = `cart_page.html?itemId=${itemId}&quantity=${selectedQuantity}`;
             });
         });
     </script>
