@@ -17,9 +17,9 @@
     <div class="cart-card">
         <h1>Καλάθι Αγορών</h1>
         <div id="cart-details">
-            <p><strong>Φόρτωση...</strong></p>
+            <p><strong>Φόρτωση προϊόντος...</strong></p>
         </div>
-        <button id="checkoutButton" class="submit-button" disabled>➡️ Proceed to Checkout</button>
+        <button id="checkoutButton" class="submit-button" disabled>➡️ Ολοκλήρωση Παραγγελίας</button>
     </div>
 
     <script>
@@ -35,18 +35,19 @@
         if (itemId && quantity) {
             const productInfo = productsData[itemId];
             
-            // --- ΝΕΑ ΑΛΛΑΓΗ: Υπολογισμός συνολικής αξίας ---
+            // Calculate the total value for display and GTM
             const totalValue = productInfo.price * quantity;
 
-            // --- ΝΕΑ ΑΛΛΑΓΗ: Εμφάνιση πλήρους σύνοψης ---
+            // Display the product details clearly
             document.getElementById('cart-details').innerHTML = `
                 <p><strong>Προϊόν:</strong> ${productInfo.item_name}</p>
                 <p><strong>Τιμή μονάδας:</strong> €${productInfo.price.toFixed(2)}</p>
                 <p><strong>Ποσότητα:</strong> ${quantity}</p>
                 <hr>
-                <p><strong>Συνολική Αξία: €${totalValue.toFixed(2)}</strong></p>
+                <p><strong>Συνολική Αξία:</strong> €${totalValue.toFixed(2)}</p>
             `;
             
+            // Push the add_to_cart event to dataLayer
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'add_to_cart',
@@ -54,7 +55,9 @@
                     'items': [{ ...productInfo, 'quantity': quantity }]
                 }
             });
+            console.log(`GTM Event Fired: add_to_cart for ${itemId} with quantity ${quantity}, total value ${totalValue.toFixed(2)}`);
 
+            // Enable the checkout button and set its action
             const checkoutBtn = document.getElementById('checkoutButton');
             checkoutBtn.disabled = false;
             checkoutBtn.addEventListener('click', function() {
@@ -63,6 +66,7 @@
 
         } else {
             document.getElementById('cart-details').innerHTML = '<p><strong>Το καλάθι είναι άδειο.</strong></p>';
+            console.error('Δεν βρέθηκαν itemId ή quantity στο URL για τη σελίδα καλαθιού.');
         }
     </script>
 </body>
