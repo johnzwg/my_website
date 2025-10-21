@@ -1,82 +1,14 @@
 body {
     font-family: sans-serif;
-    margin: 20px;
-    background-image: url("background.jpg");
-    background-size: cover;
+    margin: 0; /* Διορθώθηκε από 20px σε 0 για να καλύψει η εικόνα όλο το viewport */
+    
+    /* ΝΕΟ BACKGROUND */
+    background-image: url("https://images.pexels.com/photos/6893376/pexels-photo-6893376.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-size: cover; /* Καλύπτει όλη την οθόνη */
     background-repeat: no-repeat;
+    background-attachment: fixed; /* Κρατάει την εικόνα σταθερή */
+    background-position: center center; /* Κεντράρει την εικόνα */
+    
     color: #333;
     line-height: 1.6;
-}
-
-.header-container {
-    margin-bottom: 20px;
-}
-
-.main-heading {
-    color: #0056b3;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-}
-
-.sub-heading {
-    font-size: 0.9em;
-    color: #666;
-    line-height: 1.5;
-}
-
-#tmanager-container {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: white;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Επιπλέον στυλ για παράδειγμα */
-a {
-    color: #0056b3;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.form-container{
-     margin-top: 20px;
-     padding: 15px;
-     background-color: white;
-     border: 1px solid #ddd;
-     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box; /* Includes padding and border in the element's total width */
-}
-
-.submit-button{
-    background-color: #0056b3;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.submit-button:hover {
-    background-color: #003a7a;
 }
