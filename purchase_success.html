@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
     
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=j.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
     <style> 
@@ -20,37 +20,28 @@
 
     <h1>✅ Επιτυχής Αγορά!</h1>
     <p>Η παραγγελία σας ολοκληρώθηκε με επιτυχία.</p>
-    <p>Το event **purchase** μόλις πυροδοτήθηκε στο Data Layer.</p>
-    <p id="transaction-details">Φόρτωση λεπτομερειών...</p>
+    <div id="transaction-details">
+        <p>Φόρτωση λεπτομερειών...</p>
+    </div>
 
     <script>
         const productsData = {
-            'MKT_STRAT_BNDL': {
-                'item_id': 'MKT_STRAT_BNDL',
-                'item_name': 'Marketing Strategy Bundle',
-                'item_category': 'Strategy',
-                'price': 399.00,
-                'quantity': 1
-            },
-            'DATA_ANALYSIS_RPT': {
-                'item_id': 'DATA_ANALYSIS_RPT',
-                'item_name': 'Advanced Data Analysis Report',
-                'item_category': 'Data',
-                'price': 150.00,
-                'quantity': 1
-            }
+            'MKT_STRAT_BNDL': { 'item_id': 'MKT_STRAT_BNDL', 'item_name': 'Marketing Strategy Bundle', 'item_category': 'Strategy', 'price': 399.00 },
+            'DATA_ANALYSIS_RPT': { 'item_id': 'DATA_ANALYSIS_RPT', 'item_name': 'Advanced Data Analysis Report', 'item_category': 'Data', 'price': 150.00 }
         };
-
+    
+        // 1. Διάβασε ΟΛΕΣ τις παραμέτρους από το URL
         const params = new URLSearchParams(window.location.search);
         const transactionId = params.get('transaction_id');
         const value = parseFloat(params.get('value'));
-        const selectedItemId = params.get('item_added_id');
-        const itemData = productsData[selectedItemId];
-        
-        const detailsEl = document.getElementById('transaction-details');
+        const itemId = params.get('itemId');
+        const quantity = parseInt(params.get('quantity'));
 
-        if (transactionId && value && itemData) {
-            // 🔥 4. Purchase Event (Τελικό Event)
+        if (transactionId && value && itemId && quantity) {
+            const productInfo = productsData[itemId];
+
+            // 2. Στείλε το dataLayer event με ΟΛΑ τα δεδομένα σωστά
+            window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'purchase',
                 'ecommerce': {
@@ -59,16 +50,24 @@
                     'currency': 'EUR',
                     'tax': 0.00,
                     'shipping': 0.00,
-                    'items': [itemData]
+                    'items': [{
+                        ...productInfo,
+                        'quantity': quantity // Χρησιμοποίησε τη σωστή, δυναμική ποσότητα
+                    }]
                 }
             });
-            console.log(`GTM Event Fired: purchase. Transaction ID: ${transactionId}`);
+            console.log(`GTM Event Fired: purchase for ${itemId} with quantity ${quantity}. Transaction ID: ${transactionId}`);
             
-            detailsEl.innerHTML = `Transaction ID: <strong>${transactionId}</strong><br>
-                                   Αγοράστηκε: **${itemData.item_name}**<br>
-                                   Συνολική Αξία: **€${value.toFixed(2)}**`;
+            // 3. Εμφάνισε τα σωστά στοιχεία στη σελίδα
+            document.getElementById('transaction-details').innerHTML = `
+                <p><strong>Transaction ID:</strong> ${transactionId}</p>
+                <p><strong>Προϊόν:</strong> ${productInfo.item_name}</p>
+                <p><strong>Ποσότητα:</strong> ${quantity}</p>
+                <p><strong>Συνολική Αξία:</strong> €${value.toFixed(2)}</p>
+            `;
+
         } else {
-            detailsEl.textContent = 'Σφάλμα: Η σελίδα αγοράς επισκέφθηκε χωρίς τα απαραίτητα δεδομένα συναλλαγής.';
+            document.getElementById('transaction-details').innerHTML = '<p><strong>Σφάλμα:</strong> Η σελίδα αγοράς επισκέφθηκε χωρίς τα απαραίτητα δεδομένα συναλλαγής.</p>';
             console.error('Σφάλμα: Έλλειψη παραμέτρων στο URL για το event purchase.');
         }
     </script>
