@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4. Purchase Success Page</title>
-
+    <title>3. Checkout Page</title>
     <link rel="stylesheet" href="style.css">
-    
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -16,10 +14,12 @@
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <h1>✅ Επιτυχής Αγορά!</h1>
-    <p>Η παραγγελία σας ολοκληρώθηκε με επιτυχία.</p>
-    <div id="transaction-details">
-        <p>Φόρτωση λεπτομερειών...</p>
+    <div class="checkout-card">
+        <h1>Ολοκλήρωση Παραγγελίας</h1>
+        <div id="checkout-details">
+            <p><strong>Φόρτωση...</strong></p>
+        </div>
+        <button id="completePurchaseButton" class="submit-button" disabled>✅ Complete Purchase</button>
     </div>
 
     <script>
@@ -27,41 +27,41 @@
             'MKT_STRAT_BNDL': { 'item_id': 'MKT_STRAT_BNDL', 'item_name': 'Marketing Strategy Bundle', 'item_category': 'Strategy', 'price': 399.00 },
             'DATA_ANALYSIS_RPT': { 'item_id': 'DATA_ANALYSIS_RPT', 'item_name': 'Advanced Data Analysis Report', 'item_category': 'Data', 'price': 150.00 }
         };
-    
+
         const params = new URLSearchParams(window.location.search);
-        const transactionId = params.get('transaction_id');
-        const value = parseFloat(params.get('value'));
         const itemId = params.get('itemId');
         const quantity = parseInt(params.get('quantity'));
 
-        if (transactionId && value && itemId && quantity) {
+        if (itemId && quantity) {
             const productInfo = productsData[itemId];
+            const totalValue = productInfo.price * quantity;
 
+            // --- ΒΕΛΤΙΩΜΕΝΗ ΕΜΦΑΝΙΣΗ ---
+            document.getElementById('checkout-details').innerHTML = `
+                <p><strong>Προϊόν:</strong> ${productInfo.item_name}</p>
+                <p><strong>Τιμή μονάδας:</strong> €${productInfo.price.toFixed(2)}</p>
+                <p><strong>Ποσότητα:</strong> ${quantity}</p>
+                <hr>
+                <p><strong>Συνολική Αξία: €${totalValue.toFixed(2)}</strong></p>
+            `;
+            
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'purchase',
+                'event': 'begin_checkout',
                 'ecommerce': {
-                    'transaction_id': transactionId, 
-                    'value': value,                   
-                    'currency': 'EUR',
-                    'tax': 0.00,
-                    'shipping': 0.00,
-                    'items': [{
-                        ...productInfo,
-                        'quantity': quantity
-                    }]
+                    'items': [{ ...productInfo, 'quantity': quantity }]
                 }
             });
 
-            document.getElementById('transaction-details').innerHTML = `
-                <p><strong>Transaction ID:</strong> ${transactionId}</p>
-                <p><strong>Προϊόν:</strong> ${productInfo.item_name}</p>
-                <p><strong>Ποσότητα:</strong> ${quantity}</p>
-                <p><strong>Συνολική Αξία:</strong> €${value.toFixed(2)}</p>
-            `;
+            const purchaseBtn = document.getElementById('completePurchaseButton');
+            purchaseBtn.disabled = false;
+            purchaseBtn.addEventListener('click', function() {
+                const transactionId = 'T-' + Date.now();
+                window.location.href = `purchase_success.html?transaction_id=${transactionId}&value=${totalValue.toFixed(2)}&itemId=${itemId}&quantity=${quantity}`;
+            });
 
         } else {
-            document.getElementById('transaction-details').innerHTML = '<p><strong>Σφάλμα:</strong> Η σελίδα αγοράς επισκέφθηκε χωρίς τα απαραίτητα δεδομένα συναλλαγής.</p>';
+            document.getElementById('checkout-details').innerHTML = '<p><strong>Δεν βρέθηκε προϊόν για checkout.</strong></p>';
         }
     </script>
 </body>
