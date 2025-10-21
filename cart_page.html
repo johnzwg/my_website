@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2. Cart Page</title>
-
     <link rel="stylesheet" href="style.css">
-    
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -19,7 +17,7 @@
     <div class="cart-card">
         <h1>Καλάθι Αγορών</h1>
         <div id="cart-details">
-            <p>Το προϊόν στο καλάθι: <strong>Φόρτωση...</strong></p>
+            <p><strong>Φόρτωση...</strong></p>
         </div>
         <button id="checkoutButton" class="submit-button" disabled>➡️ Proceed to Checkout</button>
     </div>
@@ -36,20 +34,24 @@
 
         if (itemId && quantity) {
             const productInfo = productsData[itemId];
+            
+            // --- ΝΕΑ ΑΛΛΑΓΗ: Υπολογισμός συνολικής αξίας ---
+            const totalValue = productInfo.price * quantity;
 
+            // --- ΝΕΑ ΑΛΛΑΓΗ: Εμφάνιση πλήρους σύνοψης ---
             document.getElementById('cart-details').innerHTML = `
-                <p>Προϊόν: <strong>${productInfo.item_name}</strong></p>
-                <p>Ποσότητα: <strong>${quantity}</strong></p>
+                <p><strong>Προϊόν:</strong> ${productInfo.item_name}</p>
+                <p><strong>Τιμή μονάδας:</strong> €${productInfo.price.toFixed(2)}</p>
+                <p><strong>Ποσότητα:</strong> ${quantity}</p>
+                <hr>
+                <p><strong>Συνολική Αξία: €${totalValue.toFixed(2)}</strong></p>
             `;
             
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'add_to_cart',
                 'ecommerce': {
-                    'items': [{
-                        ...productInfo,
-                        'quantity': quantity
-                    }]
+                    'items': [{ ...productInfo, 'quantity': quantity }]
                 }
             });
 
