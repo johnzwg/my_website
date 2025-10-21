@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2. Cart Page</title>
+    
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
+    <style> /* (Συνοπτικό styling για clarity) */
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
+        .cart-card { background: #fff; padding: 20px; border-radius: 8px; border-left: 5px solid #f39c12; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .submit-button { padding: 10px 15px; background-color: #f39c12; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="cart-card">
+        <h1>Καλάθι Αγορών</h1>
+        <p>Προϊόν: Marketing Package Pro (1x, €150.00)</p>
+        <p>Αυτή είναι η σελίδα του καλαθιού. Αν ήρθατε από το κουμπί Add to Cart, το event **add_to_cart** μόλις πυροδοτήθηκε.</p>
+        <button id="checkoutButton" class="submit-button">➡️ Begin Checkout & Go to Checkout Page</button>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        
+        const itemData = {
+            'item_id': 'MKTPKG_PRO_2025',
+            'item_name': 'Marketing Package Pro',
+            'item_category': 'Services',
+            'price': 150.00,
+            'quantity': 1
+        };
+
+        // 2. Add to Cart Event (Πυροδοτείται μόνο αν η ανακατεύθυνση ήταν επιτυχής)
+        if(params.get('item_added') === 'true') {
+            window.dataLayer.push({
+                'event': 'add_to_cart',
+                'ecommerce': {
+                    'items': [itemData]
+                }
+            });
+            console.log('GTM Event Fired: add_to_cart (triggered by URL param)');
+        }
+
+        // 3. Begin Checkout Action (Ανακατεύθυνση)
+        document.getElementById('checkoutButton').addEventListener('click', function() {
+            // Ανακατεύθυνση στη σελίδα του Checkout
+            window.location.href = 'checkout_page.html?checkout_started=true';
+        });
+    </script>
+</body>
+</html>
