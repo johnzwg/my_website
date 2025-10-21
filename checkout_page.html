@@ -12,14 +12,14 @@
     })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
 </head>
 <body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display=none;visibility:hidden"></iframe></noscript>
 
     <div class="checkout-card">
         <h1>Ολοκλήρωση Παραγγελίας</h1>
         <div id="checkout-details">
-            <p><strong>Φόρτωση...</strong></p>
+            <p><strong>Φόρτωση σύνοψης...</strong></p>
         </div>
-        <button id="completePurchaseButton" class="submit-button" disabled>✅ Complete Purchase</button>
+        <button id="completePurchaseButton" class="submit-button" disabled>✅ Ολοκλήρωση Αγοράς</button>
     </div>
 
     <script>
@@ -36,15 +36,16 @@
             const productInfo = productsData[itemId];
             const totalValue = productInfo.price * quantity;
 
-            // --- ΒΕΛΤΙΩΜΕΝΗ ΕΜΦΑΝΙΣΗ ---
+            // Display the full order summary clearly
             document.getElementById('checkout-details').innerHTML = `
                 <p><strong>Προϊόν:</strong> ${productInfo.item_name}</p>
                 <p><strong>Τιμή μονάδας:</strong> €${productInfo.price.toFixed(2)}</p>
                 <p><strong>Ποσότητα:</strong> ${quantity}</p>
                 <hr>
-                <p><strong>Συνολική Αξία: €${totalValue.toFixed(2)}</strong></p>
+                <p><strong>Συνολική Αξία προς Πληρωμή:</strong> €${totalValue.toFixed(2)}</p>
             `;
             
+            // Push the begin_checkout event to dataLayer
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'begin_checkout',
@@ -52,7 +53,9 @@
                     'items': [{ ...productInfo, 'quantity': quantity }]
                 }
             });
+            console.log(`GTM Event Fired: begin_checkout for ${itemId} with quantity ${quantity}`);
 
+            // Enable the purchase button and set its action
             const purchaseBtn = document.getElementById('completePurchaseButton');
             purchaseBtn.disabled = false;
             purchaseBtn.addEventListener('click', function() {
@@ -61,7 +64,8 @@
             });
 
         } else {
-            document.getElementById('checkout-details').innerHTML = '<p><strong>Δεν βρέθηκε προϊόν για checkout.</strong></p>';
+            document.getElementById('checkout-details').innerHTML = '<p><strong>Δεν βρέθηκε προϊόν για ολοκλήρωση αγοράς.</strong></p>';
+            console.error('Δεν βρέθηκαν itemId ή quantity στο URL για τη σελίδα checkout.');
         }
     </script>
 </body>
