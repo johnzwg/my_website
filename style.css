@@ -1,87 +1,25 @@
 body {
-    font-family: sans-serif;
-    margin: 0; /* Διορθώθηκε για να καλύψει το background όλη την οθόνη */
-    
-    /* ΝΕΟ BACKGROUND */
-    background-image: url("https://images.pexels.com/photos/6893376/pexels-photo-6893376.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center center;
-    
-    color: #333;
-    line-height: 1.6;
+    background-color: #ffffff; /* This sets the background to white */
+    font-family: Arial, sans-serif; /* A clean, standard font for readability */
+    color: #333333; /* Dark grey text color */
+    padding: 20px; /* Adds some space around the content */
+    margin: 0;
 }
 
-.header-container {
-    margin-bottom: 20px;
-}
-
-.main-heading {
-    color: #0056b3;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
-}
-
-.sub-heading {
-    font-size: 0.9em;
-    color: #666;
-    line-height: 1.5;
-}
-
-#tmanager-container {
+/* You can keep other shared styles here so they apply to all pages */
+.product-card, .cart-card, .checkout-card {
+    background-color: #f9f9f9; /* A very light grey for the cards to stand out */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     margin-top: 20px;
-    padding: 15px;
-    background-color: white;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Επιπλέον στυλ για παράδειγμα */
-a {
-    color: #0056b3;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.form-container, .product-card { /* Εφαρμόζει λευκό φόντο στις κάρτες/φόρμες */
-      margin-top: 20px;
-      padding: 15px;
-      background-color: white;
-      border: 1px solid #ddd;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box; /* Includes padding and border in the element's total width */
-}
-
-.submit-button{
+.submit-button {
     background-color: #0056b3;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.submit-button:hover {
-    background-color: #003a7a;
 }
