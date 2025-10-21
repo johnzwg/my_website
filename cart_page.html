@@ -10,7 +10,7 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
-    <style> /* (Συνοπτικό styling για clarity) */
+    <style> 
         body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
         .cart-card { background: #fff; padding: 20px; border-radius: 8px; border-left: 5px solid #f39c12; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .submit-button { padding: 10px 15px; background-color: #f39c12; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; }
@@ -21,37 +21,58 @@
 
     <div class="cart-card">
         <h1>Καλάθι Αγορών</h1>
-        <p>Προϊόν: Marketing Package Pro (1x, €150.00)</p>
-        <p>Αυτή είναι η σελίδα του καλαθιού. Αν ήρθατε από το κουμπί Add to Cart, το event **add_to_cart** μόλις πυροδοτήθηκε.</p>
+        <p>Το προϊόν στο καλάθι: <strong id="item-name-display">Φόρτωση...</strong></p>
+        <p>Το event **add_to_cart** μόλις πυροδοτήθηκε.</p>
         <button id="checkoutButton" class="submit-button">➡️ Begin Checkout & Go to Checkout Page</button>
     </div>
 
     <script>
-        const params = new URLSearchParams(window.location.search);
-        
-        const itemData = {
-            'item_id': 'MKTPKG_PRO_2025',
-            'item_name': 'Marketing Package Pro',
-            'item_category': 'Services',
-            'price': 150.00,
-            'quantity': 1
+        const productsData = {
+            'MKT_STRAT_BNDL': {
+                'item_id': 'MKT_STRAT_BNDL',
+                'item_name': 'Marketing Strategy Bundle',
+                'item_category': 'Strategy',
+                'price': 399.00,
+                'quantity': 1
+            },
+            'DATA_ANALYSIS_RPT': {
+                'item_id': 'DATA_ANALYSIS_RPT',
+                'item_name': 'Advanced Data Analysis Report',
+                'item_category': 'Data',
+                'price': 150.00,
+                'quantity': 1
+            }
         };
 
-        // 2. Add to Cart Event (Πυροδοτείται μόνο αν η ανακατεύθυνση ήταν επιτυχής)
-        if(params.get('item_added') === 'true') {
+        const params = new URLSearchParams(window.location.search);
+        const selectedItemId = params.get('item_added_id');
+        const itemData = productsData[selectedItemId];
+
+        if (itemData) {
+            // Εμφάνιση ονόματος προϊόντος
+            document.getElementById('item-name-display').textContent = itemData.item_name;
+
+            // 🟡 2. Add to Cart Event
             window.dataLayer.push({
                 'event': 'add_to_cart',
                 'ecommerce': {
                     'items': [itemData]
                 }
             });
-            console.log('GTM Event Fired: add_to_cart (triggered by URL param)');
+            console.log(`GTM Event Fired: add_to_cart for ${itemData.item_id}`);
+        } else {
+            document.getElementById('item-name-display').textContent = 'Δεν βρέθηκε προϊόν.';
+            console.error('Δεν βρέθηκε προϊόν για το event add_to_cart.');
         }
 
         // 3. Begin Checkout Action (Ανακατεύθυνση)
         document.getElementById('checkoutButton').addEventListener('click', function() {
-            // Ανακατεύθυνση στη σελίδα του Checkout
-            window.location.href = 'checkout_page.html?checkout_started=true';
+            if (itemData) {
+                // Ανακατεύθυνση στη σελίδα του Checkout, μεταφέροντας το ID
+                window.location.href = `checkout_page.html?checkout_started=true&item_added_id=${itemData.item_id}`;
+            } else {
+                alert('Δεν υπάρχει προϊόν στο καλάθι για checkout.');
+            }
         });
     </script>
 </body>
