@@ -4,17 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3. Checkout Page</title>
-    
+
+    <link rel="stylesheet" href="style.css">
+
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
-    <style> 
-        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
-        .checkout-card { background: #fff; padding: 20px; border-radius: 8px; border-left: 5px solid #e74c3c; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .submit-button { padding: 10px 15px; background-color: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; }
-    </style>
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -24,7 +21,6 @@
         <div id="checkout-details">
             <p>Προϊόν για αγορά: <strong>Φόρτωση...</strong></p>
         </div>
-        <p>Το event <strong>begin_checkout</strong> μόλις πυροδοτήθηκε.</p>
         <button id="completePurchaseButton" class="submit-button" disabled>✅ Complete Purchase</button>
     </div>
 
@@ -34,7 +30,6 @@
             'DATA_ANALYSIS_RPT': { 'item_id': 'DATA_ANALYSIS_RPT', 'item_name': 'Advanced Data Analysis Report', 'item_category': 'Data', 'price': 150.00 }
         };
 
-        // 1. Διάβασε τις παραμέτρους (ID και ΠΟΣΟΤΗΤΑ) από το URL
         const params = new URLSearchParams(window.location.search);
         const itemId = params.get('itemId');
         const quantity = parseInt(params.get('quantity'));
@@ -43,14 +38,12 @@
             const productInfo = productsData[itemId];
             const totalValue = productInfo.price * quantity;
 
-            // 2. Ενημέρωσε την εμφάνιση της σελίδας με τα σωστά στοιχεία
             document.getElementById('checkout-details').innerHTML = `
                 <p>Προϊόν: <strong>${productInfo.item_name}</strong></p>
                 <p>Ποσότητα: <strong>${quantity}</strong></p>
                 <p>Συνολική Αξία: <strong>€${totalValue.toFixed(2)}</strong></p>
             `;
             
-            // 3. Στείλε το dataLayer event με τη ΣΩΣΤΗ ποσότητα
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'begin_checkout',
@@ -61,21 +54,16 @@
                     }]
                 }
             });
-            console.log(`GTM Event Fired: begin_checkout for ${itemId} with quantity ${quantity}`);
 
-            // 4. Ενεργοποίησε το κουμπί και ετοίμασε το για την τελική αγορά
             const purchaseBtn = document.getElementById('completePurchaseButton');
             purchaseBtn.disabled = false;
             purchaseBtn.addEventListener('click', function() {
                 const transactionId = 'T-' + Date.now();
-                
-                // Στείλε ΟΛΕΣ τις πληροφορίες (transaction_id, value, id, quantity) στην τελική σελίδα
                 window.location.href = `purchase_success.html?transaction_id=${transactionId}&value=${totalValue.toFixed(2)}&itemId=${itemId}&quantity=${quantity}`;
             });
 
         } else {
             document.getElementById('checkout-details').innerHTML = '<p><strong>Δεν βρέθηκε προϊόν για checkout.</strong></p>';
-            console.error('Δεν βρέθηκαν itemId ή quantity στο URL.');
         }
     </script>
 </body>
