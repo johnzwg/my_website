@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,59 +21,58 @@
 
     <div class="cart-card">
         <h1>Καλάθι Αγορών</h1>
-        <p>Το προϊόν στο καλάθι: <strong id="item-name-display">Φόρτωση...</strong></p>
-        <p>Το event **add_to_cart** μόλις πυροδοτήθηκε.</p>
-        <button id="checkoutButton" class="submit-button">➡️ Begin Checkout & Go to Checkout Page</button>
+        <div id="cart-details">
+            <p>Το προϊόν στο καλάθι: <strong>Φόρτωση...</strong></p>
+        </div>
+        <p>Το event <strong>add_to_cart</strong> μόλις πυροδοτήθηκε.</p>
+        <button id="checkoutButton" class="submit-button" disabled>➡️ Begin Checkout & Go to Checkout Page</button>
     </div>
 
     <script>
         const productsData = {
-            'MKT_STRAT_BNDL': {
-                'item_id': 'MKT_STRAT_BNDL',
-                'item_name': 'Marketing Strategy Bundle',
-                'item_category': 'Strategy',
-                'price': 399.00,
-                'quantity': 1
-            },
-            'DATA_ANALYSIS_RPT': {
-                'item_id': 'DATA_ANALYSIS_RPT',
-                'item_name': 'Advanced Data Analysis Report',
-                'item_category': 'Data',
-                'price': 150.00,
-                'quantity': 1
-            }
+            'MKT_STRAT_BNDL': { 'item_id': 'MKT_STRAT_BNDL', 'item_name': 'Marketing Strategy Bundle', 'item_category': 'Strategy', 'price': 399.00 },
+            'DATA_ANALYSIS_RPT': { 'item_id': 'DATA_ANALYSIS_RPT', 'item_name': 'Advanced Data Analysis Report', 'item_category': 'Data', 'price': 150.00 }
         };
 
+        // 1. Διάβασε τις παραμέτρους (ID και ΠΟΣΟΤΗΤΑ) από το URL
         const params = new URLSearchParams(window.location.search);
-        const selectedItemId = params.get('item_added_id');
-        const itemData = productsData[selectedItemId];
+        const itemId = params.get('itemId'); // Το όνομα που στείλαμε από το index.html
+        const quantity = parseInt(params.get('quantity')); // Το μετατρέπουμε σε αριθμό
 
-        if (itemData) {
-            // Εμφάνιση ονόματος προϊόντος
-            document.getElementById('item-name-display').textContent = itemData.item_name;
+        if (itemId && quantity) {
+            const productInfo = productsData[itemId];
 
-            // 🟡 2. Add to Cart Event
+            // 2. Ενημέρωσε την εμφάνιση της σελίδας με τη σωστή ποσότητα
+            document.getElementById('cart-details').innerHTML = `
+                <p>Προϊόν: <strong>${productInfo.item_name}</strong></p>
+                <p>Ποσότητα: <strong>${quantity}</strong></p>
+            `;
+            
+            // 3. Στείλε το dataLayer event με τη ΣΩΣΤΗ ποσότητα
+            window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'add_to_cart',
                 'ecommerce': {
-                    'items': [itemData]
+                    'items': [{
+                        ...productInfo, // Παίρνει όλα τα στοιχεία του προϊόντος
+                        'quantity': quantity // Και αντικαθιστά την ποσότητα με τη σωστή
+                    }]
                 }
             });
-            console.log(`GTM Event Fired: add_to_cart for ${itemData.item_id}`);
-        } else {
-            document.getElementById('item-name-display').textContent = 'Δεν βρέθηκε προϊόν.';
-            console.error('Δεν βρέθηκε προϊόν για το event add_to_cart.');
-        }
+            console.log(`GTM Event Fired: add_to_cart for ${itemId} with quantity ${quantity}`);
 
-        // 3. Begin Checkout Action (Ανακατεύθυνση)
-        document.getElementById('checkoutButton').addEventListener('click', function() {
-            if (itemData) {
-                // Ανακατεύθυνση στη σελίδα του Checkout, μεταφέροντας το ID
-                window.location.href = `checkout_page.html?checkout_started=true&item_added_id=${itemData.item_id}`;
-            } else {
-                alert('Δεν υπάρχει προϊόν στο καλάθι για checkout.');
-            }
-        });
+            // 4. Ενεργοποίησε το κουμπί και ετοίμασε το για το επόμενο βήμα
+            const checkoutBtn = document.getElementById('checkoutButton');
+            checkoutBtn.disabled = false;
+            checkoutBtn.addEventListener('click', function() {
+                // Στείλε και το ID και την ΠΟΣΟΤΗΤΑ στην επόμενη σελίδα
+                window.location.href = `checkout_page.html?itemId=${itemId}&quantity=${quantity}`;
+            });
+
+        } else {
+            document.getElementById('cart-details').innerHTML = '<p><strong>Το καλάθι είναι άδειο.</strong></p>';
+            console.error('Δεν βρέθηκαν itemId ή quantity στο URL.');
+        }
     </script>
 </body>
 </html>
