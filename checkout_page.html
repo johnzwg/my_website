@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Checkout Page</title>
+    
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
+    <style> /* (Συνοπτικό styling για clarity) */
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
+        .checkout-card { background: #fff; padding: 20px; border-radius: 8px; border-left: 5px solid #e74c3c; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .submit-button { padding: 10px 15px; background-color: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="checkout-card">
+        <h1>Ολοκλήρωση Παραγγελίας (Checkout)</h1>
+        <p>Συμπληρώστε στοιχεία πληρωμής και διεύθυνση...</p>
+        <p>Αν ήρθατε από το προηγούμενο βήμα, το event **begin_checkout** μόλις πυροδοτήθηκε.</p>
+        <button id="completePurchaseButton" class="submit-button">✅ Complete Purchase</button>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        
+        const itemData = {
+            'item_id': 'MKTPKG_PRO_2025',
+            'item_name': 'Marketing Package Pro',
+            'item_category': 'Services',
+            'price': 150.00,
+            'quantity': 1
+        };
+
+        // 3. Begin Checkout Event
+        if(params.get('checkout_started') === 'true') {
+            window.dataLayer.push({
+                'event': 'begin_checkout',
+                'ecommerce': {
+                    'items': [itemData]
+                }
+            });
+            console.log('GTM Event Fired: begin_checkout (triggered by URL param)');
+        }
+
+        // 4. Complete Purchase Action (Ανακατεύθυνση)
+        document.getElementById('completePurchaseButton').addEventListener('click', function() {
+            const transactionId = 'T-' + Math.floor(Math.random() * 1000000);
+            
+            // Ανακατεύθυνση στη σελίδα επιτυχίας, μεταφέροντας τις παραμέτρους για το event 'purchase'
+            window.location.href = `submit_form.html?transaction_id=${transactionId}&value=150.00`;
+        });
+    </script>
+</body>
+</html>
