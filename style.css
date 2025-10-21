@@ -1,8 +1,8 @@
 body {
     font-family: sans-serif;
-    margin: 0; /* Διορθώθηκε από 20px σε 0 */
+    margin: 0; /* Διορθώθηκε για πλήρες background */
     
-    /* ΝΕΟ BACKGROUND URL */
+    /* ΝΕΟ BACKGROUND */
     background-image: url("https://images.pexels.com/photos/6893376/pexels-photo-6893376.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     background-size: cover;
     background-repeat: no-repeat;
@@ -47,14 +47,14 @@ a:hover {
     text-decoration: underline;
 }
 
-.form-container{
+.form-container, .product-card { /* Πρόσθεσα .product-card για να εμφανίζονται σωστά οι κάρτες σου */
       margin-top: 20px;
       padding: 15px;
       background-color: white;
       border: 1px solid #ddd;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-/* ... και όλα τα άλλα blocks, όπως τα .form-group, κλπ. παραμένουν ... */
+
 .form-group {
     margin-bottom: 15px;
 }
