@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,61 +21,62 @@
 
     <div class="checkout-card">
         <h1>Ολοκλήρωση Παραγγελίας (Checkout)</h1>
-        <p>Προϊόν για αγορά: <strong id="item-name-display">Φόρτωση...</strong></p>
-        <p>Αν ήρθατε από το προηγούμενο βήμα, το event **begin_checkout** μόλις πυροδοτήθηκε.</p>
-        <button id="completePurchaseButton" class="submit-button">✅ Complete Purchase</button>
+        <div id="checkout-details">
+            <p>Προϊόν για αγορά: <strong>Φόρτωση...</strong></p>
+        </div>
+        <p>Το event <strong>begin_checkout</strong> μόλις πυροδοτήθηκε.</p>
+        <button id="completePurchaseButton" class="submit-button" disabled>✅ Complete Purchase</button>
     </div>
 
     <script>
         const productsData = {
-            'MKT_STRAT_BNDL': {
-                'item_id': 'MKT_STRAT_BNDL',
-                'item_name': 'Marketing Strategy Bundle',
-                'item_category': 'Strategy',
-                'price': 399.00,
-                'quantity': 1
-            },
-            'DATA_ANALYSIS_RPT': {
-                'item_id': 'DATA_ANALYSIS_RPT',
-                'item_name': 'Advanced Data Analysis Report',
-                'item_category': 'Data',
-                'price': 150.00,
-                'quantity': 1
-            }
+            'MKT_STRAT_BNDL': { 'item_id': 'MKT_STRAT_BNDL', 'item_name': 'Marketing Strategy Bundle', 'item_category': 'Strategy', 'price': 399.00 },
+            'DATA_ANALYSIS_RPT': { 'item_id': 'DATA_ANALYSIS_RPT', 'item_name': 'Advanced Data Analysis Report', 'item_category': 'Data', 'price': 150.00 }
         };
 
+        // 1. Διάβασε τις παραμέτρους (ID και ΠΟΣΟΤΗΤΑ) από το URL
         const params = new URLSearchParams(window.location.search);
-        const selectedItemId = params.get('item_added_id');
-        const itemData = productsData[selectedItemId];
+        const itemId = params.get('itemId');
+        const quantity = parseInt(params.get('quantity'));
 
-        if (itemData) {
-            document.getElementById('item-name-display').textContent = itemData.item_name;
+        if (itemId && quantity) {
+            const productInfo = productsData[itemId];
+            const totalValue = productInfo.price * quantity;
 
-            // 🔴 3. Begin Checkout Event
-            if(params.get('checkout_started') === 'true') {
-                window.dataLayer.push({
-                    'event': 'begin_checkout',
-                    'ecommerce': {
-                        'items': [itemData]
-                    }
-                });
-                console.log(`GTM Event Fired: begin_checkout for ${itemData.item_id}`);
-            }
-        } else {
-            document.getElementById('item-name-display').textContent = 'Δεν βρέθηκε προϊόν.';
-        }
+            // 2. Ενημέρωσε την εμφάνιση της σελίδας με τα σωστά στοιχεία
+            document.getElementById('checkout-details').innerHTML = `
+                <p>Προϊόν: <strong>${productInfo.item_name}</strong></p>
+                <p>Ποσότητα: <strong>${quantity}</strong></p>
+                <p>Συνολική Αξία: <strong>€${totalValue.toFixed(2)}</strong></p>
+            `;
+            
+            // 3. Στείλε το dataLayer event με τη ΣΩΣΤΗ ποσότητα
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'begin_checkout',
+                'ecommerce': {
+                    'items': [{
+                        ...productInfo,
+                        'quantity': quantity
+                    }]
+                }
+            });
+            console.log(`GTM Event Fired: begin_checkout for ${itemId} with quantity ${quantity}`);
 
-        // 4. Complete Purchase Action (Ανακατεύθυνση)
-        document.getElementById('completePurchaseButton').addEventListener('click', function() {
-            if (itemData) {
-                const transactionId = 'T-' + Math.floor(Math.random() * 1000000);
+            // 4. Ενεργοποίησε το κουμπί και ετοίμασε το για την τελική αγορά
+            const purchaseBtn = document.getElementById('completePurchaseButton');
+            purchaseBtn.disabled = false;
+            purchaseBtn.addEventListener('click', function() {
+                const transactionId = 'T-' + Date.now();
                 
-                // Ανακατεύθυνση στη σελίδα επιτυχίας, μεταφέροντας τις απαραίτητες παραμέτρους
-                window.location.href = `purchase_success.html?transaction_id=${transactionId}&value=${itemData.price}&item_added_id=${itemData.item_id}`;
-            } else {
-                alert('Δεν υπάρχει προϊόν για ολοκλήρωση αγοράς.');
-            }
-        });
+                // Στείλε ΟΛΕΣ τις πληροφορίες (transaction_id, value, id, quantity) στην τελική σελίδα
+                window.location.href = `purchase_success.html?transaction_id=${transactionId}&value=${totalValue.toFixed(2)}&itemId=${itemId}&quantity=${quantity}`;
+            });
+
+        } else {
+            document.getElementById('checkout-details').innerHTML = '<p><strong>Δεν βρέθηκε προϊόν για checkout.</strong></p>';
+            console.error('Δεν βρέθηκαν itemId ή quantity στο URL.');
+        }
     </script>
 </body>
 </html>
