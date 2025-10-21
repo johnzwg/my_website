@@ -12,7 +12,7 @@
     })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
 </head>
 <body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display=none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="checkout-card">
         <h1>Ολοκλήρωση Παραγγελίας</h1>
@@ -24,8 +24,16 @@
 
     <script>
         const productsData = {
-            'MKT_STRAT_BNDL': { 'item_id': 'MKT_STRAT_BNDL', 'item_name': 'Marketing Strategy Bundle', 'item_category': 'Strategy', 'price': 399.00 },
-            'DATA_ANALYSIS_RPT': { 'item_id': 'DATA_ANALYSIS_RPT', 'item_name': 'Advanced Data Analysis Report', 'item_category': 'Data', 'price': 150.00 }
+            'MKT_STRAT_BNDL': {
+                'item_id': 'MKT_STRAT_BNDL', 'item_name': 'Marketing Strategy Bundle', 'item_category': 'Laptops', 'price': 399.00,
+                'image_url': 'https://images.pexels.com/photos/303383/pexels-photo-303383.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+                'specs': { 'cpu': 'Intel Core i5', 'ram': '16GB RAM', 'storage': '512GB SSD' }
+            },
+            'DATA_ANALYSIS_RPT': {
+                'item_id': 'DATA_ANALYSIS_RPT', 'item_name': 'Advanced Data Analysis Report', 'item_category': 'Laptops', 'price': 150.00,
+                'image_url': 'https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+                'specs': { 'cpu': 'AMD Ryzen 7', 'ram': '8GB RAM', 'storage': '1TB SSD' }
+            }
         };
 
         const params = new URLSearchParams(window.location.search);
@@ -36,26 +44,27 @@
             const productInfo = productsData[itemId];
             const totalValue = productInfo.price * quantity;
 
-            // Display the full order summary clearly
             document.getElementById('checkout-details').innerHTML = `
-                <p><strong>Προϊόν:</strong> ${productInfo.item_name}</p>
-                <p><strong>Τιμή μονάδας:</strong> €${productInfo.price.toFixed(2)}</p>
-                <p><strong>Ποσότητα:</strong> ${quantity}</p>
+                <div class="item-container">
+                    <div class="item-image">
+                        <img src="${productInfo.image_url}" alt="${productInfo.item_name}">
+                    </div>
+                    <div class="item-details">
+                        <h3>${productInfo.item_name}</h3>
+                        <ul>
+                            <li>Επεξεργαστής: ${productInfo.specs.cpu}</li>
+                            <li>Μνήμη: ${productInfo.specs.ram}</li>
+                            <li>Αποθήκευση: ${productInfo.specs.storage}</li>
+                        </ul>
+                    </div>
+                </div>
                 <hr>
-                <p><strong>Συνολική Αξία προς Πληρωμή:</strong> €${totalValue.toFixed(2)}</p>
+                <p><strong>Συνολική Αξία προς Πληρωμή: €${totalValue.toFixed(2)}</strong></p>
             `;
             
-            // Push the begin_checkout event to dataLayer
             window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'event': 'begin_checkout',
-                'ecommerce': {
-                    'items': [{ ...productInfo, 'quantity': quantity }]
-                }
-            });
-            console.log(`GTM Event Fired: begin_checkout for ${itemId} with quantity ${quantity}`);
+            window.dataLayer.push({ 'event': 'begin_checkout', 'ecommerce': { 'items': [{ ...productInfo, 'quantity': quantity }] } });
 
-            // Enable the purchase button and set its action
             const purchaseBtn = document.getElementById('completePurchaseButton');
             purchaseBtn.disabled = false;
             purchaseBtn.addEventListener('click', function() {
@@ -65,7 +74,6 @@
 
         } else {
             document.getElementById('checkout-details').innerHTML = '<p><strong>Δεν βρέθηκε προϊόν για ολοκλήρωση αγοράς.</strong></p>';
-            console.error('Δεν βρέθηκαν itemId ή quantity στο URL για τη σελίδα checkout.');
         }
     </script>
 </body>
