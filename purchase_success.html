@@ -7,10 +7,10 @@
     
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    j=j.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
-    <style> /* (Συνοπτικό styling για clarity) */
+    <style> 
         body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
         h1 { color: #27ae60; }
     </style>
@@ -21,22 +21,35 @@
     <h1>✅ Επιτυχής Αγορά!</h1>
     <p>Η παραγγελία σας ολοκληρώθηκε με επιτυχία.</p>
     <p>Το event **purchase** μόλις πυροδοτήθηκε στο Data Layer.</p>
+    <p id="transaction-details">Φόρτωση λεπτομερειών...</p>
 
     <script>
+        const productsData = {
+            'MKT_STRAT_BNDL': {
+                'item_id': 'MKT_STRAT_BNDL',
+                'item_name': 'Marketing Strategy Bundle',
+                'item_category': 'Strategy',
+                'price': 399.00,
+                'quantity': 1
+            },
+            'DATA_ANALYSIS_RPT': {
+                'item_id': 'DATA_ANALYSIS_RPT',
+                'item_name': 'Advanced Data Analysis Report',
+                'item_category': 'Data',
+                'price': 150.00,
+                'quantity': 1
+            }
+        };
+
         const params = new URLSearchParams(window.location.search);
         const transactionId = params.get('transaction_id');
         const value = parseFloat(params.get('value'));
+        const selectedItemId = params.get('item_added_id');
+        const itemData = productsData[selectedItemId];
         
-        // Δεδομένα Προϊόντος
-        const itemData = [{
-            'item_id': 'MKTPKG_PRO_2025',
-            'item_name': 'Marketing Package Pro',
-            'item_category': 'Services',
-            'price': 150.00,
-            'quantity': 1
-        }];
+        const detailsEl = document.getElementById('transaction-details');
 
-        if (transactionId && value) {
+        if (transactionId && value && itemData) {
             // 🔥 4. Purchase Event (Τελικό Event)
             window.dataLayer.push({
                 'event': 'purchase',
@@ -46,14 +59,17 @@
                     'currency': 'EUR',
                     'tax': 0.00,
                     'shipping': 0.00,
-                    'items': itemData
+                    'items': [itemData]
                 }
             });
             console.log(`GTM Event Fired: purchase. Transaction ID: ${transactionId}`);
-            // Προαιρετικά: Εμφάνιση του Transaction ID στη σελίδα για debugging
-            document.body.insertAdjacentHTML('beforeend', `<p>Transaction ID: <strong>${transactionId}</strong></p>`);
+            
+            detailsEl.innerHTML = `Transaction ID: <strong>${transactionId}</strong><br>
+                                   Αγοράστηκε: **${itemData.item_name}**<br>
+                                   Συνολική Αξία: **€${value.toFixed(2)}**`;
         } else {
-            console.log('Σφάλμα: Η σελίδα αγοράς επισκέφθηκε χωρίς το Transaction ID.');
+            detailsEl.textContent = 'Σφάλμα: Η σελίδα αγοράς επισκέφθηκε χωρίς τα απαραίτητα δεδομένα συναλλαγής.';
+            console.error('Σφάλμα: Έλλειψη παραμέτρων στο URL για το event purchase.');
         }
     </script>
 </body>
