@@ -1,25 +1,87 @@
 body {
-    background-color: #ffffff; /* This sets the background to white */
-    font-family: Arial, sans-serif; /* A clean, standard font for readability */
-    color: #333333; /* Dark grey text color */
-    padding: 20px; /* Adds some space around the content */
-    margin: 0;
+    background-color: #ffffff; /* White background for all pages */
+    font-family: Arial, sans-serif; /* Standard font */
+    color: #333333; /* Dark grey text */
+    margin: 0; /* Remove default body margin */
+    display: flex; /* Use flexbox for centering content */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center horizontally */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    padding: 20px; /* Padding around the main content */
+    box-sizing: border-box; /* Include padding in element's total width/height */
 }
 
-/* You can keep other shared styles here so they apply to all pages */
+h1 {
+    color: #0056b3; /* A nice blue for headings */
+    margin-bottom: 20px;
+}
+
+/* Common card styling for all pages: index, cart, checkout */
 .product-card, .cart-card, .checkout-card {
-    background-color: #f9f9f9; /* A very light grey for the cards to stand out */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #f9f9f9; /* Light grey background for the cards */
+    padding: 30px; /* More padding inside the cards */
+    border-radius: 10px; /* Slightly more rounded corners */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Stronger, softer shadow */
+    margin-bottom: 20px; /* Space between cards/sections */
+    width: 100%; /* Take full width of its container */
+    max-width: 600px; /* Limit max width for better readability */
+    text-align: center; /* Center text within cards */
+}
+
+.product-card-container { /* For the index page to arrange multiple product cards */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
     margin-top: 20px;
+    max-width: 1200px; /* Max width for the entire product list container */
+    width: 100%;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.quantity-selector {
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    margin-top: 10px;
 }
 
 .submit-button {
-    background-color: #0056b3;
+    background-color: #007bff; /* A consistent blue for primary buttons */
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 25px; /* Larger padding for buttons */
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.submit-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Specific styles for cart/checkout details */
+#cart-details, #checkout-details, #transaction-details {
+    text-align: left; /* Align text left within these specific detail sections */
+    margin-top: 20px;
+    line-height: 1.8; /* More space between lines */
+}
+
+#cart-details p, #checkout-details p, #transaction-details p {
+    margin-bottom: 8px;
+}
+
+#cart-details hr, #checkout-details hr, #transaction-details hr {
+    border: 0;
+    height: 1px;
+    background: #dddddd;
+    margin: 15px 0;
 }
