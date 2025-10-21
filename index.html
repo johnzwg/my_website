@@ -21,7 +21,7 @@
     <div class="product-card-container">
         
         <div class="product-card" data-item-id="MKT_STRAT_BNDL">
-            <img src="https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Marketing Strategy Bundle">
+            <img src="https://images.pexels.com/photos/303383/pexels-photo-303383.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Marketing Strategy Bundle">
             <h2>Marketing Strategy Bundle</h2>
             <p>SKU: **MKT_STRAT_BNDL**</p>
             <p>Τιμή: **€399.00**</p>
@@ -37,7 +37,7 @@
         </div>
         
         <div class="product-card" data-item-id="DATA_ANALYSIS_RPT">
-            <img src="https://images.pexels.com/photos/303383/pexels-photo-303383.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Data Analysis Report">
+            <img src="https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Data Analysis Report">
             <h2>Advanced Data Analysis Report</h2>
             <p>SKU: **DATA_ANALYSIS_RPT**</p>
             <p>Τιμή: **€150.00**</p>
@@ -58,8 +58,16 @@
 
     <script>
         const productsData = {
-            'MKT_STRAT_BNDL': { 'item_id': 'MKT_STRAT_BNDL', 'item_name': 'Marketing Strategy Bundle', 'price': 399.00 },
-            'DATA_ANALYSIS_RPT': { 'item_id': 'DATA_ANALYSIS_RPT', 'item_name': 'Advanced Data Analysis Report', 'price': 150.00 }
+            'MKT_STRAT_BNDL': {
+                'item_id': 'MKT_STRAT_BNDL', 'item_name': 'Marketing Strategy Bundle', 'item_category': 'Laptops', 'price': 399.00,
+                'image_url': 'https://images.pexels.com/photos/303383/pexels-photo-303383.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+                'specs': { 'cpu': 'Intel Core i5', 'ram': '16GB RAM', 'storage': '512GB SSD' }
+            },
+            'DATA_ANALYSIS_RPT': {
+                'item_id': 'DATA_ANALYSIS_RPT', 'item_name': 'Advanced Data Analysis Report', 'item_category': 'Laptops', 'price': 150.00,
+                'image_url': 'https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+                'specs': { 'cpu': 'AMD Ryzen 7', 'ram': '8GB RAM', 'storage': '1TB SSD' }
+            }
         };
 
         window.dataLayer = window.dataLayer || [];
