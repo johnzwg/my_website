@@ -12,14 +12,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
-
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <div class="header-container">
-        <h1 class="main-heading">Διαθέσιма Προϊόντα</h1>
-    </div>
+    <h1>Διαθέσιμα Προϊόντα</h1>
 
     <div class="product-card-container">
         
@@ -29,14 +26,12 @@
             <p>SKU: **MKT_STRAT_BNDL**</p>
             <p>Τιμή: **€399.00**</p>
             
-            <div class="form-group">
-                <label for="quantity-mkt">Ποσότητα:</label>
-                <select name="quantity" id="quantity-mkt" class="quantity-selector">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-            </div>
+            <label for="quantity-mkt">Ποσότητα:</label>
+            <select name="quantity" id="quantity-mkt" class="quantity-selector">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
             
             <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
         </div>
@@ -47,16 +42,14 @@
             <p>SKU: **DATA_ANALYSIS_RPT**</p>
             <p>Τιμή: **€150.00**</p>
 
-            <div class="form-group">
-                <label for="quantity-data">Ποσότητα:</label>
-                <select name="quantity" id="quantity-data" class="quantity-selector">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
+            <label for="quantity-data">Ποσότητα:</label>
+            <select name="quantity" id="quantity-data" class="quantity-selector">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
 
             <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
         </div>
@@ -69,23 +62,18 @@
             'DATA_ANALYSIS_RPT': { 'item_id': 'DATA_ANALYSIS_RPT', 'item_name': 'Advanced Data Analysis Report', 'price': 150.00 }
         };
 
-        // 1. View Item List Event
         window.dataLayer = window.dataLayer || [];
         const viewListItems = Object.values(productsData).map(item => ({...item, quantity: 1}));
         window.dataLayer.push({
             'event': 'view_item_list', 
             'ecommerce': { 'items': viewListItems }
         });
-        console.log('GTM Event Fired: view_item_list');
 
-        // 2. Add to Cart Action (Redirection)
         document.querySelectorAll('.add-to-cart-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const parentCard = this.closest('.product-card');
                 const itemId = parentCard.getAttribute('data-item-id');
                 const selectedQuantity = parentCard.querySelector('.quantity-selector').value;
-
-                // Στέλνουμε το ID και την ΠΟΣΟΤΗΤΑ στο URL
                 window.location.href = `cart_page.html?itemId=${itemId}&quantity=${selectedQuantity}`;
             });
         });
