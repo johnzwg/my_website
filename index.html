@@ -18,6 +18,7 @@
         .submit-button { padding: 10px 15px; background-color: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; width: 100%; }
         .product-card h2 { color: #2c3e50; }
         .product-card p { color: #7f8c8d; }
+        .quantity-selector { margin-bottom: 15px; padding: 5px; } /* Πρόσθετο στυλ για το select */
     </style>
 </head>
 <body>
@@ -32,6 +33,14 @@
             <h2>Marketing Strategy Bundle</h2>
             <p>SKU: **MKT_STRAT_BNDL**</p>
             <p>Τιμή: **€399.00**</p>
+            
+            <label for="quantity-mkt">Ποσότητα:</label>
+            <select name="quantity" id="quantity-mkt" class="quantity-selector">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            
             <button class="submit-button add-to-cart-btn" data-item-id="MKT_STRAT_BNDL">🛒 Add to Cart</button>
         </div>
         
@@ -40,6 +49,16 @@
             <h2>Advanced Data Analysis Report</h2>
             <p>SKU: **DATA_ANALYSIS_RPT**</p>
             <p>Τιμή: **€150.00**</p>
+
+            <label for="quantity-data">Ποσότητα:</label>
+            <select name="quantity" id="quantity-data" class="quantity-selector">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
             <button class="submit-button add-to-cart-btn" data-item-id="DATA_ANALYSIS_RPT">🛒 Add to Cart</button>
         </div>
 
@@ -52,14 +71,14 @@
                 'item_name': 'Marketing Strategy Bundle',
                 'item_category': 'Strategy',
                 'price': 399.00,
-                'quantity': 1
+                'quantity': 1 // Αυτή η τιμή θα πρέπει να ανανεώνεται δυναμικά
             },
             'DATA_ANALYSIS_RPT': {
                 'item_id': 'DATA_ANALYSIS_RPT',
                 'item_name': 'Advanced Data Analysis Report',
                 'item_category': 'Data',
                 'price': 150.00,
-                'quantity': 1
+                'quantity': 1 // Αυτή η τιμή θα πρέπει να ανανεώνεται δυναμικά
             }
         };
 
@@ -79,6 +98,9 @@
             button.addEventListener('click', function() {
                 const itemId = this.getAttribute('data-item-id');
                 
+                // ΣΗΜΕΙΩΣΗ: Προς το παρόν, η ποσότητα δεν χρησιμοποιείται.
+                // Θα το φτιάξουμε στο επόμενο βήμα!
+
                 // Ανακατεύθυνση στη σελίδα του καλαθιού, μεταφέροντας το ID του προϊόντος
                 window.location.href = `cart_page.html?item_added_id=${itemId}`;
             });
