@@ -16,60 +16,58 @@
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <h1>Διαθέσιμα Προϊόντα</h1>
+    <div class="page-container">
 
-    <div class="product-card-container">
-        
-        <div class="product-card" data-item-id="MKT_STRAT_BNDL">
-            <img src="https://images.pexels.com/photos/303383/pexels-photo-303383.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Marketing Strategy Bundle">
-            <h2>Laptop Name: Mac iOS 1</h2>
-            <p>Year: 2022</p>
-            <p>Price: €399.00</p>
-            
-            <label for="quantity-mkt">Ποσότητα:</label>
-            <select name="quantity" id="quantity-mkt" class="quantity-selector">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
-            
-            <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
-        </div>
-        
-        <div class="product-card" data-item-id="DATA_ANALYSIS_RPT">
-            <img src="https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Data Analysis Report">
-            <h2>Laptop Name: Mac iOS</h2>
-            <p>Year: 2023</p>
-            <p>Price: €150.00</p>
+        <nav class="sidebar">
+            <h2>Όλες οι κατηγορίες</h2>
+            <ul class="category-list">
+                <li>PC & Περιφερειακά</li>
+                <li class="active">Laptops</li> <li>Αναβάθμιση & Δίκτυα</li>
+                <li>Τηλεφωνία & Tablet</li>
+                <li>Τηλεοράσεις</li>
+                <li>Φωτογραφία & Ήχος</li>
+                <li>Gaming Zone</li>
+                <li>Smart Tech & Gadgets</li>
+                <li>Εκτύπωση</li>
+                <li>Η Κουζίνα μου</li>
+                <li>Προσωπική Περιποίηση</li>
+                <li>Έπιπλα</li>
+                <li>Χαρτοπωλεία</li>
+            </ul>
+        </nav>
 
-            <label for="quantity-data">Ποσότητα:</label>
-            <select name="quantity" id="quantity-data" class="quantity-selector">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
+        <main class="main-content">
+            <h1>Laptops</h1>
+            <p>Επιλέξτε ένα από τα διαθέσιμα laptop μας.</p>
 
-            <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
-        </div>
+            <div class="product-card-container" id="product-list"></div>
 
+        </main>
     </div>
 
+
     <script>
+        // --- 1. Η ΜΟΝΑΔΙΚΗ ΠΗΓΗ ΑΛΗΘΕΙΑΣ ---
         const productsData = {
             'MKT_STRAT_BNDL': {
-                'item_id': 'MKT_STRAT_BNDL', 'item_name': 'Laptop Pavillion', 'item_category': 'Laptops', 'price': 399.00,
+                'item_id': 'MKT_STRAT_BNDL', 
+                'item_name': 'Mac iOS 1', 
+                'item_category': 'Laptops', 
+                'price': 399.00,
                 'image_url': 'https://images.pexels.com/photos/303383/pexels-photo-303383.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                'specs': { 'cpu': 'Intel Core i5', 'ram': '16GB RAM', 'storage': '512GB SSD' }
+                'specs': { 'cpu': 'Intel Core i5', 'ram': '16GB RAM', 'storage': '512GB SSD', 'year': 2022 }
             },
             'DATA_ANALYSIS_RPT': {
-                'item_id': 'DATA_ANALYSIS_RPT', 'item_name': 'Mac iOS', 'item_category': 'Laptops', 'price': 150.00,
+                'item_id': 'DATA_ANALYSIS_RPT', 
+                'item_name': 'Mac iOS', 
+                'item_category': 'Laptops', 
+                'price': 150.00,
                 'image_url': 'https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                'specs': { 'cpu': 'AMD Ryzen 7', 'ram': '8GB RAM', 'storage': '1TB SSD' }
+                'specs': { 'cpu': 'AMD Ryzen 7', 'ram': '8GB RAM', 'storage': '1TB SSD', 'year': 2023 }
             }
         };
 
+        // --- 2. GTM EVENT (VIEW ITEM LIST) ---
         window.dataLayer = window.dataLayer || [];
         const viewListItems = Object.values(productsData).map(item => ({...item, quantity: 1}));
         window.dataLayer.push({
@@ -77,6 +75,37 @@
             'ecommerce': { 'items': viewListItems }
         });
 
+        
+        // --- 3. ΔΥΝΑΜΙΚΗ ΔΗΜΙΟΥΡΓΙΑ ΠΡΟΪΟΝΤΩΝ ---
+        const productContainer = document.getElementById('product-list');
+
+        Object.values(productsData).forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.setAttribute('data-item-id', product.item_id);
+
+            card.innerHTML = `
+                <img src="${product.image_url}" alt="${product.item_name}">
+                <h2>${product.item_name}</h2>
+                <p>Year: ${product.specs.year}</p>
+                <p>Price: €${product.price.toFixed(2)}</p>
+                
+                <label for="quantity-${product.item_id}">Ποσότητα:</label>
+                <select name="quantity" id="quantity-${product.item_id}" class="quantity-selector">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                
+                <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
+            `;
+            productContainer.appendChild(card);
+        });
+
+
+        // --- 4. ADD TO CART EVENT LISTENER ---
         document.querySelectorAll('.add-to-cart-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const parentCard = this.closest('.product-card');
@@ -88,7 +117,3 @@
     </script>
 </body>
 </html>
-
-
-
-
