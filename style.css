@@ -41,10 +41,10 @@ h1, h2, h3 {
 
 /* Στυλ για τους ΣΥΝΔΕΣΜΟΥΣ (<a>) μέσα στη λίστα */
 .category-list li a {
-    display: block;
+    display: block; /* Κάνει ολόκληρη την περιοχή clickable */
     padding: 12px 10px;
     font-size: 0.95em;
-    text-decoration: none;
+    text-decoration: none; /* Χωρίς υπογράμμιση */
     color: #333;
     border-bottom: 1px solid #eee;
     transition: background-color 0.2s ease;
@@ -100,85 +100,4 @@ h1, h2, h3 {
     object-fit: cover; /* Οι εικόνες γεμίζουν τον χώρο */
     border-radius: 5px;
     margin-bottom: 15px;
-}
-
-.product-card-details {
-    flex-grow: 1;
-}
-
-.quantity-selector {
-    padding: 8px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    margin-top: 10px;
-}
-
-.submit-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.submit-button:hover {
-    background-color: #0056b3;
-}
-
-/* --- ΣΤΥΛ ΓΙΑ ΤΙΣ ΑΛΛΕΣ ΣΕΛΙΔΕΣ (CART, CHECKOUT) --- */
-.cart-card, .checkout-card {
-    background-color: #f9f9f9;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin: 20px auto;
-    width: 100%;
-    max-width: 600px;
-}
-
-.item-container {
-    display: flex;
-    align-items: flex-start;
-    gap: 25px;
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.item-image {
-    flex: 0 0 150px;
-}
-
-.item-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.item-details ul {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
-    color: #555;
-}
-
-#cart-details, #checkout-details, #transaction-details {
-    text-align: left;
-    margin-top: 20px;
-    line-height: 1.8;
-}
-
-#cart-details p, #checkout-details p, #transaction-details p {
-    margin-bottom: 8px;
-}
-
-#cart-details hr, #checkout-details hr, #transaction-details hr {
-    border: 0;
-    height: 1px;
-    background: #dddddd;
-    margin: 15px 0;
-}
+    background-color: #eee; /* Χρώμα φόντου για τα
