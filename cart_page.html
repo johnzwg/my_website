@@ -23,24 +23,23 @@
     </div>
 
     <script>
+        // ΚΕΝΤΡΙΚΗ ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ - ΠΕΡΙΕΧΕΙ ΟΛΑ ΤΑ ΠΡΟΪΟΝΤΑ
         const productsData = {
-            'MKT_STRAT_BNDL': {
-                'item_id': 'MKT_STRAT_BNDL', 'item_name': 'Marketing Strategy Bundle', 'item_category': 'Laptops', 'price': 399.00,
-                'image_url': 'https://images.pexels.com/photos/303383/pexels-photo-303383.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                'specs': { 'cpu': 'Intel Core i5', 'ram': '16GB RAM', 'storage': '512GB SSD' }
-            },
-            'DATA_ANALYSIS_RPT': {
-                'item_id': 'DATA_ANALYSIS_RPT', 'item_name': 'Advanced Data Analysis Report', 'item_category': 'Laptops', 'price': 150.00,
-                'image_url': 'https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-                'specs': { 'cpu': 'AMD Ryzen 7', 'ram': '8GB RAM', 'storage': '1TB SSD' }
-            }
+            'MKT_STRAT_BNDL': { 'item_id': 'MKT_STRAT_BNDL', 'item_name': 'Mac iOS 1', 'item_category': 'Laptops', 'price': 399.00, 'image_url': 'https://images.pexels.com/photos/303383/pexels-photo-303383.jpeg', 'specs': { 'year': 2022, 'cpu': 'Intel Core i5', 'ram': '16GB RAM' } },
+            'DATA_ANALYSIS_RPT': { 'item_id': 'DATA_ANALYSIS_RPT', 'item_name': 'Mac iOS', 'item_category': 'Laptops', 'price': 150.00, 'image_url': 'https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg', 'specs': { 'year': 2023, 'cpu': 'AMD Ryzen 7', 'ram': '8GB RAM' } },
+            'PC_GAMING_001': { 'item_id': 'PC_GAMING_001', 'item_name': 'Gaming PC Tower', 'item_category': 'PCs', 'price': 1299.00, 'image_url': 'https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg', 'specs': { 'year': 2024, 'cpu': 'Intel Core i7', 'ram': '32GB RAM' } },
+            'MONITOR_DELL_002': { 'item_id': 'MONITOR_DELL_002', 'item_name': 'Dell UltraSharp Monitor', 'item_category': 'Monitors', 'price': 450.00, 'image_url': 'https://images.pexels.com/photos/1999463/pexels-photo-1999463.jpeg', 'specs': { 'year': 2023, 'cpu': 'N/A', 'ram': 'N/A' } },
+            'PHONE_SAMSUNG_S23': { 'item_id': 'PHONE_SAMSUNG_S23', 'item_name': 'Samsung Galaxy S23', 'item_category': 'Phones', 'price': 799.00, 'image_url': 'https://images.pexels.com/photos/14710121/pexels-photo-14710121.jpeg', 'specs': { 'year': 2023, 'cpu': 'Snapdragon 8 Gen 2', 'ram': '8GB RAM' } },
+            'PHONE_IPHONE_15': { 'item_id': 'PHONE_IPHONE_15', 'item_name': 'iPhone 15 Pro', 'item_category': 'Phones', 'price': 1199.00, 'image_url': 'https://images.pexels.com/photos/18422361/pexels-photo-18422361.jpeg', 'specs': { 'year': 2023, 'cpu': 'A17 Pro', 'ram': '8GB RAM' } },
+            'TV_LG_OLED_55': { 'item_id': 'TV_LG_OLED_55', 'item_name': 'LG OLED 55" C3', 'item_category': 'TVs', 'price': 1499.00, 'image_url': 'https://images.pexels.com/photos/5721865/pexels-photo-5721865.jpeg', 'specs': { 'year': 2023, 'cpu': '120Hz', 'ram': 'OLED 4K' } },
+            'TV_SONY_LED_65': { 'item_id': 'TV_SONY_LED_65', 'item_name': 'Sony BRAVIA 65" LED', 'item_category': 'TVs', 'price': 899.00, 'image_url': 'https://images.pexels.com/photos/1682519/pexels-photo-1682519.jpeg', 'specs': { 'year': 2023, 'cpu': '60Hz', 'ram': 'LED 4K' } }
         };
 
         const params = new URLSearchParams(window.location.search);
         const itemId = params.get('itemId');
         const quantity = parseInt(params.get('quantity'));
 
-        if (itemId && quantity) {
+        if (itemId && quantity && productsData[itemId]) {
             const productInfo = productsData[itemId];
             const totalValue = productInfo.price * quantity;
 
@@ -51,11 +50,7 @@
                     </div>
                     <div class="item-details">
                         <h3>${productInfo.item_name}</h3>
-                        <ul>
-                            <li>Επεξεργαστής: ${productInfo.specs.cpu}</li>
-                            <li>Μνήμη: ${productInfo.specs.ram}</li>
-                            <li>Αποθήκευση: ${productInfo.specs.storage}</li>
-                        </ul>
+                        <p>Κατηγορία: ${productInfo.item_category}</p>
                     </div>
                 </div>
                 <hr>
@@ -74,7 +69,7 @@
             });
 
         } else {
-            document.getElementById('cart-details').innerHTML = '<p><strong>Το καλάθι είναι άδειο.</strong></p>';
+            document.getElementById('cart-details').innerHTML = '<p><strong>Το καλάθι είναι άδειο ή το προϊόν δεν βρέθηκε.</strong></p>';
         }
     </script>
 </body>
