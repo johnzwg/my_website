@@ -8,11 +8,11 @@
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    '[https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f](https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f));
     })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
 </head>
 <body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="[https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F](https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F)" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="cart-card">
         <h1>Καλάθι Αγορών</h1>
@@ -25,30 +25,30 @@
     <script>
         // --- ΚΕΝΤΡΙΚΗ ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ (ΟΛΑ ΤΑ ΠΡΟΪΟΝΤΑ) ---
         const productsData = {
-            'COS_001': { 'item_id': 'COS_001', 'item_name': 'Ενυδατική Κρέμα Ημέρας', 'item_category': 'Καλλυντικά', 'price': 16.80, 'image_url': 'https://via.placeholder.com/300x180.png?text=Cosmetic+1', 'specs': { 'brand': 'Brand A', 'type': 'Ενυδάτωση' } },
-            'COS_002': { 'item_id': 'COS_002', 'item_name': 'Θρεπτική Κρέμα Νύχτας', 'item_category': 'Καλλυντικά', 'price': 18.00, 'image_url': 'https://via.placeholder.com/300x180.png?text=Cosmetic+2', 'specs': { 'brand': 'Brand B', 'type': 'Θρέψη' } },
-            'COS_003': { 'item_id': 'COS_003', 'item_name': 'Κρέμα Ματιών Peptide', 'item_category': 'Καλλυντικά', 'price': 29.45, 'image_url': 'https://via.placeholder.com/300x180.png?text=Eye+Cream', 'specs': { 'brand': 'Brand A', 'type': 'Κρέμα Ματιών' } },
-            'COS_004': { 'item_id': 'COS_004', 'item_name': 'Κρέμα κατά της Ακμής', 'item_category': 'Καλλυντικά', 'price': 27.98, 'image_url': 'https://via.placeholder.com/300x180.png?text=Spot+Cream', 'specs': { 'brand': 'Brand C', 'type': 'Ακμή' } },
-            'COS_005': { 'item_id': 'COS_005', 'item_name': 'Παλέτα Σκιών', 'item_category': 'Καλλυντικά', 'price': 8.90, 'image_url': 'https://via.placeholder.com/300x180.png?text=Makeup', 'specs': { 'brand': 'Brand D', 'type': 'Μακιγιάζ' } },
-            'COS_006': { 'item_id': 'COS_006', 'item_name': 'Lip Balm Φράουλα', 'item_category': 'Καλλυντικά', 'price': 4.80, 'image_url': 'https://via.placeholder.com/300x180.png?text=Lip+Balm', 'specs': { 'brand': 'Brand D', 'type': 'Lip Balm' } },
-            'COS_007': { 'item_id': 'COS_007', 'item_name': 'Μάσκα Προσώπου Detox', 'item_category': 'Καλλυντικά', 'price': 3.16, 'image_url': 'https://via.placeholder.com/300x180.png?text=Face+Mask', 'specs': { 'brand': 'Brand D', 'type': 'Μάσκα' } },
-            'COS_008': { 'item_id': 'COS_008', 'item_name': 'Premium Set Νύχτας', 'item_category': 'Καλλυντικά', 'price': 42.08, 'image_url': 'https://via.placeholder.com/300x180.png?text=Premium+Set', 'specs': { 'brand': 'Brand E', 'type': 'Set Περιποίησης' } },
-            'COS_009': { 'item_id': 'COS_009', 'item_name': 'Αντιρυτιδική Κρέμα Νύχτας', 'item_category': 'Καλλυντικά', 'price': 29.13, 'image_url': 'https://via.placeholder.com/300x180.png?text=Night+Cream', 'specs': { 'brand': 'Brand F', 'type': 'Αντιρυτιδική' } },
-            'COS_010': { 'item_id': 'COS_010', 'item_name': 'Αντιρυτιδική Κρέμα Ημέρας', 'item_category': 'Καλλυντικά', 'price': 27.84, 'image_url': 'https://via.placeholder.com/300x180.png?text=Day+Cream', 'specs': { 'brand': 'Brand F', 'type': 'Αντιρυτιδική' } },
-            'VIT_001': { 'item_id': 'VIT_001', 'item_name': 'Συμπλήρωμα Ασβέστιο & D3, 60caps', 'item_category': 'Βιταμίνες', 'price': 22.59, 'image_url': 'https://via.placeholder.com/300x180.png?text=Vitamins+1', 'specs': { 'brand': 'Brand G', 'type': 'Ασβέστιο & D3' } },
-            'VIT_002': { 'item_id': 'VIT_002', 'item_name': 'Vitamin C + Zn, 30 tabs', 'item_category': 'Βιταμίνες', 'price': 4.82, 'image_url': 'https://via.placeholder.com/300x180.png?text=Vitamin+C', 'specs': { 'brand': 'Brand H', 'type': 'Βιταμίνη C & Ψευδάργυρος' } },
-            'VIT_003': { 'item_id': 'VIT_003', 'item_name': 'MenteBiome Junior Προβιοτικό, 30 Φακελίσκοι', 'item_category': 'Βιταμίνες', 'price': 17.20, 'image_url': 'https://via.placeholder.com/300x180.png?text=Probiotic', 'specs': { 'brand': 'Brand I', 'type': 'Παιδικό Προβιοτικό' } },
-            'VIT_004': { 'item_id': 'VIT_004', 'item_name': 'Water Off Formula (Κατακράτηση), 60caps', 'item_category': 'Βιταμίνες', 'price': 22.39, 'image_url': 'https://via.placeholder.com/300x180.png?text=Supplement+1', 'specs': { 'brand': 'Brand J', 'type': 'Κατακράτηση Υγρών' } },
-            'VIT_005': { 'item_id': 'VIT_005', 'item_name': 'Σιρόπι για Βήχα A-IOS 200ml', 'item_category': 'Βιταμίνες', 'price': 8.20, 'image_url': 'https://via.placeholder.com/300x180.png?text=Syrup+1', 'specs': { 'brand': 'Brand K', 'type': 'Σιρόπι' } },
-            'VIT_006': { 'item_id': 'VIT_006', 'item_name': 'Σιρόπι για Στομάχι Gastric 100ml', 'item_category': 'Βιταμίνες', 'price': 8.50, 'image_url': 'https://via.placeholder.com/300x180.png?text=Syrup+2', 'specs': { 'brand': 'Brand K', 'type': 'Πεπτικό Σύστημα' } },
-            'VIT_007': { 'item_id': 'VIT_007', 'item_name': 'TONOSAN Immunity 30caps', 'item_category': 'Βιταμίνες', 'price': 12.78, 'image_url': 'https://via.placeholder.com/300x180.png?text=Immunity', 'specs': { 'brand': 'Brand H', 'type': 'Ανοσοποιητικό' } },
-            'VIT_008': { 'item_id': 'VIT_008', 'item_name': 'Altion B- Complex Σιρόπι 150ml', 'item_category': 'Βιταμίνες', 'price': 10.04, 'image_url': 'https://via.placeholder.com/300x180.png?text=Vitamin+B', 'specs': { 'brand': 'Brand L', 'type': 'Βιταμίνη B' } },
-            'VIT_009': { 'item_id': 'VIT_009', 'item_name': 'Kids Probiotics 60gummies', 'item_category': 'Βιταμίνες', 'price': 13.74, 'image_url': 'https://via.placeholder.com/300x180.png?text=Kids+Vitamins', 'specs': { 'brand': 'Brand L', 'type': 'Παιδικό Προβιοτικό' } },
-            'VIT_010': { 'item_id': 'VIT_010', 'item_name': 'Ubiquinol 100mg (CoQ10) 60 caps', 'item_category': 'Βιταμίνες', 'price': 71.60, 'image_url': 'https://via.placeholder.com/300x180.png?text=Supplement+2', 'specs': { 'brand': 'Brand M', 'type': 'CoQ10' } },
-            'MAN_PROD_1': { 'item_id': 'MAN_PROD_1', 'item_name': 'Αφρός Ξυρίσματος', 'item_category': 'Άνδρας', 'price': 8.50, 'image_url': 'https://via.placeholder.com/300x180.png?text=Men's+Care', 'specs': { 'brand': 'Brand A', 'type': 'Ευαίσθητο Δέρμα' } },
-            'MAN_PROD_2': { 'item_id': 'MAN_PROD_2', 'item_name': 'After Shave Balm', 'item_category': 'Άνδρας', 'price': 12.90, 'image_url': 'https://via.placeholder.com/300x180.png?text=After+Shave', 'specs': { 'brand': 'Brand B', 'type': 'Ενυδάτωση' } },
-            'WOMAN_PROD_1': { 'item_id': 'WOMAN_PROD_1', 'item_name': 'Σερουμ Προσώπου Υαλουρονικό', 'item_category': 'Γυναίκα', 'price': 29.90, 'image_url': 'https://via.placeholder.com/300x180.png?text=Serum', 'specs': { 'brand': 'Brand C', 'type': 'Αντιγήρανση' } },
-            'WOMAN_PROD_2': { 'item_id': 'WOMAN_PROD_2', 'item_name': 'Κρέμα Σώματος για Σύσφιξη', 'item_category': 'Γυναίκα', 'price': 14.50, 'image_url': 'https://via.placeholder.com/300x180.png?text=Body+Cream', 'specs': { 'brand': 'Brand D', 'type': 'Ενυδάτωση' } }
+            'COS_001': { 'item_id': 'COS_001', 'item_name': 'Ενυδατική Κρέμα Ημέρας', 'item_category': 'Καλλυντικά', 'price': 16.80, 'image_url': '[https://via.placeholder.com/300x180.png?text=Cosmetic+1](https://via.placeholder.com/300x180.png?text=Cosmetic+1)', 'specs': { 'brand': 'Brand A', 'type': 'Ενυδάτωση' } },
+            'COS_002': { 'item_id': 'COS_002', 'item_name': 'Θρεπτική Κρέμα Νύχτας', 'item_category': 'Καλλυντικά', 'price': 18.00, 'image_url': '[https://via.placeholder.com/300x180.png?text=Cosmetic+2](https://via.placeholder.com/300x180.png?text=Cosmetic+2)', 'specs': { 'brand': 'Brand B', 'type': 'Θρέψη' } },
+            'COS_003': { 'item_id': 'COS_003', 'item_name': 'Κρέμα Ματιών Peptide', 'item_category': 'Καλλυντικά', 'price': 29.45, 'image_url': '[https://via.placeholder.com/300x180.png?text=Eye+Cream](https://via.placeholder.com/300x180.png?text=Eye+Cream)', 'specs': { 'brand': 'Brand A', 'type': 'Κρέμα Ματιών' } },
+            'COS_004': { 'item_id': 'COS_004', 'item_name': 'Κρέμα κατά της Ακμής', 'item_category': 'Καλλυντικά', 'price': 27.98, 'image_url': '[https://via.placeholder.com/300x180.png?text=Spot+Cream](https://via.placeholder.com/300x180.png?text=Spot+Cream)', 'specs': { 'brand': 'Brand C', 'type': 'Ακμή' } },
+            'COS_005': { 'item_id': 'COS_005', 'item_name': 'Παλέτα Σκιών', 'item_category': 'Καλλυντικά', 'price': 8.90, 'image_url': '[https://via.placeholder.com/300x180.png?text=Makeup](https://via.placeholder.com/300x180.png?text=Makeup)', 'specs': { 'brand': 'Brand D', 'type': 'Μακιγιάζ' } },
+            'COS_006': { 'item_id': 'COS_006', 'item_name': 'Lip Balm Φράουλα', 'item_category': 'Καλλυντικά', 'price': 4.80, 'image_url': '[https://via.placeholder.com/300x180.png?text=Lip+Balm](https://via.placeholder.com/300x180.png?text=Lip+Balm)', 'specs': { 'brand': 'Brand D', 'type': 'Lip Balm' } },
+            'COS_007': { 'item_id': 'COS_007', 'item_name': 'Μάσκα Προσώπου Detox', 'item_category': 'Καλλυντικά', 'price': 3.16, 'image_url': '[https://via.placeholder.com/300x180.png?text=Face+Mask](https://via.placeholder.com/300x180.png?text=Face+Mask)', 'specs': { 'brand': 'Brand D', 'type': 'Μάσκα' } },
+            'COS_008': { 'item_id': 'COS_008', 'item_name': 'Premium Set Νύχτας', 'item_category': 'Καλλυντικά', 'price': 42.08, 'image_url': '[https://via.placeholder.com/300x180.png?text=Premium+Set](https://via.placeholder.com/300x180.png?text=Premium+Set)', 'specs': { 'brand': 'Brand E', 'type': 'Set Περιποίησης' } },
+            'COS_009': { 'item_id': 'COS_009', 'item_name': 'Αντιρυτιδική Κρέμα Νύχτας', 'item_category': 'Καλλυντικά', 'price': 29.13, 'image_url': '[https://via.placeholder.com/300x180.png?text=Night+Cream](https://via.placeholder.com/300x180.png?text=Night+Cream)', 'specs': { 'brand': 'Brand F', 'type': 'Αντιρυτιδική' } },
+            'COS_010': { 'item_id': 'COS_010', 'item_name': 'Αντιρυτιδική Κρέμα Ημέρας', 'item_category': 'Καλλυντικά', 'price': 27.84, 'image_url': '[https://via.placeholder.com/300x180.png?text=Day+Cream](https://via.placeholder.com/300x180.png?text=Day+Cream)', 'specs': { 'brand': 'Brand F', 'type': 'Αντιρυτιδική' } },
+            'VIT_001': { 'item_id': 'VIT_001', 'item_name': 'Συμπλήρωμα Ασβέστιο & D3, 60caps', 'item_category': 'Βιταμίνες', 'price': 22.59, 'image_url': '[https://via.placeholder.com/300x180.png?text=Vitamins+1](https://via.placeholder.com/300x180.png?text=Vitamins+1)', 'specs': { 'brand': 'Brand G', 'type': 'Ασβέστιο & D3' } },
+            'VIT_002': { 'item_id': 'VIT_002', 'item_name': 'Vitamin C + Zn, 30 tabs', 'item_category': 'Βιταμίνες', 'price': 4.82, 'image_url': '[https://via.placeholder.com/300x180.png?text=Vitamin+C](https://via.placeholder.com/300x180.png?text=Vitamin+C)', 'specs': { 'brand': 'Brand H', 'type': 'Βιταμίνη C & Ψευδάργυρος' } },
+            'VIT_003': { 'item_id': 'VIT_003', 'item_name': 'MenteBiome Junior Προβιοτικό, 30 Φακελίσκοι', 'item_category': 'Βιταμίνες', 'price': 17.20, 'image_url': '[https://via.placeholder.com/300x180.png?text=Probiotic](https://via.placeholder.com/300x180.png?text=Probiotic)', 'specs': { 'brand': 'Brand I', 'type': 'Παιδικό Προβιοτικό' } },
+            'VIT_004': { 'item_id': 'VIT_004', 'item_name': 'Water Off Formula (Κατακράτηση), 60caps', 'item_category': 'Βιταμίνες', 'price': 22.39, 'image_url': '[https://via.placeholder.com/300x180.png?text=Supplement+1](https://via.placeholder.com/300x180.png?text=Supplement+1)', 'specs': { 'brand': 'Brand J', 'type': 'Κατακράτηση Υγρών' } },
+            'VIT_005': { 'item_id': 'VIT_005', 'item_name': 'Σιρόπι για Βήχα A-IOS 200ml', 'item_category': 'Βιταμίνες', 'price': 8.20, 'image_url': '[https://via.placeholder.com/300x180.png?text=Syrup+1](https://via.placeholder.com/300x180.png?text=Syrup+1)', 'specs': { 'brand': 'Brand K', 'type': 'Σιρόπι' } },
+            'VIT_006': { 'item_id': 'VIT_006', 'item_name': 'Σιρόπι για Στομάχι Gastric 100ml', 'item_category': 'Βιταμίνες', 'price': 8.50, 'image_url': '[https://via.placeholder.com/300x180.png?text=Syrup+2](https://via.placeholder.com/300x180.png?text=Syrup+2)', 'specs': { 'brand': 'Brand K', 'type': 'Πεπτικό Σύστημα' } },
+            'VIT_007': { 'item_id': 'VIT_007', 'item_name': 'TONOSAN Immunity 30caps', 'item_category': 'Βιταμίνες', 'price': 12.78, 'image_url': '[https://via.placeholder.com/300x180.png?text=Immunity](https://via.placeholder.com/300x180.png?text=Immunity)', 'specs': { 'brand': 'Brand H', 'type': 'Ανοσοποιητικό' } },
+            'VIT_008': { 'item_id': 'VIT_008', 'item_name': 'Altion B- Complex Σιρόπι 150ml', 'item_category': 'Βιταμίνες', 'price': 10.04, 'image_url': '[https://via.placeholder.com/300x180.png?text=Vitamin+B](https://via.placeholder.com/300x180.png?text=Vitamin+B)', 'specs': { 'brand': 'Brand L', 'type': 'Βιταμίνη B' } },
+            'VIT_009': { 'item_id': 'VIT_009', 'item_name': 'Kids Probiotics 60gummies', 'item_category': 'Βιταμίνες', 'price': 13.74, 'image_url': '[https://via.placeholder.com/300x180.png?text=Kids+Vitamins](https://via.placeholder.com/300x180.png?text=Kids+Vitamins)', 'specs': { 'brand': 'Brand L', 'type': 'Παιδικό Προβιοτικό' } },
+            'VIT_010': { 'item_id': 'VIT_010', 'item_name': 'Ubiquinol 100mg (CoQ10) 60 caps', 'item_category': 'Βιταμίνες', 'price': 71.60, 'image_url': '[https://via.placeholder.com/300x180.png?text=Supplement+2](https://via.placeholder.com/300x180.png?text=Supplement+2)', 'specs': { 'brand': 'Brand M', 'type': 'CoQ10' } },
+            'MAN_PROD_1': { 'item_id': 'MAN_PROD_1', 'item_name': 'Αφρός Ξυρίσματος', 'item_category': 'Άνδρας', 'price': 8.50, 'image_url': '[https://via.placeholder.com/300x180.png?text=Men's+Care](https://via.placeholder.com/300x180.png?text=Men's+Care)', 'specs': { 'brand': 'Brand A', 'type': 'Ευαίσθητο Δέρμα' } },
+            'MAN_PROD_2': { 'item_id': 'MAN_PROD_2', 'item_name': 'After Shave Balm', 'item_category': 'Άνδρας', 'price': 12.90, 'image_url': '[https://via.placeholder.com/300x180.png?text=After+Shave](https://via.placeholder.com/300x180.png?text=After+Shave)', 'specs': { 'brand': 'Brand B', 'type': 'Ενυδάτωση' } },
+            'WOMAN_PROD_1': { 'item_id': 'WOMAN_PROD_1', 'item_name': 'Σερουμ Προσώπου Υαλουρονικό', 'item_category': 'Γυναίκα', 'price': 29.90, 'image_url': '[https://via.placeholder.com/300x180.png?text=Serum](https://via.placeholder.com/300x180.png?text=Serum)', 'specs': { 'brand': 'Brand C', 'type': 'Αντιγήρανση' } },
+            'WOMAN_PROD_2': { 'item_id': 'WOMAN_PROD_2', 'item_name': 'Κρέμα Σώματος για Σύσφιξη', 'item_category': 'Γυναίκα', 'price': 14.50, 'image_url': '[https://via.placeholder.com/300x180.png?text=Body+Cream](https://via.placeholder.com/300x180.png?text=Body+Cream)', 'specs': { 'brand': 'Brand D', 'type': 'Ενυδάτωση' } }
         };
 
         const params = new URLSearchParams(window.location.search);
@@ -86,34 +86,8 @@
             });
 
         } else {
-            document.getElementById('cart-details').innerHTML = '<p><strong>Το καλάθι είναι άδειο ή το προϊόν δεν βρέθηκε.</strong></GIST: Εντόπισα το πρόβλημα. Οι εικόνες 1 και 2 (Καλλυντικά, Άνδρας) είναι κενές, και η εικόνα 3 (Καλάθι) έχει κολλήσει, επειδή ο κώδικας JavaScript που σας έδωσα απέτυχε να εκτελεστεί, πιθανότατα λόγω κάποιου λάθους κατά την αντιγραφή.
-
-Για να το διορθώσουμε:
-1.  **Για τις σελίδες Κατηγοριών (Καλλυντικά, Άνδρας, κτλ.):** Το πρόβλημα είναι ότι ο κώδικας JavaScript δεν "ζωγραφίζει" τα προϊόντα.
-2.  **Για το Καλάθι:** Το πρόβλημα είναι ότι ο κώδικας JavaScript "κολλάει" πριν μπορέσει να αντικαταστήσει το μήνυμα "Φόρτωση προϊόντος..."
-
-Και τα δύο προβλήματα δείχνουν ότι ο κώδικας JavaScript δεν εκτελείται σωστά.
-
-### 🛠️ Η Διόρθωση
-
-Θα σας δώσω ξανά τον **πλήρη κώδικα** για τα αρχεία `index.html` (η σελίδα "Καλλυντικά") και `cart_page.html` (το "Καλάθι"). Βεβαιωθείτε ότι έχετε αντικαταστήσει **ολόκληρο** το περιεχόμενο των αρχείων σας με τον παρακάτω κώδικα.
-
----
-
-### ## 1. Αρχείο: `index.html` (Πλήρης Κώδικας - Καλλυντικά)
-
-Αντικαταστήστε **ολόκληρο** το `index.html` με αυτό:
-
-```html
-<!DOCTYPE html>
-<html lang="el">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Κατηγορία: Καλλυντικά</title>
-    <link rel="stylesheet" href="style.css">
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    '[https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f](https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f));
-    })(window,document,'script','dataLayer','GTM-
+            document.getElementById('cart-details').innerHTML = '<p><strong>Το καλάθι είναι άδειο ή το προϊόν δεν βρέθηκε.</strong></p>';
+        }
+    </script>
+</body>
+</html>
