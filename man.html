@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Κατηγορία: Τηλεφωνία & Tablet</title>
+    <title>Κατηγορία: Άνδρας</title>
     <link rel="stylesheet" href="style.css">
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -18,31 +18,31 @@
         <nav class="sidebar">
             <h2>Όλες οι κατηγορίες</h2>
             <ul class="category-list">
-                <li><a href="index.html">Laptops</a></li>
-                <li><a href="pc.html">PC & Περιφερειακά</a></li>
-                <li class="active"><a href="phones.html">Τηλεφωνία & Tablet</a></li> <li><a href="tv.html">Τηλεοράσεις</a></li>
+                <li><a href="index.html">Καλλυντικά</a></li>
+                <li><a href="vitamins.html">Βιταμίνες</a></li>
+                <li class="active"><a href="man.html">Άνδρας</a></li> <li><a href="woman.html">Γυναίκα</a></li>
             </ul>
         </nav>
 
         <main class="main-content">
-            <h1>Τηλεφωνία & Tablet</h1>
+            <h1>Περιποίηση Άνδρα</h1>
             <div class="product-card-container" id="product-list">
                 </div>
         </main>
     </div>
 
     <script>
-        // Δεδομένα ΜΟΝΟ για Τηλέφωνα
+        // Δεδομένα ΜΟΝΟ για Άνδρα (Placeholders)
         const productsData = {
-            'PHONE_SAMSUNG_S23': {
-                'item_id': 'PHONE_SAMSUNG_S23', 'item_name': 'Samsung Galaxy S23', 'item_category': 'Phones', 'price': 799.00,
-                'image_url': 'https://images.pexels.com/photos/14710121/pexels-photo-14710121.jpeg',
-                'specs': { 'year': 2023, 'cpu': 'Snapdragon 8 Gen 2', 'ram': '8GB RAM' }
+            'MAN_PROD_1': {
+                'item_id': 'MAN_PROD_1', 'item_name': 'Αφρός Ξυρίσματος', 'item_category': 'Άνδρας', 'price': 8.50,
+                'image_url': 'https://images.pexels.com/photos/1777813/pexels-photo-1777813.jpeg',
+                'specs': { 'brand': 'Brand A', 'type': 'Ευαίσθητο Δέρμα' }
             },
-            'PHONE_IPHONE_15': {
-                'item_id': 'PHONE_IPHONE_15', 'item_name': 'iPhone 15 Pro', 'item_category': 'Phones', 'price': 1199.00,
-                'image_url': 'https://images.pexels.com/photos/18422361/pexels-photo-18422361.jpeg',
-                'specs': { 'year': 2023, 'cpu': 'A17 Pro', 'ram': '8GB RAM' }
+            'MAN_PROD_2': {
+                'item_id': 'MAN_PROD_2', 'item_name': 'After Shave Balm', 'item_category': 'Άνδρας', 'price': 12.90,
+                'image_url': 'https://images.pexels.com/photos/3762465/pexels-photo-3762465.jpeg',
+                'specs': { 'brand': 'Brand B', 'type': 'Ενυδάτωση' }
             }
         };
 
@@ -51,7 +51,7 @@
         const viewListItems = Object.values(productsData).map(item => ({...item, quantity: 1}));
         window.dataLayer.push({
             'event': 'view_item_list', 
-            'ecommerce': { 'item_list_name': 'Phones & Tablets', 'items': viewListItems }
+            'ecommerce': { 'item_list_name': 'Άνδρας', 'items': viewListItems }
         });
         
         // Δημιουργία Προϊόντων
@@ -62,14 +62,18 @@
             card.setAttribute('data-item-id', product.item_id);
             card.innerHTML = `
                 <img src="${product.image_url}" alt="${product.item_name}">
-                <h2>${product.item_name}</h2>
-                <p>Year: ${product.specs.year}</p>
-                <p>Price: €${product.price.toFixed(2)}</p>
-                <label for="quantity-${product.item_id}">Ποσότητα:</label>
-                <select name="quantity" id="quantity-${product.item_id}" class="quantity-selector">
-                    <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-                </select>
-                <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
+                <div class="product-card-details">
+                    <h2>${product.item_name}</h2>
+                    <p>Brand: ${product.specs.brand}</p>
+                    <p>Price: €${product.price.toFixed(2)}</p>
+                </div>
+                <div>
+                    <label for="quantity-${product.item_id}">Ποσότητα:</label>
+                    <select name="quantity" id="quantity-${product.item_id}" class="quantity-selector">
+                        <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                    </select>
+                    <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
+                </div>
             `;
             productContainer.appendChild(card);
         });
