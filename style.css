@@ -41,10 +41,10 @@ h1, h2, h3 {
 
 /* Στυλ για τους ΣΥΝΔΕΣΜΟΥΣ (<a>) μέσα στη λίστα */
 .category-list li a {
-    display: block; /* Κάνει ολόκληρη την περιοχή clickable */
+    display: block;
     padding: 12px 10px;
     font-size: 0.95em;
-    text-decoration: none; /* Χωρίς υπογράμμιση */
+    text-decoration: none;
     color: #333;
     border-bottom: 1px solid #eee;
     transition: background-color 0.2s ease;
@@ -89,14 +89,21 @@ h1, h2, h3 {
     width: 300px;
     text-align: center;
     border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product-card img {
     max-width: 100%;
-    height: 180px; /* Δίνουμε ένα σταθερό ύψος */
-    object-fit: cover; /* Κάνει τις εικόνες να γεμίζουν όμορφα */
+    height: 180px; /* Σταθερό ύψος */
+    object-fit: cover; /* Οι εικόνες γεμίζουν τον χώρο */
     border-radius: 5px;
     margin-bottom: 15px;
+}
+
+.product-card-details {
+    flex-grow: 1;
 }
 
 .quantity-selector {
