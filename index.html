@@ -16,7 +16,7 @@
 
     <div class="page-container">
         <nav class="sidebar">
-            <h2>Όλες οι κατηγορίες</h2>
+            <h2>Κατηγορίες</h2>
             <ul class="category-list">
                 <li class="active"><a href="index.html">Καλλυντικά</a></li> <li><a href="vitamins.html">Βιταμίνες</a></li>
                 <li><a href="man.html">Άνδρας</a></li>
@@ -34,16 +34,16 @@
     <script>
         // Δεδομένα ΜΟΝΟ για Καλλυντικά
         const productsData = {
-            '13879': { 'item_id': '13879', 'item_name': 'Avene Hydrance Legere 40ml', 'item_category': 'Καλλυντικά', 'price': 16.80, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/a/v/avene-hydrance-legere-new.jpg', 'specs': { 'brand': 'Avene', 'type': 'Ενυδατική Κρέμα' } },
-            '14690': { 'item_id': '14690', 'item_name': 'Avene Creme Nutritive Revitalisante 50ml', 'item_category': 'Καλλυντικά', 'price': 18.00, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/a/v/avene-creme-nutritive-revitalisante.jpg', 'specs': { 'brand': 'Avene', 'type': 'Θρεπτική Κρέμα' } },
-            '183101': { 'item_id': '183101', 'item_name': 'Cosrx Advanced Snail Peptide Eye Cream 25ml', 'item_category': 'Καλλυντικά', 'price': 29.45, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/_/2/_2024-11-21_152222.png', 'specs': { 'brand': 'Cosrx', 'type': 'Κρέμα Ματιών' } },
-            '183103': { 'item_id': '183103', 'item_name': 'Cosrx Ultimate Spot Cream 30gr', 'item_category': 'Καλλυντικά', 'price': 27.98, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/v/e/veel-product-cosrx-ac-collection-ultimate-spot-cream-2.jpg', 'specs': { 'brand': 'Cosrx', 'type': 'Κρέμα Ακμής' } },
-            '183110': { 'item_id': '183110', 'item_name': 'Take Care Hello Kitty Παλέτα Σκιών 4,8g', 'item_category': 'Καλλυντικά', 'price': 8.90, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/k/i/kitty.png', 'specs': { 'brand': 'Take Care', 'type': 'Μακιγιάζ' } },
-            '183115': { 'item_id': '183115', 'item_name': 'Take Care Hello Kitty Lip Balm 4.5g', 'item_category': 'Καλλυντικά', 'price': 4.80, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/4/1/41qco9nkz5l._ac_sy780_.jpg', 'specs': { 'brand': 'Take Care', 'type': 'Lip Balm' } },
-            '183117': { 'item_id': '183117', 'item_name': 'Take Care Hello Kitty Μάσκα Προσώπου 1τμχ', 'item_category': 'Καλλυντικά', 'price': 3.16, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/s/c/screenshot_2024-11-25_160252.png', 'specs': { 'brand': 'Take Care', 'type': 'Μάσκα Προσώπου' } },
-            '183173': { 'item_id': '183173', 'item_name': 'Froika Promo Premium Night Ritual', 'item_category': 'Καλλυντικά', 'price': 42.08, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/p/r/premium-night-ritual-1200x1200-2.png', 'specs': { 'brand': 'Froika', 'type': 'Set Περιποίησης' } },
-            '183177': { 'item_id': '183177', 'item_name': 'Frezyderm PROMO Anti-Wrinkle Rich Night Cream 50ml', 'item_category': 'Καλλυντικά', 'price': 29.13, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/4/2/427177_2.jpg', 'specs': { 'brand': 'Frezyderm', 'type': 'Αντιρυτιδική Νύχτας' } },
-            '183178': { 'item_id': '183178', 'item_name': 'Frezyderm PROMO Anti-Wrinkle Rich Day Cream 50ml', 'item_category': 'Καλλυντικά', 'price': 27.84, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/4/2/427176.jpg', 'specs': { 'brand': 'Frezyderm', 'type': 'Αντιρυτιδική Ημέρας' } }
+            'COS_001': { 'item_id': 'COS_001', 'item_name': 'Ενυδατική Κρέμα Ημέρας', 'item_category': 'Καλλυντικά', 'price': 16.80, 'image_url': 'https://via.placeholder.com/300x180.png?text=Cosmetic+1', 'specs': { 'brand': 'Brand A', 'type': 'Ενυδάτωση' } },
+            'COS_002': { 'item_id': 'COS_002', 'item_name': 'Θρεπτική Κρέμα Νύχτας', 'item_category': 'Καλλυντικά', 'price': 18.00, 'image_url': 'https://via.placeholder.com/300x180.png?text=Cosmetic+2', 'specs': { 'brand': 'Brand B', 'type': 'Θρέψη' } },
+            'COS_003': { 'item_id': 'COS_003', 'item_name': 'Κρέμα Ματιών Peptide', 'item_category': 'Καλλυντικά', 'price': 29.45, 'image_url': 'https://via.placeholder.com/300x180.png?text=Eye+Cream', 'specs': { 'brand': 'Brand A', 'type': 'Κρέμα Ματιών' } },
+            'COS_004': { 'item_id': 'COS_004', 'item_name': 'Κρέμα κατά της Ακμής', 'item_category': 'Καλλυντικά', 'price': 27.98, 'image_url': 'https://via.placeholder.com/300x180.png?text=Spot+Cream', 'specs': { 'brand': 'Brand C', 'type': 'Ακμή' } },
+            'COS_005': { 'item_id': 'COS_005', 'item_name': 'Παλέτα Σκιών', 'item_category': 'Καλλυντικά', 'price': 8.90, 'image_url': 'https://via.placeholder.com/300x180.png?text=Makeup', 'specs': { 'brand': 'Brand D', 'type': 'Μακιγιάζ' } },
+            'COS_006': { 'item_id': 'COS_006', 'item_name': 'Lip Balm Φράουλα', 'item_category': 'Καλλυντικά', 'price': 4.80, 'image_url': 'https://via.placeholder.com/300x180.png?text=Lip+Balm', 'specs': { 'brand': 'Brand D', 'type': 'Lip Balm' } },
+            'COS_007': { 'item_id': 'COS_007', 'item_name': 'Μάσκα Προσώπου Detox', 'item_category': 'Καλλυντικά', 'price': 3.16, 'image_url': 'https://via.placeholder.com/300x180.png?text=Face+Mask', 'specs': { 'brand': 'Brand D', 'type': 'Μάσκα' } },
+            'COS_008': { 'item_id': 'COS_008', 'item_name': 'Premium Set Νύχτας', 'item_category': 'Καλλυντικά', 'price': 42.08, 'image_url': 'https://via.placeholder.com/300x180.png?text=Premium+Set', 'specs': { 'brand': 'Brand E', 'type': 'Set Περιποίησης' } },
+            'COS_009': { 'item_id': 'COS_009', 'item_name': 'Αντιρυτιδική Κρέμα Νύχτας', 'item_category': 'Καλλυντικά', 'price': 29.13, 'image_url': 'https://via.placeholder.com/300x180.png?text=Night+Cream', 'specs': { 'brand': 'Brand F', 'type': 'Αντιρυτιδική' } },
+            'COS_010': { 'item_id': 'COS_010', 'item_name': 'Αντιρυτιδική Κρέμα Ημέρας', 'item_category': 'Καλλυντικά', 'price': 27.84, 'image_url': 'https://via.placeholder.com/300x180.png?text=Day+Cream', 'specs': { 'brand': 'Brand F', 'type': 'Αντιρυτιδική' } }
         };
 
         // GTM Event
@@ -60,33 +60,4 @@
             const card = document.createElement('div');
             card.className = 'product-card';
             card.setAttribute('data-item-id', product.item_id);
-            card.innerHTML = `
-                <img src="${product.image_url}" alt="${product.item_name}">
-                <div class="product-card-details">
-                    <h2>${product.item_name}</h2>
-                    <p>Brand: ${product.specs.brand}</p>
-                    <p>Price: €${product.price.toFixed(2)}</p>
-                </div>
-                <div>
-                    <label for="quantity-${product.item_id}">Ποσότητα:</label>
-                    <select name="quantity" id="quantity-${product.item_id}" class="quantity-selector">
-                        <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-                    </select>
-                    <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
-                </div>
-            `;
-            productContainer.appendChild(card);
-        });
-
-        // Add to Cart Listeners
-        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const parentCard = this.closest('.product-card');
-                const itemId = parentCard.getAttribute('data-item-id');
-                const selectedQuantity = parentCard.querySelector('.quantity-selector').value;
-                window.location.href = `cart_page.html?itemId=${itemId}&quantity=${selectedQuantity}`;
-            });
-        });
-    </script>
-</body>
-</html>
+            card
