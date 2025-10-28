@@ -60,4 +60,33 @@
             const card = document.createElement('div');
             card.className = 'product-card';
             card.setAttribute('data-item-id', product.item_id);
-            card
+            card.innerHTML = `
+                <img src="${product.image_url}" alt="${product.item_name}">
+                <div class="product-card-details">
+                    <h2>${product.item_name}</h2>
+                    <p>Brand: ${product.specs.brand}</p>
+                    <p>Price: €${product.price.toFixed(2)}</p>
+                </div>
+                <div>
+                    <label for="quantity-${product.item_id}">Ποσότητα:</label>
+                    <select name="quantity" id="quantity-${product.item_id}" class="quantity-selector">
+                        <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                    </select>
+                    <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
+                </div>
+            `;
+            productContainer.appendChild(card);
+        });
+
+        // Add to Cart Listeners
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const parentCard = this.closest('.product-card');
+                const itemId = parentCard.getAttribute('data-item-id');
+                const selectedQuantity = parentCard.querySelector('.quantity-selector').value;
+                window.location.href = `cart_page.html?itemId=${itemId}&quantity=${selectedQuantity}`;
+            });
+        });
+    </script>
+</body>
+</html>
