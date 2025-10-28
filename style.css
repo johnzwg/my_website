@@ -1,41 +1,89 @@
+/* --- Γενικά Στυλ Σελίδας --- */
 body {
-    background-color: #ffffff; /* White background for all pages */
-    font-family: Arial, sans-serif; /* Standard font */
-    color: #333333; /* Dark grey text */
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    color: #333333;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
+    padding: 0; /* Αφαιρούμε το padding από το body */
 }
 
-h1 {
+h1, h2, h3 {
     color: #0056b3;
     margin-bottom: 20px;
 }
 
-/* Common card styling for all pages */
-.product-card, .cart-card, .checkout-card {
-    background-color: #f9f9f9;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
+/* --- ΝΕΑ ΔΟΜΗ ΣΕΛΙΔΑΣ (Sidebar + Main Content) --- */
+.page-container {
+    display: flex; /* Δημιουργεί τη διάταξη 2 στηλών */
+    min-height: 100vh;
 }
 
+/* --- ΝΕΑ Πλαϊνή Στήλη (Sidebar) --- */
+.sidebar {
+    flex: 0 0 260px; /* Σταθερό πλάτος 260px */
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05); /* Διακριτική σκιά */
+    border-right: 1px solid #eee;
+}
+
+.sidebar h2 {
+    font-size: 1.2em;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-list li {
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.category-list li:hover {
+    background-color: #e9e9e9;
+}
+
+/* Δείχνει ποια κατηγορία είναι ενεργή */
+.category-list li.active {
+    background-color: #e0eaf3; /* Ανοιχτό μπλε φόντο */
+    font-weight: bold;
+    color: #0056b3; /* Μπλε κείμενο */
+    border-left: 3px solid #0056b3; /* Μπλε γραμμή αριστερά */
+    padding-left: 7px; /* Προσαρμογή padding λόγω του border */
+}
+
+/* --- ΝΕΟ Κύριο Περιεχόμενο (Main Content) --- */
+.main-content {
+    flex: 1; /* Παίρνει τον υπόλοιπο χώρο */
+    padding: 30px;
+    overflow-y: auto; 
+}
+
+/* --- ΣΤΥΛ ΓΙΑ ΤΙΣ ΚΑΡΤΕΣ ΠΡΟΪΟΝΤΩΝ --- */
 .product-card-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 20px;
-    max-width: 1200px;
+    justify-content: flex-start; /* Τα προϊόντα ξεκινούν από αριστερά */
+    gap: 30px; /* Κενό μεταξύ των καρτών */
     width: 100%;
+}
+
+.product-card {
+    background-color: #fff; /* Λευκό φόντο για να ξεχωρίζει */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 300px; /* Σταθερό πλάτος */
+    text-align: center;
+    border: 1px solid #ddd;
 }
 
 .product-card img {
@@ -68,7 +116,19 @@ h1 {
     background-color: #0056b3;
 }
 
-/* New styles for item display with image */
+/* --- ΣΤΥΛ ΓΙΑ ΤΙΣ ΑΛΛΕΣ ΣΕΛΙΔΕΣ (CART, CHECKOUT) --- */
+/* Αυτά τα στυλ θα συνεχίσουν να κεντράρουν το περιεχόμενο στις άλλες σελίδες */
+.cart-card, .checkout-card {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin: 20px auto; /* Αυτό τα κεντράρει οριζόντια */
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Στυλ για την εμφάνιση της εικόνας στο καλάθι/checkout */
 .item-container {
     display: flex;
     align-items: flex-start;
@@ -94,7 +154,6 @@ h1 {
     color: #555;
 }
 
-/* Styles for details sections */
 #cart-details, #checkout-details, #transaction-details {
     text-align: left;
     margin-top: 20px;
