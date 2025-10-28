@@ -93,7 +93,8 @@ h1, h2, h3 {
 
 .product-card img {
     max-width: 100%;
-    height: auto;
+    height: 180px; /* Δίνουμε ένα σταθερό ύψος */
+    object-fit: cover; /* Κάνει τις εικόνες να γεμίζουν όμορφα */
     border-radius: 5px;
     margin-bottom: 15px;
 }
@@ -146,6 +147,7 @@ h1, h2, h3 {
 
 .item-image img {
     width: 100%;
+    height: auto;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
