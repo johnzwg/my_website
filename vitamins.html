@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Κατηγορία: Βιταμίνες</title>
+    <link rel="stylesheet" href="style.css">
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
+</head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="page-container">
+        <nav class="sidebar">
+            <h2>Όλες οι κατηγορίες</h2>
+            <ul class="category-list">
+                <li><a href="index.html">Καλλυντικά</a></li>
+                <li class="active"><a href="vitamins.html">Βιταμίνες</a></li> <li><a href="man.html">Άνδρας</a></li>
+                <li><a href="woman.html">Γυναίκα</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <h1>Βιταμίνες</h1>
+            <div class="product-card-container" id="product-list">
+                </div>
+        </main>
+    </div>
+
+    <script>
+        // Δεδομένα ΜΟΝΟ για Βιταμίνες
+        const productsData = {
+            '183108': { 'item_id': '183108', 'item_name': 'Abbimed Caldin Ασβέστιο & Βιταμίνη D3, 60caps', 'item_category': 'Βιταμίνες', 'price': 22.59, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/c/a/caldin.jpg', 'specs': { 'brand': 'Abbimed', 'type': 'Ασβέστιο & D3' } },
+            '183130': { 'item_id': '183130', 'item_name': 'Uni-Pharma Vitorange Immuno Vitamin C + Zn, 30 tabs', 'item_category': 'Βιταμίνες', 'price': 4.82, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/s/c/screenshot_2024-11-26_144436-removebg-preview.png', 'specs': { 'brand': 'Uni-Pharma', 'type': 'Βιταμίνη C & Ψευδάργυρος' } },
+            '183137': { 'item_id': '183137', 'item_name': 'Cross Pharmaceuticals MenteBiome Junior, 30 Φακελίσκοι', 'item_category': 'Βιταμίνες', 'price': 17.20, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/5/2/5214001323234_1_jpg-145895-500x500.jpg', 'specs': { 'brand': 'Cross Pharmaceuticals', 'type': 'Παιδικό Προβιοτικό' } },
+            '183170': { 'item_id': '183170', 'item_name': 'Natural Vitamins Water Off Formula, 60caps', 'item_category': 'Βιταμίνες', 'price': 22.39, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/s/c/screenshot_2024-11-26_154417.png', 'specs': { 'brand': 'Natural Vitamins', 'type': 'Κατακράτηση Υγρών' } },
+            '183175': { 'item_id': '183175', 'item_name': 'Erythro Forte A-IOS Syrup 200ml', 'item_category': 'Βιταμίνες', 'price': 8.20, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/s/c/screenshot_2024-11-27_093641.png', 'specs': { 'brand': 'ErythroForte', 'type': 'Σιρόπι για Βήχα' } },
+            '183176': { 'item_id': '183176', 'item_name': 'Erythro Forte Gastric Syrup 100ml', 'item_category': 'Βιταμίνες', 'price': 8.50, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/5/2/5200143040290-removebg-preview.png', 'specs': { 'brand': 'ErythroForte', 'type': 'Πεπτικό Σύστημα' } },
+            '183187': { 'item_id': '183187', 'item_name': 'Uni-Pharma TONOSAN Immunity 30caps', 'item_category': 'Βιταμίνες', 'price': 12.78, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/1/8/183187222-removebg-preview.png', 'specs': { 'brand': 'Uni-Pharma', 'type': 'Ανοσοποιητικό' } },
+            '183209': { 'item_id': '183209', 'item_name': 'Altion B- Complex Syrup 150ml', 'item_category': 'Βιταμίνες', 'price': 10.04, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/1/8/183209.jpeg', 'specs': { 'brand': 'Altion', 'type': 'Βιταμίνη B' } },
+            '183210': { 'item_id': '183210', 'item_name': 'Altion Kids Lacticus Probiotics 60gummies', 'item_category': 'Βιταμίνες', 'price': 13.74, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/a/l/altionkidslacticus-removebg-preview.png', 'specs': { 'brand': 'Altion', 'type': 'Παιδικό Προβιοτικό' } },
+            '183247': { 'item_id': '183247', 'item_name': 'Now Foods Ubiquinol 100mg 60 caps', 'item_category': 'Βιταμίνες', 'price': 71.60, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/1/8/183247-removebg-preview.png', 'specs': { 'brand': 'Now Foods', 'type': 'CoQ10' } }
+        };
+
+        // GTM Event
+        window.dataLayer = window.dataLayer || [];
+        const viewListItems = Object.values(productsData).map(item => ({...item, quantity: 1}));
+        window.dataLayer.push({
+            'event': 'view_item_list', 
+            'ecommerce': { 'item_list_name': 'Βιταμίνες', 'items': viewListItems }
+        });
+        
+        // Δημιουργία Προϊόντων
+        const productContainer = document.getElementById('product-list');
+        Object.values(productsData).forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.setAttribute('data-item-id', product.item_id);
+            card.innerHTML = `
+                <img src="${product.image_url}" alt="${product.item_name}">
+                <div class="product-card-details">
+                    <h2>${product.item_name}</h2>
+                    <p>Brand: ${product.specs.brand}</p>
+                    <p>Price: €${product.price.toFixed(2)}</p>
+                </div>
+                <div>
+                    <label for="quantity-${product.item_id}">Ποσότητα:</label>
+                    <select name="quantity" id="quantity-${product.item_id}" class="quantity-selector">
+                        <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                    </select>
+                    <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
+                </div>
+            `;
+            productContainer.appendChild(card);
+        });
+
+        // Add to Cart Listeners
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const parentCard = this.closest('.product-card');
+                const itemId = parentCard.getAttribute('data-item-id');
+                const selectedQuantity = parentCard.querySelector('.quantity-selector').value;
+                window.location.href = `cart_page.html?itemId=${itemId}&quantity=${selectedQuantity}`;
+            });
+        });
+    </script>
+</body>
+</html>
