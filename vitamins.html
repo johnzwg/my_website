@@ -16,7 +16,7 @@
 
     <div class="page-container">
         <nav class="sidebar">
-            <h2>Όλες οι κατηγορίες</h2>
+            <h2>Κατηγορίες</h2>
             <ul class="category-list">
                 <li><a href="index.html">Καλλυντικά</a></li>
                 <li class="active"><a href="vitamins.html">Βιταμίνες</a></li> <li><a href="man.html">Άνδρας</a></li>
@@ -34,16 +34,16 @@
     <script>
         // Δεδομένα ΜΟΝΟ για Βιταμίνες
         const productsData = {
-            '183108': { 'item_id': '183108', 'item_name': 'Abbimed Caldin Ασβέστιο & Βιταμίνη D3, 60caps', 'item_category': 'Βιταμίνες', 'price': 22.59, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/c/a/caldin.jpg', 'specs': { 'brand': 'Abbimed', 'type': 'Ασβέστιο & D3' } },
-            '183130': { 'item_id': '183130', 'item_name': 'Uni-Pharma Vitorange Immuno Vitamin C + Zn, 30 tabs', 'item_category': 'Βιταμίνες', 'price': 4.82, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/s/c/screenshot_2024-11-26_144436-removebg-preview.png', 'specs': { 'brand': 'Uni-Pharma', 'type': 'Βιταμίνη C & Ψευδάργυρος' } },
-            '183137': { 'item_id': '183137', 'item_name': 'Cross Pharmaceuticals MenteBiome Junior, 30 Φακελίσκοι', 'item_category': 'Βιταμίνες', 'price': 17.20, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/5/2/5214001323234_1_jpg-145895-500x500.jpg', 'specs': { 'brand': 'Cross Pharmaceuticals', 'type': 'Παιδικό Προβιοτικό' } },
-            '183170': { 'item_id': '183170', 'item_name': 'Natural Vitamins Water Off Formula, 60caps', 'item_category': 'Βιταμίνες', 'price': 22.39, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/s/c/screenshot_2024-11-26_154417.png', 'specs': { 'brand': 'Natural Vitamins', 'type': 'Κατακράτηση Υγρών' } },
-            '183175': { 'item_id': '183175', 'item_name': 'Erythro Forte A-IOS Syrup 200ml', 'item_category': 'Βιταμίνες', 'price': 8.20, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/s/c/screenshot_2024-11-27_093641.png', 'specs': { 'brand': 'ErythroForte', 'type': 'Σιρόπι για Βήχα' } },
-            '183176': { 'item_id': '183176', 'item_name': 'Erythro Forte Gastric Syrup 100ml', 'item_category': 'Βιταμίνες', 'price': 8.50, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/5/2/5200143040290-removebg-preview.png', 'specs': { 'brand': 'ErythroForte', 'type': 'Πεπτικό Σύστημα' } },
-            '183187': { 'item_id': '183187', 'item_name': 'Uni-Pharma TONOSAN Immunity 30caps', 'item_category': 'Βιταμίνες', 'price': 12.78, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/1/8/183187222-removebg-preview.png', 'specs': { 'brand': 'Uni-Pharma', 'type': 'Ανοσοποιητικό' } },
-            '183209': { 'item_id': '183209', 'item_name': 'Altion B- Complex Syrup 150ml', 'item_category': 'Βιταμίνες', 'price': 10.04, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/1/8/183209.jpeg', 'specs': { 'brand': 'Altion', 'type': 'Βιταμίνη B' } },
-            '183210': { 'item_id': '183210', 'item_name': 'Altion Kids Lacticus Probiotics 60gummies', 'item_category': 'Βιταμίνες', 'price': 13.74, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/a/l/altionkidslacticus-removebg-preview.png', 'specs': { 'brand': 'Altion', 'type': 'Παιδικό Προβιοτικό' } },
-            '183247': { 'item_id': '183247', 'item_name': 'Now Foods Ubiquinol 100mg 60 caps', 'item_category': 'Βιταμίνες', 'price': 71.60, 'image_url': 'https://bestpharmacy.gr/pub/media/catalog/product/cache/58f7b39c076ce7c8040aa8230b35e9f8/1/8/183247-removebg-preview.png', 'specs': { 'brand': 'Now Foods', 'type': 'CoQ10' } }
+            'VIT_001': { 'item_id': 'VIT_001', 'item_name': 'Συμπλήρωμα Ασβέστιο & D3, 60caps', 'item_category': 'Βιταμίνες', 'price': 22.59, 'image_url': 'https://via.placeholder.com/300x180.png?text=Vitamins+1', 'specs': { 'brand': 'Brand G', 'type': 'Ασβέστιο & D3' } },
+            'VIT_002': { 'item_id': 'VIT_002', 'item_name': 'Vitorange Immuno Vitamin C + Zn, 30 tabs', 'item_category': 'Βιταμίνες', 'price': 4.82, 'image_url': 'https://via.placeholder.com/300x180.png?text=Vitamin+C', 'specs': { 'brand': 'Brand H', 'type': 'Βιταμίνη C & Ψευδάργυρος' } },
+            'VIT_003': { 'item_id': 'VIT_003', 'item_name': 'MenteBiome Junior Προβιοτικό, 30 Φακελίσκοι', 'item_category': 'Βιταμίνες', 'price': 17.20, 'image_url': 'https://via.placeholder.com/300x180.png?text=Probiotic', 'specs': { 'brand': 'Brand I', 'type': 'Παιδικό Προβιοτικό' } },
+            'VIT_004': { 'item_id': 'VIT_004', 'item_name': 'Water Off Formula (Κατακράτηση), 60caps', 'item_category': 'Βιταμίνες', 'price': 22.39, 'image_url': 'https://via.placeholder.com/300x180.png?text=Supplement+1', 'specs': { 'brand': 'Brand J', 'type': 'Κατακράτηση Υγρών' } },
+            'VIT_005': { 'item_id': 'VIT_005', 'item_name': 'Σιρόπι για Βήχα A-IOS 200ml', 'item_category': 'Βιταμίνες', 'price': 8.20, 'image_url': 'https://via.placeholder.com/300x180.png?text=Syrup+1', 'specs': { 'brand': 'Brand K', 'type': 'Σιρόπι' } },
+            'VIT_006': { 'item_id': 'VIT_006', 'item_name': 'Σιρόπι για Στομάχι Gastric 100ml', 'item_category': 'Βιταμίνες', 'price': 8.50, 'image_url': 'https://via.placeholder.com/300x180.png?text=Syrup+2', 'specs': { 'brand': 'Brand K', 'type': 'Πεπτικό Σύστημα' } },
+            'VIT_007': { 'item_id': 'VIT_007', 'item_name': 'TONOSAN Immunity 30caps', 'item_category': 'Βιταμίνες', 'price': 12.78, 'image_url': 'https://via.placeholder.com/300x180.png?text=Immunity', 'specs': { 'brand': 'Brand H', 'type': 'Ανοσοποιητικό' } },
+            'VIT_008': { 'item_id': 'VIT_008', 'item_name': 'Altion B- Complex Σιρόπι 150ml', 'item_category': 'Βιταμίνες', 'price': 10.04, 'image_url': 'https://via.placeholder.com/300x180.png?text=Vitamin+B', 'specs': { 'brand': 'Brand L', 'type': 'Βιταμίνη B' } },
+            'VIT_009': { 'item_id': 'VIT_009', 'item_name': 'Altion Kids Probiotics 60gummies', 'item_category': 'Βιταμίνες', 'price': 13.74, 'image_url': 'https://via.placeholder.com/300x180.png?text=Kids+Vitamins', 'specs': { 'brand': 'Brand L', 'type': 'Παιδικό Προβιοτικό' } },
+            'VIT_010': { 'item_id': 'VIT_010', 'item_name': 'Ubiquinol 100mg (CoQ10) 60 caps', 'item_category': 'Βιταμίνες', 'price': 71.60, 'image_url': 'https://via.placeholder.com/300x180.png?text=Supplement+2', 'specs': { 'brand': 'Brand M', 'type': 'CoQ10' } }
         };
 
         // GTM Event
