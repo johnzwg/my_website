@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2. PC & Περιφερειακά</title>
+    <title>Κατηγορία: PC & Περιφερειακά</title>
     <link rel="stylesheet" href="style.css">
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -15,52 +15,34 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="page-container">
-
         <nav class="sidebar">
             <h2>Όλες οι κατηγορίες</h2>
             <ul class="category-list">
-                <li class="active"><a href="pc.html">PC & Περιφερειακά</a></li> <li><a href="index.html">Laptops</a></li>
-                <li><a href="network.html">Αναβάθμιση & Δίκτυα</a></li>
-                <li><a href="phones.html">Τηλεφωνία & Tablet</a></li>
+                <li><a href="index.html">Laptops</a></li>
+                <li class="active"><a href="pc.html">PC & Περιφερειακά</a></li> <li><a href="phones.html">Τηλεφωνία & Tablet</a></li>
                 <li><a href="tv.html">Τηλεοράσεις</a></li>
-                <li><a href="audio.html">Φωτογραφία & Ήχος</a></li>
-                <li><a href="gaming.html">Gaming Zone</a></li>
-                <li><a href="gadgets.html">Smart Tech & Gadgets</a></li>
-                <li><a href="printing.html">Εκτύπωση</a></li>
-                <li><a href="kitchen.html">Η Κουζίνα μου</a></li>
-                <li><a href="care.html">Προσωπική Περιποίηση</a></li>
-                <li><a href="furniture.html">Έπιπλα</a></li>
-                <li><a href="stationery.html">Χαρτοπωλεία</a></li>
             </ul>
         </nav>
 
         <main class="main-content">
             <h1>PC & Περιφερειακά</h1>
-            <p>Επιλέξτε PC, οθόνες και περιφερειακά.</p>
-
             <div class="product-card-container" id="product-list">
                 </div>
         </main>
     </div>
 
     <script>
-        // Δεδομένα ΜΟΝΟ για τη σελίδα PC
+        // Δεδομένα ΜΟΝΟ για PC
         const productsData = {
             'PC_GAMING_001': {
-                'item_id': 'PC_GAMING_001', 
-                'item_name': 'Gaming PC Tower', 
-                'item_category': 'PCs', 
-                'price': 1299.00,
+                'item_id': 'PC_GAMING_001', 'item_name': 'Gaming PC Tower', 'item_category': 'PCs', 'price': 1299.00,
                 'image_url': 'https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg',
-                'specs': { 'cpu': 'Intel Core i7', 'ram': '32GB RAM', 'storage': '1TB NVMe SSD', 'year': 2024 }
+                'specs': { 'year': 2024, 'cpu': 'Intel Core i7', 'ram': '32GB RAM' }
             },
             'MONITOR_DELL_002': {
-                'item_id': 'MONITOR_DELL_002', 
-                'item_name': 'Dell UltraSharp Monitor', 
-                'item_category': 'Monitors', 
-                'price': 450.00,
+                'item_id': 'MONITOR_DELL_002', 'item_name': 'Dell UltraSharp Monitor', 'item_category': 'Monitors', 'price': 450.00,
                 'image_url': 'https://images.pexels.com/photos/1999463/pexels-photo-1999463.jpeg',
-                'specs': { 'cpu': 'N/A', 'ram': 'N/A', 'storage': 'N/A', 'year': 2023 }
+                'specs': { 'year': 2023, 'cpu': 'N/A', 'ram': 'N/A' }
             }
         };
 
@@ -71,7 +53,6 @@
             'event': 'view_item_list', 
             'ecommerce': { 'item_list_name': 'PC & Peripherals', 'items': viewListItems }
         });
-
         
         // Δημιουργία Προϊόντων
         const productContainer = document.getElementById('product-list');
