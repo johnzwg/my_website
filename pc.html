@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Κατηγορία: Άνδρας</title>
+    <title>Κατηγορία: PC & Περιφερειακά</title>
     <link rel="stylesheet" href="style.css">
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -16,33 +16,33 @@
 
     <div class="page-container">
         <nav class="sidebar">
-            <h2>Κατηγορίες</h2>
+            <h2>Όλες οι κατηγορίες</h2>
             <ul class="category-list">
-                <li><a href="index.html">Καλλυντικά</a></li>
-                <li><a href="vitamins.html">Βιταμίνες</a></li>
-                <li class="active"><a href="man.html">Άνδρας</a></li> <li><a href="woman.html">Γυναίκα</a></li>
+                <li><a href="index.html">Laptops</a></li>
+                <li class="active"><a href="pc.html">PC & Περιφερειακά</a></li> <li><a href="phones.html">Τηλεφωνία & Tablet</a></li>
+                <li><a href="tv.html">Τηλεοράσεις</a></li>
             </ul>
         </nav>
 
         <main class="main-content">
-            <h1>Περιποίηση Άνδρα</h1>
+            <h1>PC & Περιφερειακά</h1>
             <div class="product-card-container" id="product-list">
                 </div>
         </main>
     </div>
 
     <script>
-        // Δεδομένα ΜΟΝΟ για Άνδρα (Placeholders)
+        // Δεδομένα ΜΟΝΟ για PC
         const productsData = {
-            'MAN_PROD_1': {
-                'item_id': 'MAN_PROD_1', 'item_name': 'Αφρός Ξυρίσματος', 'item_category': 'Άνδρας', 'price': 8.50,
-                'image_url': 'https://via.placeholder.com/300x180.png?text=Men's+Care',
-                'specs': { 'brand': 'Brand A', 'type': 'Ευαίσθητο Δέρμα' }
+            'PC_001': {
+                'item_id': 'PC_001', 'item_name': 'Gaming PC Tower', 'item_category': 'PCs', 'price': 1299.00,
+                'image_url': 'https://via.placeholder.com/300x180.png?text=Gaming+PC',
+                'specs': { 'brand': 'Brand C', 'cpu': 'Intel Core i7', 'ram': '32GB RAM' }
             },
-            'MAN_PROD_2': {
-                'item_id': 'MAN_PROD_2', 'item_name': 'After Shave Balm', 'item_category': 'Άνδρας', 'price': 12.90,
-                'image_url': 'https://via.placeholder.com/300x180.png?text=After+Shave',
-                'specs': { 'brand': 'Brand B', 'type': 'Ενυδάτωση' }
+            'PC_002': {
+                'item_id': 'PC_002', 'item_name': '4K Monitor 27"', 'item_category': 'Monitors', 'price': 450.00,
+                'image_url': 'https://via.placeholder.com/300x180.png?text=4K+Monitor',
+                'specs': { 'brand': 'Brand D', 'cpu': 'N/A', 'ram': '27-inch' }
             }
         };
 
@@ -51,7 +51,7 @@
         const viewListItems = Object.values(productsData).map(item => ({...item, quantity: 1}));
         window.dataLayer.push({
             'event': 'view_item_list', 
-            'ecommerce': { 'item_list_name': 'Άνδρας', 'items': viewListItems }
+            'ecommerce': { 'item_list_name': 'PC & Peripherals', 'items': viewListItems }
         });
         
         // Δημιουργία Προϊόντων
@@ -64,7 +64,7 @@
                 <img src="${product.image_url}" alt="${product.item_name}">
                 <div class="product-card-details">
                     <h2>${product.item_name}</h2>
-                    <p>Brand: ${product.specs.brand}</p>
+                    <p>Specs: ${product.specs.ram}</p>
                     <p>Price: €${product.price.toFixed(2)}</p>
                 </div>
                 <div>
