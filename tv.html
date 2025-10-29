@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Κατηγορία: Γυναίκα</title>
+    <title>Κατηγορία: Τηλεοράσεις</title>
     <link rel="stylesheet" href="style.css">
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -16,33 +16,33 @@
 
     <div class="page-container">
         <nav class="sidebar">
-            <h2>Κατηγορίες</h2>
+            <h2>Όλες οι κατηγορίες</h2>
             <ul class="category-list">
-                <li><a href="index.html">Καλλυντικά</a></li>
-                <li><a href="vitamins.html">Βιταμίνες</a></li>
-                <li><a href="man.html">Άνδρας</a></li>
-                <li class="active"><a href="woman.html">Γυναίκα</a></li> </ul>
+                <li><a href="index.html">Laptops</a></li>
+                <li><a href="pc.html">PC & Περιφερειακά</a></li>
+                <li><a href="phones.html">Τηλεφωνία & Tablet</a></li>
+                <li class="active"><a href="tv.html">Τηλεοράσεις</a></li> </ul>
         </nav>
 
         <main class="main-content">
-            <h1>Περιποίηση Γυναίκας</h1>
+            <h1>Τηλεοράσεις</h1>
             <div class="product-card-container" id="product-list">
                 </div>
         </main>
     </div>
 
     <script>
-        // Δεδομένα ΜΟΝΟ για Γυναίκα (Placeholders)
+        // Δεδομένα ΜΟΝΟ για Τηλεοράσεις
         const productsData = {
-            'WOMAN_PROD_1': {
-                'item_id': 'WOMAN_PROD_1', 'item_name': 'Σερουμ Προσώπου Υαλουρονικό', 'item_category': 'Γυναίκα', 'price': 29.90,
-                'image_url': 'https://via.placeholder.com/300x180.png?text=Serum',
-                'specs': { 'brand': 'Brand C', 'type': 'Αντιγήρανση' }
+            'TV_001': {
+                'item_id': 'TV_001', 'item_name': 'OLED TV 55"', 'item_category': 'TVs', 'price': 1499.00,
+                'image_url': 'https://via.placeholder.com/300x180.png?text=OLED+TV',
+                'specs': { 'brand': 'Brand X', 'ram': '4K 120Hz' }
             },
-            'WOMAN_PROD_2': {
-                'item_id': 'WOMAN_PROD_2', 'item_name': 'Κρέμα Σώματος για Σύσφιξη', 'item_category': 'Γυναίκα', 'price': 14.50,
-                'image_url': 'https://via.placeholder.com/300x180.png?text=Body+Cream',
-                'specs': { 'brand': 'Brand D', 'type': 'Ενυδάτωση' }
+            'TV_002': {
+                'item_id': 'TV_002', 'item_name': 'LED TV 65"', 'item_category': 'TVs', 'price': 899.00,
+                'image_url': 'https://via.placeholder.com/300x180.png?text=LED+TV',
+                'specs': { 'brand': 'Brand Y', 'ram': '4K 60Hz' }
             }
         };
 
@@ -51,7 +51,7 @@
         const viewListItems = Object.values(productsData).map(item => ({...item, quantity: 1}));
         window.dataLayer.push({
             'event': 'view_item_list', 
-            'ecommerce': { 'item_list_name': 'Γυναίκα', 'items': viewListItems }
+            'ecommerce': { 'item_list_name': 'TVs', 'items': viewListItems }
         });
         
         // Δημιουργία Προϊόντων
@@ -64,7 +64,7 @@
                 <img src="${product.image_url}" alt="${product.item_name}">
                 <div class="product-card-details">
                     <h2>${product.item_name}</h2>
-                    <p>Brand: ${product.specs.brand}</p>
+                    <p>Specs: ${product.specs.ram}</p>
                     <p>Price: €${product.price.toFixed(2)}</p>
                 </div>
                 <div>
