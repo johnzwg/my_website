@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Κατηγορία: Τηλεφωνία & Tablet</title>
+    <link rel="stylesheet" href="style.css">
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
+</head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="page-container">
+        <nav class="sidebar">
+            <h2>Όλες οι κατηγορίες</h2>
+            <ul class="category-list">
+                <li><a href="index.html">Laptops</a></li>
+                <li><a href="pc.html">PC & Περιφερειακά</a></li>
+                <li class="active"><a href="phones.html">Τηλεφωνία & Tablet</a></li> <li><a href="tv.html">Τηλεοράσεις</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <h1>Τηλεφωνία & Tablet</h1>
+            <div class="product-card-container" id="product-list">
+                </div>
+        </main>
+    </div>
+
+    <script>
+        // Δεδομένα ΜΟΝΟ για Τηλέφωνα
+        const productsData = {
+            'PH_001': {
+                'item_id': 'PH_001', 'item_name': 'Smartphone 6.5"', 'item_category': 'Phones', 'price': 799.00,
+                'image_url': 'https://via.placeholder.com/300x180.png?text=Smartphone',
+                'specs': { 'brand': 'Brand E', 'ram': '8GB' }
+            },
+            'PH_002': {
+                'item_id': 'PH_002', 'item_name': 'Tablet 10"', 'item_category': 'Tablets', 'price': 350.00,
+                'image_url': 'https://via.placeholder.com/300x180.png?text=Tablet',
+                'specs': { 'brand': 'Brand F', 'ram': '4GB' }
+            }
+        };
+
+        // GTM Event
+        window.dataLayer = window.dataLayer || [];
+        const viewListItems = Object.values(productsData).map(item => ({...item, quantity: 1}));
+        window.dataLayer.push({
+            'event': 'view_item_list', 
+            'ecommerce': { 'item_list_name': 'Phones & Tablets', 'items': viewListItems }
+        });
+        
+        // Δημιουργία Προϊόντων
+        const productContainer = document.getElementById('product-list');
+        Object.values(productsData).forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.setAttribute('data-item-id', product.item_id);
+            card.innerHTML = `
+                <img src="${product.image_url}" alt="${product.item_name}">
+                <div class="product-card-details">
+                    <h2>${product.item_name}</h2>
+                    <p>RAM: ${product.specs.ram}</p>
+                    <p>Price: €${product.price.toFixed(2)}</p>
+                </div>
+                <div>
+                    <label for="quantity-${product.item_id}">Ποσότητα:</label>
+                    <select name="quantity" id="quantity-${product.item_id}" class="quantity-selector">
+                        <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                    </select>
+                    <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
+                </div>
+            `;
+            productContainer.appendChild(card);
+        });
+
+        // Add to Cart Listeners
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const parentCard = this.closest('.product-card');
+                const itemId = parentCard.getAttribute('data-item-id');
+                const selectedQuantity = parentCard.querySelector('.quantity-selector').value;
+                window.location.href = `cart_page.html?itemId=${itemId}&quantity=${selectedQuantity}`;
+            });
+        });
+    </script>
+</body>
+</html>
