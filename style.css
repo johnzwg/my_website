@@ -1,8 +1,5 @@
 /* --- Γενικά Στυλ Σελίδας --- */
 body {
-    /* * ΑΦΑΙΡΕΣΑΜΕ το background-image από εδώ 
-     * για να μην μπαίνει σε όλες τις σελίδες.
-     */
     font-family: Arial, sans-serif;
     color: #333333;
     margin: 0;
@@ -10,9 +7,7 @@ body {
     background-color: #ffffff; /* Εφεδρικό χρώμα */
 }
 
-/* * ΝΕΟ: Αυτός ο κανόνας εφαρμόζει το background
- * ΜΟΝΟ στη σελίδα με <body class="home-page">
- */
+/* Εφαρμόζει το background ΜΟΝΟ στο index.html (που έχει <body class="home-page">) */
 .home-page {
     background-image: url('https://i.imgur.com/fo1mqA2.png'); 
     background-size: cover; 
@@ -204,4 +199,57 @@ h1, h2, h3 {
     height: 1px;
     background: #dddddd;
     margin: 15px 0;
+}
+
+/*
+=========================================
+ΝΕΟΣ ΚΩΔΙΚΑΣ ΓΙΑ ΤΟ HEADER
+=========================================
+*/
+.site-header {
+    width: 100%;
+    background-color: #ffffff; /* Λευκό φόντο για το header */
+    border-bottom: 1px solid #e0e0e0; /* Μια διακριτική γραμμή */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 10px 20px; /* Λίγο κενό */
+    box-sizing: border-box; /* Να μετράει σωστά το padding */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Λογότυπο αριστερά, αναζήτηση δεξιά */
+    align-items: center;
+    max-width: 1400px; /* Ή όσο πλάτος θέλεις */
+    margin: 0 auto; /* Κεντράρισμα του container */
+}
+
+.header-logo h2 {
+    margin: 0; /* Σβήνουμε το default margin του h2 */
+    font-size: 24px;
+    color: #111111; /* Μαύρο για αντίθεση */
+    font-weight: bold;
+    text-transform: uppercase; /* Όπως το NVR BCK DWN */
+}
+
+.header-search form {
+    display: flex;
+}
+
+.header-search input[type="text"] {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px; /* Στρογγυλεμένες γωνίες αριστερά */
+    outline: none;
+}
+
+.header-search button {
+    padding: 8px 12px;
+    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0; /* Στρογγυλεμένες γωνίες δεξιά */
+    font-size: 16px;
+    border-left: none; /* Να μην έχει διπλό border */
 }
