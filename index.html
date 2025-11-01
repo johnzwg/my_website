@@ -1,201 +1,96 @@
-/* --- Γενικά Στυλ Σελίδας --- */
-body {
-    /* ΕΔΩ ΜΠΑΙΝΕΙ Η ΕΙΚΟΝΑ BACKGROUND */
-    background-image: url('https://i.imgur.com/fo1mqA2.png'); 
-    background-size: cover; 
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Κατηγορία: T-Shirts</title>
+    <link rel="stylesheet" href="style.css">
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
+</head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    /* Αυτά μένουν ίδια */
-    font-family: Arial, sans-serif;
-    color: #333333;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff; /* Εφεδρικό χρώμα αν δεν φορτώσει η εικόνα */
-}
+    <div class="page-container">
+        <nav class="sidebar">
+            <h2>Κατηγορίες</h2>
+            <ul class="category-list">
+                <li class="active"><a href="index.html">T-Shirts</a></li> <li><a href="hoodies.html">Φούτερ</a></li>
+            </ul>
+        </nav>
 
-h1, h2, h3 {
-    color: #0056b3;
-    margin-bottom: 20px;
-}
+        <main class="main-content">
+            <h1>T-Shirts</h1>
+            <div class="product-card-container" id="product-list">
+                </div>
+        </main>
+    </div>
 
-/* --- ΔΟΜΗ ΣΕΛΙΔΑΣ (Sidebar + Main Content) --- */
-.page-container {
-    display: flex;
-    min-height: 100vh;
-}
+    <script>
+        // Δεδομένα ΜΟΝΟ για T-Shirts
+        const productsData = {
+            'TSHIRT_SPARTA': {
+                'item_id': 'TSHIRT_SPARTA', 
+                'item_name': 'NVR BCK DWN SPARTA EDITION', 
+                'item_category': 'T-Shirts', 
+                'price': 29.99,
+                'image_url': 'https://i.imgur.com/d0GyP15.jpeg', // <-- ΕΙΚΟΝΑ 1
+                'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' }
+            },
+            'TSHIRT_WOLF': {
+                'item_id': 'TSHIRT_WOLF', 
+                'item_name': 'NVR BCK DWN WOLF EDITION', 
+                'item_category': 'T-Shirts', 
+                'price': 34.99,
+                'image_url': 'https://i.imgur.com/oCrCLTD.jpeg', // <-- ΕΙΚΟΝΑ 2
+                'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' }
+            }
+        };
 
-/* --- Πλαϊνή Στήλη (Sidebar) --- */
-.sidebar {
-    flex: 0 0 260px;
-    background-color: #f9f9f9;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
-    border-right: 1px solid #eee;
-}
+        // GTM Event
+        window.dataLayer = window.dataLayer || [];
+        const viewListItems = Object.values(productsData).map(item => ({...item, quantity: 1}));
+        window.dataLayer.push({
+            'event': 'view_item_list', 
+            'ecommerce': { 'item_list_name': 'T-Shirts', 'items': viewListItems }
+        });
+        
+        // Δημιουργία Προϊόντων
+        const productContainer = document.getElementById('product-list');
+        Object.values(productsData).forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.setAttribute('data-item-id', product.item_id);
+            card.innerHTML = `
+                <img src="${product.image_url}" alt="${product.item_name}">
+                <div class="product-card-details">
+                    <h2>${product.item_name}</h2>
+                    <p>Style: ${product.specs.type}</p>
+                    <p>Price: €${product.price.toFixed(2)}</p>
+                </div>
+                <div>
+                    <label for="quantity-${product.item_id}">Ποσότητα:</label>
+                    <select name="quantity" id="quantity-${product.item_id}" class="quantity-selector">
+                        <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                    </select>
+                    <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
+                </div>
+            `;
+            productContainer.appendChild(card);
+        });
 
-.sidebar h2 {
-    font-size: 1.2em;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #ddd;
-}
-
-.category-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-/* Στυλ για τους ΣΥΝΔΕΣΜΟΥΣ (<a>) μέσα στη λίστα */
-.category-list li a {
-    display: block; /* Κάνει ολόκληρη την περιοχή clickable */
-    padding: 12px 10px;
-    font-size: 0.95em;
-    text-decoration: none; /* Χωρίς υπογράμμιση */
-    color: #333;
-    border-bottom: 1px solid #eee;
-    transition: background-color 0.2s ease;
-}
-
-.category-list li a:hover {
-    background-color: #e9e9e9;
-}
-
-/* Στυλ για το ΕΝΕΡΓΟ (active) link */
-.category-list li.active a {
-    font-weight: bold;
-    color: #0056b3;
-}
-
-.category-list li.active {
-    background-color: #e0eaf3;
-    border-left: 3px solid #0056b3;
-}
-
-/* --- Κύριο Περιεχόμενο (Main Content) --- */
-.main-content {
-    flex: 1;
-    padding: 30px;
-    overflow-y: auto; 
-    min-height: 2500px; /* Για να έχουμε scrollbar */
-    
-    /* Ημιδιαφανές φόντο για να διαβάζεται το κείμενο */
-    background-color: rgba(255, 255, 255, 0.9); 
-    border-radius: 10px;
-    margin: 20px; /* Προσθέτει λίγο κενό γύρω από το περιεχόμενο */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-/* --- ΣΤΥΛ ΓΙΑ ΤΙΣ ΚΑΡΤΕΣ ΠΡΟΪΟΝΤΩΝ --- */
-.product-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 30px;
-    width: 100%;
-}
-
-.product-card {
-    background-color: #fff; /* Οι κάρτες παραμένουν λευκές */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    width: 300px;
-    text-align: center;
-    border: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.product-card img {
-    max-width: 100%;
-    height: 180px; 
-    object-fit: cover; 
-    border-radius: 5px;
-    margin-bottom: 15px;
-    background-color: #eee; 
-}
-
-.product-card-details {
-    flex-grow: 1;
-}
-
-.quantity-selector {
-    padding: 8px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    margin-top: 10px;
-}
-
-.submit-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.submit-button:hover {
-    background-color: #0056b3;
-}
-
-/* --- ΣΤΥΛ ΓΙΑ ΤΙΣ ΑΛΛΕΣ ΣΕΛΙΔΕΣ (CART, CHECKOUT) --- */
-.cart-card, .checkout-card {
-    background-color: #f9f9f9;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin: 20px auto; /* Αυτό τα κεντράρει οριζόντια */
-    width: 100%;
-    max-width: 600px;
-}
-
-.item-container {
-    display: flex;
-    align-items: flex-start;
-    gap: 25px;
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.item-image {
-    flex: 0 0 150px;
-}
-
-.item-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    background-color: #eee;
-}
-
-.item-details ul {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
-    color: #555;
-}
-
-#cart-details, #checkout-details, #transaction-details {
-    text-align: left;
-    margin-top: 20px;
-    line-height: 1.8;
-}
-
-#cart-details p, #checkout-details p, #transaction-details p {
-    margin-bottom: 8px;
-}
-
-#cart-details hr, #checkout-details hr, #transaction-details hr {
-    border: 0;
-    height: 1px;
-    background: #dddddd;
-    margin: 15px 0;
-}
+        // Add to Cart Listeners
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const parentCard = this.closest('.product-card');
+                const itemId = parentCard.getAttribute('data-item-id');
+                const selectedQuantity = parentCard.querySelector('.quantity-selector').value;
+                window.location.href = `cart_page.html?itemId=${itemId}&quantity=${selectedQuantity}`;
+            });
+        });
+    </script>
+</body>
+</html>
