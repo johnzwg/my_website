@@ -46,15 +46,21 @@
     <script>
         // --- 1. ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ (Hoodies) ---
         const productsData = {
-            'HOODIE_001': {
-                'item_id': 'HOODIE_001', 'item_name': 'Classic Hoodie Black', 'item_category': 'Hoodies', 'price': 49.99,
-                'image_url': 'https://via.placeholder.com/300x180.png?text=Black+Hoodie',
-                'specs': { 'brand': 'NBD Wear', 'type': 'Regular Fit' }
+            'HOODIE_WOLF': { // Άλλαξα το ID για να είναι πιο συγκεκριμένο
+                'item_id': 'HOODIE_WOLF', 
+                'item_name': 'NVR BCK DWN WOLF EDITION Hoodie', 
+                'item_category': 'Hoodies', 
+                'price': 59.99, // Ενδεικτική τιμή, μπορείς να την αλλάξεις
+                'image_url': 'https://i.imgur.com/C8Ps37J.png', // ΝΕΑ ΕΙΚΟΝΑ
+                'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' }
             },
-            'HOODIE_002': {
-                'item_id': 'HOODIE_002', 'item_name': 'Classic Hoodie Grey', 'item_category': 'Hoodies', 'price': 49.99,
-                'image_url': 'https://via.placeholder.com/300x180.png?text=Grey+Hoodie',
-                'specs': { 'brand': 'NBD Wear', 'type': 'Regular Fit' }
+            'HOODIE_SPARTA': { // Άλλαξα το ID για να είναι πιο συγκεκριμένο
+                'item_id': 'HOODIE_SPARTA', 
+                'item_name': 'NVR BCK DWN SPARTA EDITION Hoodie', 
+                'item_category': 'Hoodies', 
+                'price': 59.99, // Ενδεικτική τιμή, μπορείς να την αλλάξεις
+                'image_url': 'https://i.imgur.com/De4aOpp.png', // ΝΕΑ ΕΙΚΟΝΑ
+                'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' }
             }
         };
         
@@ -110,18 +116,20 @@
         }
 
         // --- 4. ΛΕΙΤΟΥΡΓΙΑ ΑΝΑΖΗΤΗΣΗΣ ---
-        searchForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const query = searchInput.value.toLowerCase().trim();
-            const filteredProducts = {};
-            
-            for (const [id, product] of Object.entries(productsData)) {
-                if (product.item_name.toLowerCase().includes(query)) {
-                    filteredProducts[id] = product;
+        if(searchForm) { // Έλεγχος αν υπάρχει το searchForm (για να μην βγάζει σφάλμα σε άλλες σελίδες)
+            searchForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const query = searchInput.value.toLowerCase().trim();
+                const filteredProducts = {};
+                
+                for (const [id, product] of Object.entries(productsData)) {
+                    if (product.item_name.toLowerCase().includes(query)) {
+                        filteredProducts[id] = product;
+                    }
                 }
-            }
-            renderProducts(filteredProducts);
-        });
+                renderProducts(filteredProducts);
+            });
+        }
 
         // --- 5. ΑΡΧΙΚΗ ΦΟΡΤΩΣΗ ΣΕΛΙΔΑΣ ---
         renderProducts(productsData);
