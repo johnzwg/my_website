@@ -11,13 +11,12 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
 </head>
-<body class="home-page">
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<body class="home-page"> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <header class="site-header">
         <div class="header-container">
             <div class="header-logo">
-                <h2>NVR BCK DWN</h2>
+                <img src="https://i.imgur.com/fo1mqA2.png" alt="NVR BCK DWN Logo">
             </div>
             <div class="header-search">
                 <form action="#" method="get" id="search-form">
@@ -27,7 +26,6 @@
             </div>
         </div>
     </header>
-
     <div class="page-container">
         <nav class="sidebar">
             <h2>Κατηγορίες</h2>
@@ -79,7 +77,6 @@
 
         // ΣΥΝΑΡΤΗΣΗ ΓΙΑ ΝΑ "ΖΩΓΡΑΦΙΖΕΙ" ΤΑ ΠΡΟΪΟΝΤΑ
         function renderProducts(productsToRender) {
-            // Καθαρίζει πρώτα τα προϊόντα που ήδη υπάρχουν
             productContainer.innerHTML = '';
             
             Object.values(productsToRender).forEach(product => {
@@ -103,8 +100,6 @@
                 `;
                 productContainer.appendChild(card);
             });
-
-            // Επειδή τα κουμπιά ξανα-δημιουργήθηκαν, πρέπει να ξανα-συνδέσουμε τα click events
             addCartListeners();
         }
 
@@ -120,32 +115,21 @@
             });
         }
 
-        // --- 4. ΝΕΑ ΛΕΙΤΟΥΡΓΙΑ ΑΝΑΖΗΤΗΣΗΣ ---
+        // --- 4. ΛΕΙΤΟΥΡΓΙΑ ΑΝΑΖΗΤΗΣΗΣ ---
         searchForm.addEventListener('submit', function(event) {
-            // 1. Σταματάμε την φόρμα από το να κάνει refresh τη σελίδα
             event.preventDefault();
-            
-            // 2. Παίρνουμε αυτό που έγραψε ο χρήστης (σε πεζά)
             const query = searchInput.value.toLowerCase().trim();
-
-            // 3. Φιλτράρουμε τη βάση δεδομένων (productsData)
-            const filteredProducts = {}; // Ένα νέο, άδειο αντικείμενο
+            const filteredProducts = {};
             
-            // Ψάχνουμε σε όλα τα προϊόντα
             for (const [id, product] of Object.entries(productsData)) {
-                // Αν το όνομα του προϊόντος (σε πεζά) περιέχει τη λέξη αναζήτησης
                 if (product.item_name.toLowerCase().includes(query)) {
-                    // Το προσθέτουμε στα φιλτραρισμένα
                     filteredProducts[id] = product;
                 }
             }
-            
-            // 4. "Ζωγραφίζουμε" ΜΟΝΟ τα προϊόντα που βρήκαμε
             renderProducts(filteredProducts);
         });
 
         // --- 5. ΑΡΧΙΚΗ ΦΟΡΤΩΣΗ ΣΕΛΙΔΑΣ ---
-        // "Ζωγραφίζει" όλα τα προϊόντα την πρώτη φορά που μπαίνει ο χρήστης
         renderProducts(productsData);
 
     </script>
