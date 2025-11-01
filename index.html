@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Κατηγορία: Laptops</title>
+    <title>Κατηγορία: T-Shirts</title>
     <link rel="stylesheet" href="style.css">
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -16,33 +16,37 @@
 
     <div class="page-container">
         <nav class="sidebar">
-            <h2>Όλες οι κατηγορίες</h2>
+            <h2>Κατηγορίες</h2>
             <ul class="category-list">
-                <li class="active"><a href="index.html">Laptops</a></li> <li><a href="pc.html">PC & Περιφερειακά</a></li>
-                <li><a href="phones.html">Τηλεφωνία & Tablet</a></li>
-                <li><a href="tv.html">Τηλεοράσεις</a></li>
+                <li class="active"><a href="index.html">T-Shirts</a></li> <li><a href="hoodies.html">Φούτερ</a></li>
             </ul>
         </nav>
 
         <main class="main-content">
-            <h1>Laptops</h1>
+            <h1>T-Shirts</h1>
             <div class="product-card-container" id="product-list">
                 </div>
         </main>
     </div>
 
     <script>
-        // Δεδομένα ΜΟΝΟ για Laptops
+        // Δεδομένα ΜΟΝΟ για T-Shirts
         const productsData = {
-            'LP_001': {
-                'item_id': 'LP_001', 'item_name': 'Business Laptop 15"', 'item_category': 'Laptops', 'price': 899.00,
-                'image_url': 'https://via.placeholder.com/300x180.png?text=Laptop+1',
-                'specs': { 'brand': 'Brand A', 'cpu': 'Intel i7', 'ram': '16GB' }
+            'TSHIRT_SPARTA': {
+                'item_id': 'TSHIRT_SPARTA', 
+                'item_name': 'NVR BCK DWN SPARTA EDITION', 
+                'item_category': 'T-Shirts', 
+                'price': 29.99,
+                'image_url': 'https://i.imgur.com/d0GyP15.jpeg', // <-- ΕΙΚΟΝΑ 1
+                'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' }
             },
-            'LP_002': {
-                'item_id': 'LP_002', 'item_name': 'Gaming Laptop 17"', 'item_category': 'Laptops', 'price': 1450.00,
-                'image_url': 'https://via.placeholder.com/300x180.png?text=Laptop+2',
-                'specs': { 'brand': 'Brand B', 'cpu': 'AMD Ryzen 9', 'ram': '32GB' }
+            'TSHIRT_WOLF': {
+                'item_id': 'TSHIRT_WOLF', 
+                'item_name': 'NVR BCK DWN WOLF EDITION', 
+                'item_category': 'T-Shirts', 
+                'price': 34.99,
+                'image_url': 'https://i.imgur.com/oCrCLTD.jpeg', // <-- ΕΙΚΟΝΑ 2
+                'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' }
             }
         };
 
@@ -51,7 +55,7 @@
         const viewListItems = Object.values(productsData).map(item => ({...item, quantity: 1}));
         window.dataLayer.push({
             'event': 'view_item_list', 
-            'ecommerce': { 'item_list_name': 'Laptops', 'items': viewListItems }
+            'ecommerce': { 'item_list_name': 'T-Shirts', 'items': viewListItems }
         });
         
         // Δημιουργία Προϊόντων
@@ -64,7 +68,7 @@
                 <img src="${product.image_url}" alt="${product.item_name}">
                 <div class="product-card-details">
                     <h2>${product.item_name}</h2>
-                    <p>CPU: ${product.specs.cpu}, RAM: ${product.specs.ram}</p>
+                    <p>Style: ${product.specs.type}</p>
                     <p>Price: €${product.price.toFixed(2)}</p>
                 </div>
                 <div>
