@@ -40,4 +40,45 @@
         const productsData = {
             'TSHIRT_SPARTA': { 'item_id': 'TSHIRT_SPARTA', 'item_name': 'NVR BCK DWN SPARTA EDITION', 'item_category': 'T-Shirts', 'price': 29.99, 'image_url': 'https://i.imgur.com/d0GyP15.jpeg', 'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' } },
             'TSHIRT_WOLF': { 'item_id': 'TSHIRT_WOLF', 'item_name': 'NVR BCK DWN WOLF EDITION', 'item_category': 'T-Shirts', 'price': 34.99, 'image_url': 'https://i.imgur.com/hs0Lbe0.jpeg', 'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' } },
-            'HOODIE_001': { 'item_id': 'HOODIE_001', 'item_name': 'Classic Hoodie Black', 'item_category': 'Hoodies', 'price': 49.99, 'image_url': '
+            'HOODIE_001': { 'item_id': 'HOODIE_001', 'item_name': 'Classic Hoodie Black', 'item_category': 'Hoodies', 'price': 49.99, 'image_url': 'https://via.placeholder.com/300x180.png?text=Black+Hoodie', 'specs': { 'brand': 'NBD Wear', 'type': 'Regular Fit' } },
+            'HOODIE_002': { 'item_id': 'HOODIE_002', 'item_name': 'Classic Hoodie Grey', 'item_category': 'Hoodies', 'price': 49.99, 'image_url': 'https://via.placeholder.com/300x180.png?text=Grey+Hoodie', 'specs': { 'brand': 'NBD Wear', 'type': 'Regular Fit' } }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const itemId = params.get('itemId');
+        const quantity = parseInt(params.get('quantity'));
+
+        if (itemId && quantity && productsData[itemId]) {
+            const productInfo = productsData[itemId];
+            const totalValue = productInfo.price * quantity;
+
+            document.getElementById('checkout-details').innerHTML = `
+                <div class="item-container">
+                    <div class="item-image">
+                        <img src="${productInfo.image_url}" alt="${productInfo.item_name}">
+                    </div>
+                    <div class="item-details">
+                        <h3>${productInfo.item_name}</h3>
+                        <p>Κατηγορία: ${productInfo.item_category}</p>
+                    </div>
+                </div>
+                <hr>
+                <p><strong>Συνολική Αξία προς Πληρωμή: €${totalValue.toFixed(2)}</strong></p>
+            `;
+            
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ 'event': 'begin_checkout', 'ecommerce': { 'items': [{ ...productInfo, 'quantity': quantity }] } });
+
+            const purchaseBtn = document.getElementById('completePurchaseButton');
+            purchaseBtn.disabled = false;
+            purchaseBtn.addEventListener('click', function() {
+                const transactionId = 'T-' + Date.now();
+                window.location.href = `purchase_success.html?transaction_id=${transactionId}&value=${totalValue.toFixed(2)}&itemId=${itemId}&quantity=${quantity}`;
+            });
+
+        } else {
+            document.getElementById('checkout-details').innerHTML = '<p><strong>Δεν βρέθηκε προϊόν για ολοκλήρωση αγοράς.</strong></p>';
+        }
+    </script>
+</body>
+</html>
