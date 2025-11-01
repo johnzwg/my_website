@@ -11,7 +11,8 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
 </head>
-<body class="home-page"> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<body class="home-page">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <header class="site-header">
         <div class="header-container">
@@ -20,12 +21,13 @@
             </div>
             <div class="header-search">
                 <form action="#" method="get" id="search-form">
-                    <input type="text" name="q" placeholder="Αναζήτηση...">
+                    <input type="text" name="q" id="search-input" placeholder="Αναζήτηση...">
                     <button type="submit">🔍</button>
                 </form>
             </div>
         </div>
     </header>
+
     <div class="page-container">
         <nav class="sidebar">
             <h2>Κατηγορίες</h2>
@@ -42,7 +44,7 @@
     </div>
 
     <script>
-        // Δεδομένα ΜΟΝΟ για T-Shirts
+        // --- 1. ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ (T-Shirts) ---
         const productsData = {
             'TSHIRT_SPARTA': {
                 'item_id': 'TSHIRT_SPARTA', 
@@ -62,7 +64,7 @@
             }
         };
 
-        // GTM Event
+        // --- 2. GTM EVENT (VIEW ITEM LIST) ---
         window.dataLayer = window.dataLayer || [];
         const viewListItems = Object.values(productsData).map(item => ({...item, quantity: 1}));
         window.dataLayer.push({
@@ -70,40 +72,82 @@
             'ecommerce': { 'item_list_name': 'T-Shirts', 'items': viewListItems }
         });
         
-        // Δημιουργία Προϊόντων
+        // --- 3. ΒΑΣΙΚΟΙ ΜΗΧΑΝΙΣΜΟΙ ---
         const productContainer = document.getElementById('product-list');
-        Object.values(productsData).forEach(product => {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.setAttribute('data-item-id', product.item_id);
-            card.innerHTML = `
-                <img src="${product.image_url}" alt="${product.item_name}">
-                <div class="product-card-details">
-                    <h2>${product.item_name}</h2>
-                    <p>Style: ${product.specs.type}</p>
-                    <p>Price: €${product.price.toFixed(2)}</p>
-                </div>
-                <div>
-                    <label for="quantity-${product.item_id}">Ποσότητα:</label>
-                    <select name="quantity" id="quantity-${product.item_id}" class="quantity-selector">
-                        <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-                    </select>
-                    <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
-                </div>
-            `;
-            productContainer.appendChild(card);
+        const searchForm = document.getElementById('search-form');
+        const searchInput = document.getElementById('search-input');
+
+        // ΣΥΝΑΡΤΗΣΗ ΓΙΑ ΝΑ "ΖΩΓΡΑΦΙΖΕΙ" ΤΑ ΠΡΟΪΟΝΤΑ
+        function renderProducts(productsToRender) {
+            // Καθαρίζει πρώτα τα προϊόντα που ήδη υπάρχουν
+            productContainer.innerHTML = '';
+            
+            Object.values(productsToRender).forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-item-id', product.item_id);
+                card.innerHTML = `
+                    <img src="${product.image_url}" alt="${product.item_name}">
+                    <div class="product-card-details">
+                        <h2>${product.item_name}</h2>
+                        <p>Style: ${product.specs.type}</p>
+                        <p>Price: €${product.price.toFixed(2)}</p>
+                    </div>
+                    <div>
+                        <label for="quantity-${product.item_id}">Ποσότητα:</label>
+                        <select name="quantity" id="quantity-${product.item_id}" class="quantity-selector">
+                            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                        </select>
+                        <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
+                    </div>
+                `;
+                productContainer.appendChild(card);
+            });
+
+            // Επειδή τα κουμπιά ξανα-δημιουργήθηκαν, πρέπει να ξανα-συνδέσουμε τα click events
+            addCartListeners();
+        }
+
+        // ΣΥΝΑΡΤΗΣΗ ΓΙΑ ΤΑ ΚΟΥΜΠΙΑ "ADD TO CART"
+        function addCartListeners() {
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const parentCard = this.closest('.product-card');
+                    const itemId = parentCard.getAttribute('data-item-id');
+                    const selectedQuantity = parentCard.querySelector('.quantity-selector').value;
+                    window.location.href = `cart_page.html?itemId=${itemId}&quantity=${selectedQuantity}`;
+                });
+            });
+        }
+
+        // --- 4. ΝΕΑ ΛΕΙΤΟΥΡΓΙΑ ΑΝΑΖΗΤΗΣΗΣ ---
+        searchForm.addEventListener('submit', function(event) {
+            // 1. Σταματάμε την φόρμα από το να κάνει refresh τη σελίδα
+            event.preventDefault();
+            
+            // 2. Παίρνουμε αυτό που έγραψε ο χρήστης (σε πεζά)
+            const query = searchInput.value.toLowerCase().trim();
+
+            // 3. Φιλτράρουμε τη βάση δεδομένων (productsData)
+            const filteredProducts = {}; // Ένα νέο, άδειο αντικείμενο
+            
+            // Ψάχνουμε σε όλα τα προϊόντα
+            for (const [id, product] of Object.entries(productsData)) {
+                // Αν το όνομα του προϊόντος (σε πεζά) περιέχει τη λέξη αναζήτησης
+                if (product.item_name.toLowerCase().includes(query)) {
+                    // Το προσθέτουμε στα φιλτραρισμένα
+                    filteredProducts[id] = product;
+                }
+            }
+            
+            // 4. "Ζωγραφίζουμε" ΜΟΝΟ τα προϊόντα που βρήκαμε
+            renderProducts(filteredProducts);
         });
 
-        // Add to Cart Listeners
-        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const parentCard = this.closest('.product-card');
-                const itemId = parentCard.getAttribute('data-item-id');
-                const selectedQuantity = parentCard.querySelector('.quantity-selector').value;
-                window.location.href = `cart_page.html?itemId=${itemId}&quantity=${selectedQuantity}`;
-            });
-        });
+        // --- 5. ΑΡΧΙΚΗ ΦΟΡΤΩΣΗ ΣΕΛΙΔΑΣ ---
+        // "Ζωγραφίζει" όλα τα προϊόντα την πρώτη φορά που μπαίνει ο χρήστης
+        renderProducts(productsData);
+
     </script>
 </body>
 </html>
-
