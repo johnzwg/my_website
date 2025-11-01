@@ -1,10 +1,24 @@
 /* --- Γενικά Στυλ Σελίδας --- */
 body {
-    background-color: #ffffff;
-    font-family: Arial, sans-serif;
-    color: #333333;
-    margin: 0;
-    padding: 0;
+    /* * ΑΦΑΙΡΕΣΑΜΕ το background-image από εδώ 
+     * για να μην μπαίνει σε όλες τις σελίδες.
+     */
+    font-family: Arial, sans-serif;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff; /* Εφεδρικό χρώμα */
+}
+
+/* * ΝΕΟ: Αυτός ο κανόνας εφαρμόζει το background
+ * ΜΟΝΟ στη σελίδα με <body class="home-page">
+ */
+.home-page {
+    background-image: url('https://i.imgur.com/fo1mqA2.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
 }
 
 h1, h2, h3 {
@@ -41,10 +55,10 @@ h1, h2, h3 {
 
 /* Στυλ για τους ΣΥΝΔΕΣΜΟΥΣ (<a>) μέσα στη λίστα */
 .category-list li a {
-    display: block; /* Κάνει ολόκληρη την περιοχή clickable */
+    display: block; 
     padding: 12px 10px;
     font-size: 0.95em;
-    text-decoration: none; /* Χωρίς υπογράμμιση */
+    text-decoration: none; 
     color: #333;
     border-bottom: 1px solid #eee;
     transition: background-color 0.2s ease;
@@ -71,6 +85,12 @@ h1, h2, h3 {
     padding: 30px;
     overflow-y: auto; 
     min-height: 2500px; /* Για να έχουμε scrollbar */
+    
+    /* Ημιδιαφανές φόντο για να διαβάζεται το κείμενο */
+    background-color: rgba(255, 255, 255, 0.9); 
+    border-radius: 10px;
+    margin: 20px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 /* --- ΣΤΥΛ ΓΙΑ ΤΙΣ ΚΑΡΤΕΣ ΠΡΟΪΟΝΤΩΝ --- */
@@ -83,7 +103,7 @@ h1, h2, h3 {
 }
 
 .product-card {
-    background-color: #fff;
+    background-color: #fff; 
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -97,11 +117,11 @@ h1, h2, h3 {
 
 .product-card img {
     max-width: 100%;
-    height: 180px; /* Σταθερό ύψος */
-    object-fit: cover; /* Οι εικόνες γεμίζουν τον χώρο */
+    height: 180px; 
+    object-fit: cover; 
     border-radius: 5px;
     margin-bottom: 15px;
-    background-color: #eee; /* Χρώμα φόντου για τα placeholders */
+    background-color: #eee; 
 }
 
 .product-card-details {
@@ -137,7 +157,7 @@ h1, h2, h3 {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin: 20px auto; /* Αυτό τα κεντράρει οριζόντια */
+    margin: 20px auto; 
     width: 100%;
     max-width: 600px;
 }
