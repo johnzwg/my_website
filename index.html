@@ -5,16 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Κατηγορία: T-Shirts</title>
     <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
 </head>
-<body class="home-page"> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<body class="home-page"> 
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <header class="new-header">
-        <div class="top-bar">
+    <header class="site-header">
+        <div class="header-container">
             <div class="header-logo">
                 <img src="https://i.imgur.com/fo1mqA2.png" alt="NVR BCK DWN Logo">
             </div>
@@ -25,13 +30,14 @@
                 </form>
             </div>
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li class="active"><a href="index.html">T-Shirts</a></li>
-                <li><a href="hoodies.html">Φούτερ</a></li>
-            </ul>
-        </nav>
     </header>
+    <nav class="main-nav">
+        <ul>
+            <li class="active"><a href="index.html">T-Shirts</a></li>
+            <li><a href="hoodies.html">Φούτερ</a></li>
+        </ul>
+    </nav>
+
     <main class="main-content">
         <h1>T-Shirts</h1>
         <div class="product-card-container" id="product-list">
@@ -116,19 +122,4 @@
         searchForm.addEventListener('submit', function(event) {
             event.preventDefault();
             const query = searchInput.value.toLowerCase().trim();
-            const filteredProducts = {};
-            
-            for (const [id, product] of Object.entries(productsData)) {
-                if (product.item_name.toLowerCase().includes(query)) {
-                    filteredProducts[id] = product;
-                }
-            }
-            renderProducts(filteredProducts);
-        });
-
-        // --- 5. ΑΡΧΙΚΗ ΦΟΡΤΩΣΗ ΣΕΛΙΔΑΣ ---
-        renderProducts(productsData);
-
-    </script>
-</body>
-</html>
+            const filtered
