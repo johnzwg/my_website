@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4. Purchase Success Page</title>
     <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -14,6 +18,14 @@
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="index.html"><img src="https://i.imgur.com/fo1mqA2.png" alt="NVR BCK DWN Logo"></a>
+            </div>
+        </div>
+    </header>
+
     <div class="checkout-card">
         <h1>✅ Επιτυχής Αγορά!</h1>
         <p>Η παραγγελία σας ολοκληρώθηκε. Σας ευχαριστούμε!</p>
@@ -26,7 +38,7 @@
         // --- ΚΕΝΤΡΙΚΗ ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ (ΟΛΑ ΤΑ ΠΡΟΪΟΝΤΑ) ---
         const productsData = {
             'TSHIRT_SPARTA': { 'item_id': 'TSHIRT_SPARTA', 'item_name': 'NVR BCK DWN SPARTA EDITION', 'item_category': 'T-Shirts', 'price': 29.99, 'image_url': 'https://i.imgur.com/d0GyP15.jpeg', 'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' } },
-            'TSHIRT_WOLF': { 'item_id': 'TSHIRT_WOLF', 'item_name': 'NVR BCK DWN WOLF EDITION', 'item_category': 'T-Shirts', 'price': 34.99, 'image_url': 'https://i.imgur.com/oCrCLTD.jpeg', 'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' } },
+            'TSHIRT_WOLF': { 'item_id': 'TSHIRT_WOLF', 'item_name': 'NVR BCK DWN WOLF EDITION', 'item_category': 'T-Shirts', 'price': 34.99, 'image_url': 'https://i.imgur.com/hs0Lbe0.jpeg', 'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' } },
             'HOODIE_001': { 'item_id': 'HOODIE_001', 'item_name': 'Classic Hoodie Black', 'item_category': 'Hoodies', 'price': 49.99, 'image_url': 'https://via.placeholder.com/300x180.png?text=Black+Hoodie', 'specs': { 'brand': 'NBD Wear', 'type': 'Regular Fit' } },
             'HOODIE_002': { 'item_id': 'HOODIE_002', 'item_name': 'Classic Hoodie Grey', 'item_category': 'Hoodies', 'price': 49.99, 'image_url': 'https://via.placeholder.com/300x180.png?text=Grey+Hoodie', 'specs': { 'brand': 'NBD Wear', 'type': 'Regular Fit' } }
         };
