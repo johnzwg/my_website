@@ -25,18 +25,10 @@
     <script>
         // --- ΚΕΝΤΡΙΚΗ ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ (ΟΛΑ ΤΑ ΠΡΟΪΟΝΤΑ) ---
         const productsData = {
-            /* Laptops */
-            'LP_001': { 'item_id': 'LP_001', 'item_name': 'Business Laptop 15"', 'item_category': 'Laptops', 'price': 899.00, 'image_url': 'https://via.placeholder.com/300x180.png?text=Laptop+1', 'specs': { 'brand': 'Brand A', 'cpu': 'Intel i7', 'ram': '16GB' } },
-            'LP_002': { 'item_id': 'LP_002', 'item_name': 'Gaming Laptop 17"', 'item_category': 'Laptops', 'price': 1450.00, 'image_url': 'https://via.placeholder.com/300x180.png?text=Laptop+2', 'specs': { 'brand': 'Brand B', 'cpu': 'AMD Ryzen 9', 'ram': '32GB' } },
-            /* PCs */
-            'PC_001': { 'item_id': 'PC_001', 'item_name': 'Gaming PC Tower', 'item_category': 'PCs', 'price': 1299.00, 'image_url': 'https://via.placeholder.com/300x180.png?text=Gaming+PC', 'specs': { 'brand': 'Brand C', 'cpu': 'Intel Core i7', 'ram': '32GB RAM' } },
-            'PC_002': { 'item_id': 'PC_002', 'item_name': '4K Monitor 27"', 'item_category': 'Monitors', 'price': 450.00, 'image_url': 'https://via.placeholder.com/300x180.png?text=4K+Monitor', 'specs': { 'brand': 'Brand D', 'cpu': 'N/A', 'ram': '27-inch' } },
-            /* Phones */
-            'PH_001': { 'item_id': 'PH_001', 'item_name': 'Smartphone 6.5"', 'item_category': 'Phones', 'price': 799.00, 'image_url': 'https://via.placeholder.com/300x180.png?text=Smartphone', 'specs': { 'brand': 'Brand E', 'ram': '8GB' } },
-            'PH_002': { 'item_id': 'PH_002', 'item_name': 'Tablet 10"', 'item_category': 'Tablets', 'price': 350.00, 'image_url': 'https://via.placeholder.com/300x180.png?text=Tablet', 'specs': { 'brand': 'Brand F', 'ram': '4GB' } },
-            /* TVs */
-            'TV_001': { 'item_id': 'TV_001', 'item_name': 'OLED TV 55"', 'item_category': 'TVs', 'price': 1499.00, 'image_url': 'https://via.placeholder.com/300x180.png?text=OLED+TV', 'specs': { 'brand': 'Brand X', 'ram': '4K 120Hz' } },
-            'TV_002': { 'item_id': 'TV_002', 'item_name': 'LED TV 65"', 'item_category': 'TVs', 'price': 899.00, 'image_url': 'https://via.placeholder.com/300x180.png?text=LED+TV', 'specs': { 'brand': 'Brand Y', 'ram': '4K 60Hz' } }
+            'TSHIRT_SPARTA': { 'item_id': 'TSHIRT_SPARTA', 'item_name': 'NVR BCK DWN SPARTA EDITION', 'item_category': 'T-Shirts', 'price': 29.99, 'image_url': 'https://i.imgur.com/d0GyP15.jpeg', 'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' } },
+            'TSHIRT_WOLF': { 'item_id': 'TSHIRT_WOLF', 'item_name': 'NVR BCK DWN WOLF EDITION', 'item_category': 'T-Shirts', 'price': 34.99, 'image_url': 'https://i.imgur.com/oCrCLTD.jpeg', 'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' } },
+            'HOODIE_001': { 'item_id': 'HOODIE_001', 'item_name': 'Classic Hoodie Black', 'item_category': 'Hoodies', 'price': 49.99, 'image_url': 'https://via.placeholder.com/300x180.png?text=Black+Hoodie', 'specs': { 'brand': 'NBD Wear', 'type': 'Regular Fit' } },
+            'HOODIE_002': { 'item_id': 'HOODIE_002', 'item_name': 'Classic Hoodie Grey', 'item_category': 'Hoodies', 'price': 49.99, 'image_url': 'https://via.placeholder.com/300x180.png?text=Grey+Hoodie', 'specs': { 'brand': 'NBD Wear', 'type': 'Regular Fit' } }
         };
 
         const params = new URLSearchParams(window.location.search);
