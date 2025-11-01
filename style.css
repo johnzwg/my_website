@@ -65,13 +65,14 @@ h1, h2, h3 {
     border-left: 3px solid #0056b3;
 }
 
-//* --- Κύριο Περιεχόμενο (Main Content) --- */
+/* --- Κύριο Περιεχόμενο (Main Content) --- */
 .main-content {
-    flex: 1;
-    padding: 30px;
-    overflow-y: auto; 
-    min-height: 2500px; /* <-- ΠΡΟΣΘΕΣΕ ΑΥΤΟ */
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto; 
+    min-height: 2500px; /* Προσθήκη ύψους για scroll */
 }
+
 /* --- ΣΤΥΛ ΓΙΑ ΤΙΣ ΚΑΡΤΕΣ ΠΡΟΪΟΝΤΩΝ --- */
 .product-card-container {
     display: flex;
