@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -37,10 +38,13 @@
     <script>
         // --- ΚΕΝΤΡΙΚΗ ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ (ΟΛΑ ΤΑ ΠΡΟΪΟΝΤΑ) ---
         const productsData = {
+            /* T-Shirts */
             'TSHIRT_SPARTA': { 'item_id': 'TSHIRT_SPARTA', 'item_name': 'NVR BCK DWN SPARTA EDITION', 'item_category': 'T-Shirts', 'price': 29.99, 'image_url': 'https://i.imgur.com/d0GyP15.jpeg', 'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' } },
             'TSHIRT_WOLF': { 'item_id': 'TSHIRT_WOLF', 'item_name': 'NVR BCK DWN WOLF EDITION', 'item_category': 'T-Shirts', 'price': 34.99, 'image_url': 'https://i.imgur.com/hs0Lbe0.jpeg', 'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' } },
-            'HOODIE_001': { 'item_id': 'HOODIE_001', 'item_name': 'Classic Hoodie Black', 'item_category': 'Hoodies', 'price': 49.99, 'image_url': 'https://via.placeholder.com/300x180.png?text=Black+Hoodie', 'specs': { 'brand': 'NBD Wear', 'type': 'Regular Fit' } },
-            'HOODIE_002': { 'item_id': 'HOODIE_002', 'item_name': 'Classic Hoodie Grey', 'item_category': 'Hoodies', 'price': 49.99, 'image_url': 'https://via.placeholder.com/300x180.png?text=Grey+Hoodie', 'specs': { 'brand': 'NBD Wear', 'type': 'Regular Fit' } }
+            
+            /* Hoodies (ΕΝΗΜΕΡΩΜΕΝΑ) */
+            'HOODIE_WOLF': { 'item_id': 'HOODIE_WOLF', 'item_name': 'NVR BCK DWN WOLF EDITION Hoodie', 'item_category': 'Hoodies', 'price': 59.99, 'image_url': 'https://i.imgur.com/C8Ps37J.png', 'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' } },
+            'HOODIE_SPARTA': { 'item_id': 'HOODIE_SPARTA', 'item_name': 'NVR BCK DWN SPARTA EDITION Hoodie', 'item_category': 'Hoodies', 'price': 59.99, 'image_url': 'https://i.imgur.com/De4aOpp.png', 'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' } }
         };
     
         const params = new URLSearchParams(window.location.search);
