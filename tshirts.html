@@ -11,26 +11,34 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
 </head>
-<body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<body> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <div class="page-container">
-        <nav class="sidebar">
-            <h2>Κατηγορίες</h2>
-            <ul class="category-list">
+    <header class="new-header">
+        <div class="top-bar">
+            <div class="header-logo">
+                <img src="https://i.imgur.com/fo1mqA2.png" alt="NVR BCK DWN Logo">
+            </div>
+            <div class="header-search">
+                <form action="#" method="get" id="search-form">
+                    <input type="text" name="q" id="search-input" placeholder="Αναζήτηση...">
+                    <button type="submit">🔍</button>
+                </form>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
                 <li><a href="index.html">T-Shirts</a></li>
                 <li class="active"><a href="hoodies.html">Φούτερ</a></li> </ul>
         </nav>
-
-        <main class="main-content">
-            <h1>Φούτερ</h1>
-            <div class="product-card-container" id="product-list">
-                </div>
-        </main>
-    </div>
+    </header>
+    <main class="main-content">
+        <h1>Φούτερ</h1>
+        <div class="product-card-container" id="product-list">
+            </div>
+    </main>
 
     <script>
-        // Δεδομένα ΜΟΝΟ για Φούτερ (Placeholders)
+        // --- 1. ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ (Hoodies) ---
         const productsData = {
             'HOODIE_001': {
                 'item_id': 'HOODIE_001', 'item_name': 'Classic Hoodie Black', 'item_category': 'Hoodies', 'price': 49.99,
@@ -43,8 +51,8 @@
                 'specs': { 'brand': 'NBD Wear', 'type': 'Regular Fit' }
             }
         };
-
-        // GTM Event
+        
+        // --- 2. GTM EVENT (VIEW ITEM LIST) ---
         window.dataLayer = window.dataLayer || [];
         const viewListItems = Object.values(productsData).map(item => ({...item, quantity: 1}));
         window.dataLayer.push({
@@ -52,39 +60,68 @@
             'ecommerce': { 'item_list_name': 'Hoodies', 'items': viewListItems }
         });
         
-        // Δημιουργία Προϊόντων
+        // --- 3. ΒΑΣΙΚΟΙ ΜΗΧΑΝΙΣΜΟΙ ---
         const productContainer = document.getElementById('product-list');
-        Object.values(productsData).forEach(product => {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.setAttribute('data-item-id', product.item_id);
-            card.innerHTML = `
-                <img src="${product.image_url}" alt="${product.item_name}">
-                <div class="product-card-details">
-                    <h2>${product.item_name}</h2>
-                    <p>Style: ${product.specs.type}</p>
-                    <p>Price: €${product.price.toFixed(2)}</p>
-                </div>
-                <div>
-                    <label for="quantity-${product.item_id}">Ποσότητα:</label>
-                    <select name="quantity" id="quantity-${product.item_id}" class="quantity-selector">
-                        <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-                    </select>
-                    <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
-                </div>
-            `;
-            productContainer.appendChild(card);
+        const searchForm = document.getElementById('search-form');
+        const searchInput = document.getElementById('search-input');
+
+        // ΣΥΝΑΡΤΗΣΗ ΓΙΑ ΝΑ "ΖΩΓΡΑΦΙΖΕΙ" ΤΑ ΠΡΟΪΟΝΤΑ
+        function renderProducts(productsToRender) {
+            productContainer.innerHTML = '';
+            
+            Object.values(productsToRender).forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-item-id', product.item_id);
+                card.innerHTML = `
+                    <img src="${product.image_url}" alt="${product.item_name}">
+                    <div class="product-card-details">
+                        <h2>${product.item_name}</h2>
+                        <p>Style: ${product.specs.type}</p>
+                        <p>Price: €${product.price.toFixed(2)}</p>
+                    </div>
+                    <div>
+                        <label for="quantity-${product.item_id}">Ποσότητα:</label>
+                        <select name="quantity" id="quantity-${product.item_id}" class="quantity-selector">
+                            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                        </select>
+                        <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
+                    </div>
+                `;
+                productContainer.appendChild(card);
+            });
+            addCartListeners();
+        }
+
+        // ΣΥΝΑΡΤΗΣΗ ΓΙΑ ΤΑ ΚΟΥΜΠΙΑ "ADD TO CART"
+        function addCartListeners() {
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const parentCard = this.closest('.product-card');
+                    const itemId = parentCard.getAttribute('data-item-id');
+                    const selectedQuantity = parentCard.querySelector('.quantity-selector').value;
+                    window.location.href = `cart_page.html?itemId=${itemId}&quantity=${selectedQuantity}`;
+                });
+            });
+        }
+
+        // --- 4. ΛΕΙΤΟΥΡΓΙΑ ΑΝΑΖΗΤΗΣΗΣ ---
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const query = searchInput.value.toLowerCase().trim();
+            const filteredProducts = {};
+            
+            for (const [id, product] of Object.entries(productsData)) {
+                if (product.item_name.toLowerCase().includes(query)) {
+                    filteredProducts[id] = product;
+                }
+            }
+            renderProducts(filteredProducts);
         });
 
-        // Add to Cart Listeners
-        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const parentCard = this.closest('.product-card');
-                const itemId = parentCard.getAttribute('data-item-id');
-                const selectedQuantity = parentCard.querySelector('.quantity-selector').value;
-                window.location.href = `cart_page.html?itemId=${itemId}&quantity=${selectedQuantity}`;
-            });
-        });
+        // --- 5. ΑΡΧΙΚΗ ΦΟΡΤΩΣΗ ΣΕΛΙΔΑΣ ---
+        renderProducts(productsData);
+
     </script>
 </body>
 </html>
