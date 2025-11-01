@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Κατηγορία: T-Shirts</title>
+    <title>NVR BCK DWN Store</title>
     <link rel="stylesheet" href="style.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PWL3927F');</script>
 </head>
-<body class="home-page"> 
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<body> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <header class="site-header">
         <div class="header-container">
             <div class="header-logo">
-                <img src="https://i.imgur.com/fo1mqA2.png" alt="NVR BCK DWN Logo">
+                <a href="index.html"><img src="https://i.imgur.com/fo1mqA2.png" alt="NVR BCK DWN Logo"></a>
             </div>
             <div class="header-search">
                 <form action="#" method="get" id="search-form">
@@ -33,93 +33,19 @@
     </header>
     <nav class="main-nav">
         <ul>
-            <li class="active"><a href="index.html">T-Shirts</a></li>
+            <li><a href="tshirts.html">T-Shirts</a></li> 
             <li><a href="hoodies.html">Φούτερ</a></li>
         </ul>
     </nav>
-
-    <main class="main-content">
-        <h1>T-Shirts</h1>
-        <div class="product-card-container" id="product-list">
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>NEVER BACK DOWN</h1>
+            <div class="hero-buttons">
+                <a href="tshirts.html">T-SHIRTS</a>
+                <a href="hoodies.html">ΦΟΥΤΕΡ</a>
             </div>
-    </main>
+        </div>
+    </section>
 
-    <script>
-        // --- 1. ΒΑΣΗ ΔΕΔΟΜΕΝΩΝ (T-Shirts) ---
-        const productsData = {
-            'TSHIRT_SPARTA': {
-                'item_id': 'TSHIRT_SPARTA', 
-                'item_name': 'NVR BCK DWN SPARTA EDITION', 
-                'item_category': 'T-Shirts', 
-                'price': 29.99,
-                'image_url': 'https://i.imgur.com/d0GyP15.jpeg',
-                'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' }
-            },
-            'TSHIRT_WOLF': {
-                'item_id': 'TSHIRT_WOLF', 
-                'item_name': 'NVR BCK DWN WOLF EDITION', 
-                'item_category': 'T-Shirts', 
-                'price': 34.99,
-                'image_url': 'https://i.imgur.com/hs0Lbe0.jpeg',
-                'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' }
-            }
-        };
-
-        // --- 2. GTM EVENT (VIEW ITEM LIST) ---
-        window.dataLayer = window.dataLayer || [];
-        const viewListItems = Object.values(productsData).map(item => ({...item, quantity: 1}));
-        window.dataLayer.push({
-            'event': 'view_item_list', 
-            'ecommerce': { 'item_list_name': 'T-Shirts', 'items': viewListItems }
-        });
-        
-        // --- 3. ΒΑΣΙΚΟΙ ΜΗΧΑΝΙΣΜΟΙ ---
-        const productContainer = document.getElementById('product-list');
-        const searchForm = document.getElementById('search-form');
-        const searchInput = document.getElementById('search-input');
-
-        // ΣΥΝΑΡΤΗΣΗ ΓΙΑ ΝΑ "ΖΩΓΡΑΦΙΖΕΙ" ΤΑ ΠΡΟΪΟΝΤΑ
-        function renderProducts(productsToRender) {
-            productContainer.innerHTML = '';
-            
-            Object.values(productsToRender).forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.setAttribute('data-item-id', product.item_id);
-                card.innerHTML = `
-                    <img src="${product.image_url}" alt="${product.item_name}">
-                    <div class="product-card-details">
-                        <h2>${product.item_name}</h2>
-                        <p>Style: ${product.specs.type}</p>
-                        <p>Price: €${product.price.toFixed(2)}</p>
-                    </div>
-                    <div>
-                        <label for="quantity-${product.item_id}">Ποσότητα:</label>
-                        <select name="quantity" id="quantity-${product.item_id}" class="quantity-selector">
-                            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-                        </select>
-                        <button class="submit-button add-to-cart-btn">🛒 Add to Cart</button>
-                    </div>
-                `;
-                productContainer.appendChild(card);
-            });
-            addCartListeners();
-        }
-
-        // ΣΥΝΑΡΤΗΣΗ ΓΙΑ ΤΑ ΚΟΥΜΠΙΑ "ADD TO CART"
-        function addCartListeners() {
-            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const parentCard = this.closest('.product-card');
-                    const itemId = parentCard.getAttribute('data-item-id');
-                    const selectedQuantity = parentCard.querySelector('.quantity-selector').value;
-                    window.location.href = `cart_page.html?itemId=${itemId}&quantity=${selectedQuantity}`;
-                });
-            });
-        }
-
-        // --- 4. ΛΕΙΤΟΥΡΓΙΑ ΑΝΑΖΗΤΗΣΗΣ ---
-        searchForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const query = searchInput.value.toLowerCase().trim();
-            const filtered
+    </body>
+</html>
