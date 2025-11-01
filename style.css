@@ -194,3 +194,72 @@ HERO SECTION (ΜΟΝΟ ΓΙΑ index.html)
 }
 
 .hero-buttons
+/*
+=========================================
+ΝΕΟΣ ΚΩΔΙΚΑΣ - MOBILE STYLES (RESPONSIVE)
+=========================================
+*/
+
+/* Όταν η οθόνη είναι 768px ή μικρότερη (δηλ. tablet και κινητά) */
+@media (max-width: 768px) {
+
+    /* --- 1. HEADER --- */
+    .header-container {
+        flex-direction: column; /* Το logo πάει πάνω από την αναζήτηση */
+        gap: 15px; /* Κενό μεταξύ τους */
+    }
+    .header-search {
+        padding: 0; /* Αφαιρούμε το κενό αριστερά/δεξιά */
+        width: 90%; /* Η αναζήτηση να πιάνει σχεδόν όλο το πλάτος */
+    }
+    .header-logo img {
+        max-height: 60px; /* Λίγο πιο μικρό το logo στο κινητό */
+    }
+
+    /* --- 2. NAVIGATION BAR --- */
+    .main-nav ul {
+        flex-direction: column; /* Οι κατηγορίες η μία κάτω από την άλλη */
+        text-align: center;
+    }
+    .main-nav li a {
+        padding: 12px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* --- 3. HERO SECTION (ΑΡΧΙΚΗ ΣΕΛΙΔΑ) --- */
+    .hero-section {
+        height: 60vh; /* Πιο κοντό για να φαίνεται στο κινητό */
+    }
+    .hero-content h1 {
+        font-size: 2em; /* Πιο μικρός τίτλος */
+    }
+    .hero-buttons {
+        display: flex;
+        flex-direction: column; /* Τα κουμπιά το ένα κάτω από το άλλο */
+        gap: 10px;
+        align-items: center;
+    }
+    .hero-buttons a {
+        width: 80%; /* Να πιάνουν πλάτος */
+    }
+
+    /* --- 4. PRODUCT CARDS (Η ΛΥΣΗ ΣΟΥ) --- */
+    .main-content {
+        padding: 15px; /* Μικρότερο padding στα πλάγια */
+        min-height: 100vh; /* Επαναφορά στο 100% */
+    }
+    
+    .product-card-container {
+        justify-content: center; /* Κεντράρισμα των καρτών */
+    }
+
+    .product-card {
+        width: 90%; /* **Η ΚΑΡΤΑ ΠΙΑΝΕΙ ΤΟ 90% ΤΗΣ ΟΘΟΝΗΣ** */
+    }
+
+    /* --- 5. CART & CHECKOUT --- */
+    .cart-card, .checkout-card {
+        margin: 10px auto; /* Λιγότερο κενό */
+        padding: 20px;
+    }
+}
