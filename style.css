@@ -1,23 +1,14 @@
 /* --- Γενικά Στυλ Σελίδας --- */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif; /* <-- 1. ΑΛΛΑΓΗ ΓΡΑΜΜΑΤΟΣΕΙΡΑΣ */
     color: #333333;
     margin: 0;
     padding: 0;
-    background-color: #ffffff; /* Εφεδρικό χρώμα */
-}
-
-/* Εφαρμόζει το background ΜΟΝΟ στο index.html */
-.home-page {
-    background-image: url('https://i.imgur.com/fo1mqA2.png'); 
-    background-size: cover; 
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
+    background-color: #ffffff; 
 }
 
 h1, h2, h3 {
-    color: #0056b3;
+    color: #111111; /* <-- 2. ΑΛΛΑΓΗ ΧΡΩΜΑΤΟΣ */
     margin-bottom: 20px;
 }
 
@@ -46,7 +37,7 @@ HEADER & NAVIGATION
 }
 
 .header-logo img {
-    max-height: 120px; /* Μπορείς να το μεγαλώσεις κι άλλο αν θες */
+    max-height: 70px; 
     width: auto;      
     display: block;   
     margin: 0;        
@@ -72,12 +63,13 @@ HEADER & NAVIGATION
     border: 1px solid #ccc;
     border-radius: 5px 0 0 5px; 
     outline: none;
+    font-family: 'Montserrat', sans-serif; /* <-- 1. ΑΛΛΑΓΗ ΓΡΑΜΜΑΤΟΣΕΙΡΑΣ */
 }
 
 .header-search button {
     padding: 0 15px;
-    border: 1px solid #007bff;
-    background-color: #007bff;
+    border: 1px solid #333; /* <-- 2. ΑΛΛΑΓΗ ΧΡΩΜΑΤΟΣ */
+    background-color: #333; /* <-- 2. ΑΛΛΑΓΗ ΧΡΩΜΑΤΟΣ */
     color: white;
     cursor: pointer;
     border-radius: 0 5px 5px 0; 
@@ -88,8 +80,8 @@ HEADER & NAVIGATION
 /* --- 2. Η κάτω μπάρα (Πλοήγηση) --- */
 .main-nav {
     width: 100%;
-    background-color: #ffffff; /* **ΑΛΛΑΓΗ: Αφαιρέθηκε το σκούρο φόντο** */
-    border-bottom: 1px solid #e0e0e0; /* Γραμμή από κάτω */
+    background-color: #ffffff; 
+    border-bottom: 1px solid #e0e0e0; 
 }
 
 .main-nav ul {
@@ -97,36 +89,38 @@ HEADER & NAVIGATION
     justify-content: center;
     margin: 0;
     padding: 0;
-    list-style: none; /* **ΔΙΟΡΘΩΣΗ: Αφαιρεί τα bullets** */
+    list-style: none; 
 }
 
 .main-nav li a {
     display: block;
     padding: 15px 25px;
     text-decoration: none;
-    color: #005a5f; /* **ΑΛΛΑΓΗ: Πράσινο-μπλε χρώμα (όπως Myprotein)** */
+    color: #555; /* Πιο σκούρο γκρι */
     font-weight: bold;
     text-transform: uppercase;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .main-nav li a:hover {
-    color: #007bff; /* Αλλάζει σε μπλε όταν πας από πάνω */
+    color: #000000;
     background-color: #f4f4f4;
 }
 
 .main-nav li.active a {
-    color: #007bff; /* **ΑΛΛΑΓΗ: Το ενεργό link είναι μπλε** */
-    background-color: #transparent; /* Χωρίς φόντο */
+    color: #000000; /* <-- 2. ΑΛΛΑΓΗ ΧΡΩΜΑΤΟΣ */
+    background-color: transparent; 
 }
 
 
 /* --- Κύριο Περιεχόμενο (ΧΩΡΙΣ Sidebar) --- */
 .main-content {
+    flex: 1;
     padding: 30px;
+    overflow-y: auto; 
+    min-height: 2500px; 
     max-width: 1400px;
     margin: 0 auto; 
-    min-height: 2500px; 
     
     .home-page & {
         background-color: rgba(255, 255, 255, 0.9); 
@@ -156,7 +150,15 @@ HEADER & NAVIGATION
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* <-- 3. ΑΛΛΑΓΗ HOVER */
 }
+
+/* 3. ΝΕΟΣ ΚΑΝΟΝΑΣ HOVER */
+.product-card:hover {
+    transform: scale(1.03); 
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
+}
+
 
 .product-card img {
     max-width: 100%;
@@ -179,7 +181,7 @@ HEADER & NAVIGATION
 }
 
 .submit-button {
-    background-color: #007bff;
+    background-color: #000000; /* <-- 2. ΑΛΛΑΓΗ ΧΡΩΜΑΤΟΣ */
     color: white;
     border: none;
     padding: 12px 25px;
@@ -188,10 +190,12 @@ HEADER & NAVIGATION
     font-size: 16px;
     margin-top: 20px;
     transition: background-color 0.3s ease;
+    font-family: 'Montserrat', sans-serif; /* <-- 1. ΑΛΛΑΓΗ ΓΡΑΜΜΑΤΟΣΕΙΡΑΣ */
+    font-weight: 700;
 }
 
 .submit-button:hover {
-    background-color: #0056b3;
+    background-color: #333333; /* <-- 2. ΑΛΛΑΓΗ ΧΡΩΜΑΤΟΣ */
 }
 
 /* --- ΣΤΥΛ ΓΙΑ ΤΙΣ ΑΛΛΕΣ ΣΕΛΙΔΕΣ (CART, CHECKOUT) --- */
