@@ -81,11 +81,13 @@ h1, h2, h3 {
     overflow-y: auto; 
     min-height: 2500px; /* Για να έχουμε scrollbar */
     
-    /* Ημιδιαφανές φόντο για να διαβάζεται το κείμενο */
-    background-color: rgba(255, 255, 255, 0.9); 
-    border-radius: 10px;
-    margin: 20px; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    /* Ημιδιαφανές φόντο ΜΟΝΟ για την home-page */
+    .home-page & {
+        background-color: rgba(255, 255, 255, 0.9); 
+        border-radius: 10px;
+        margin: 20px; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
 }
 
 /* --- ΣΤΥΛ ΓΙΑ ΤΙΣ ΚΑΡΤΕΣ ΠΡΟΪΟΝΤΩΝ --- */
@@ -203,32 +205,32 @@ h1, h2, h3 {
 
 /*
 =========================================
-ΝΕΟΣ ΚΩΔΙΚΑΣ ΓΙΑ ΤΟ HEADER
+ΚΩΔΙΚΑΣ ΓΙΑ ΤΟ HEADER (ΕΝΗΜΕΡΩΜΕΝΟΣ)
 =========================================
 */
 .site-header {
     width: 100%;
-    background-color: #ffffff; /* Λευκό φόντο για το header */
-    border-bottom: 1px solid #e0e0e0; /* Μια διακριτική γραμμή */
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    padding: 10px 20px; /* Λίγο κενό */
-    box-sizing: border-box; /* Να μετράει σωστά το padding */
+    padding: 10px 20px;
+    box-sizing: border-box; 
 }
 
 .header-container {
     display: flex;
-    justify-content: space-between; /* Λογότυπο αριστερά, αναζήτηση δεξιά */
+    justify-content: space-between; 
     align-items: center;
-    max-width: 1400px; /* Ή όσο πλάτος θέλεις */
-    margin: 0 auto; /* Κεντράρισμα του container */
+    max-width: 1400px; 
+    margin: 0 auto; 
 }
 
-.header-logo h2 {
-    margin: 0; /* Σβήνουμε το default margin του h2 */
-    font-size: 24px;
-    color: #111111; /* Μαύρο για αντίθεση */
-    font-weight: bold;
-    text-transform: uppercase; /* Όπως το NVR BCK DWN */
+/* ΑΥΤΗ ΕΙΝΑΙ Η ΑΛΛΑΓΗ: */
+.header-logo img {
+    max-height: 50px; /* Μέγιστο ύψος 50 pixels */
+    width: auto;      
+    display: block;   
+    margin: 0;        
 }
 
 .header-search form {
@@ -239,7 +241,7 @@ h1, h2, h3 {
     padding: 8px 12px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px; /* Στρογγυλεμένες γωνίες αριστερά */
+    border-radius: 5px 0 0 5px; 
     outline: none;
 }
 
@@ -249,7 +251,7 @@ h1, h2, h3 {
     background-color: #007bff;
     color: white;
     cursor: pointer;
-    border-radius: 0 5px 5px 0; /* Στρογγυλεμένες γωνίες δεξιά */
+    border-radius: 0 5px 5px 0; 
     font-size: 16px;
-    border-left: none; /* Να μην έχει διπλό border */
+    border-left: none; 
 }
