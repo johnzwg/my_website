@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3. Checkout Page</title>
+    <title>4. Purchase Success Page</title>
     <link rel="stylesheet" href="style.css">
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -13,13 +13,13 @@
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWL3927F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
+    
     <div class="checkout-card">
-        <h1>Ολοκλήρωση Παραγγελίας</h1>
-        <div id="checkout-details">
-            <p><strong>Φόρτωση σύνοψης...</strong></p>
+        <h1>✅ Επιτυχής Αγορά!</h1>
+        <p>Η παραγγελία σας ολοκληρώθηκε. Σας ευχαριστούμε!</p>
+        <div id="transaction-details">
+            <p><strong>Φόρτωση λεπτομερειών...</strong></p>
         </div>
-        <button id="completePurchaseButton" class="submit-button" disabled>✅ Ολοκλήρωση Αγοράς</button>
     </div>
 
     <script>
@@ -30,16 +30,31 @@
             'HOODIE_001': { 'item_id': 'HOODIE_001', 'item_name': 'Classic Hoodie Black', 'item_category': 'Hoodies', 'price': 49.99, 'image_url': 'https://via.placeholder.com/300x180.png?text=Black+Hoodie', 'specs': { 'brand': 'NBD Wear', 'type': 'Regular Fit' } },
             'HOODIE_002': { 'item_id': 'HOODIE_002', 'item_name': 'Classic Hoodie Grey', 'item_category': 'Hoodies', 'price': 49.99, 'image_url': 'https://via.placeholder.com/300x180.png?text=Grey+Hoodie', 'specs': { 'brand': 'NBD Wear', 'type': 'Regular Fit' } }
         };
-
+    
         const params = new URLSearchParams(window.location.search);
+        const transactionId = params.get('transaction_id');
+        const value = parseFloat(params.get('value'));
         const itemId = params.get('itemId');
         const quantity = parseInt(params.get('quantity'));
 
-        if (itemId && quantity && productsData[itemId]) {
+        if (transactionId && value && itemId && quantity && productsData[itemId]) {
             const productInfo = productsData[itemId];
-            const totalValue = productInfo.price * quantity;
 
-            document.getElementById('checkout-details').innerHTML = `
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'purchase',
+                'ecommerce': {
+                    'transaction_id': transactionId, 
+                    'value': value,                   
+                    'currency': 'EUR',
+                    'items': [{ ...productInfo, 'quantity': quantity }]
+                }
+            });
+
+            document.getElementById('transaction-details').innerHTML = `
+                <h3>Σύνοψη Παραγγελίας</h3>
+                <p><strong>Transaction ID:</strong> ${transactionId}</p>
+                <hr>
                 <div class="item-container">
                     <div class="item-image">
                         <img src="${productInfo.image_url}" alt="${productInfo.item_name}">
@@ -50,21 +65,12 @@
                     </div>
                 </div>
                 <hr>
-                <p><strong>Συνολική Αξία προς Πληρωμή: €${totalValue.toFixed(2)}</strong></p>
+                <p><strong>Ποσότητα:</strong> ${quantity}</p>
+                <p><strong>Συνολική Αξία: €${value.toFixed(2)}</strong></p>
             `;
-            
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({ 'event': 'begin_checkout', 'ecommerce': { 'items': [{ ...productInfo, 'quantity': quantity }] } });
-
-            const purchaseBtn = document.getElementById('completePurchaseButton');
-            purchaseBtn.disabled = false;
-            purchaseBtn.addEventListener('click', function() {
-                const transactionId = 'T-' + Date.now();
-                window.location.href = `purchase_success.html?transaction_id=${transactionId}&value=${totalValue.toFixed(2)}&itemId=${itemId}&quantity=${quantity}`;
-            });
 
         } else {
-            document.getElementById('checkout-details').innerHTML = '<p><strong>Δεν βρέθηκε προϊόν για ολοκλήρωση αγοράς.</strong></p>';
+            document.getElementById('transaction-details').innerHTML = '<p><strong>Σφάλμα:</strong> Δεν βρέθηκαν τα δεδομένα της συναλλαγής.</p>';
         }
     </script>
 </body>
