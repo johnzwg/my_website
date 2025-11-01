@@ -33,7 +33,7 @@ h1, h2, h3 {
 }
 
 .header-logo img {
-    max-height: 70px; /* Μπορείς να αλλάξεις αυτό το νούμερο */
+    max-height: 120px; /* Μπορείς να αλλάξεις αυτό το νούμερο */
     width: auto;      
     display: block;   
     margin: 0;        
