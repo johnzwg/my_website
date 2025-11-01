@@ -51,7 +51,7 @@
                 'item_name': 'NVR BCK DWN SPARTA EDITION', 
                 'item_category': 'T-Shirts', 
                 'price': 29.99,
-                'image_url': 'https://i.imgur.com/d0GyP15.jpeg',
+                'image_url': 'https://i.imgur.com/3JkDQET.png', // ΝΕΑ ΕΙΚΟΝΑ
                 'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' }
             },
             'TSHIRT_WOLF': {
@@ -59,7 +59,7 @@
                 'item_name': 'NVR BCK DWN WOLF EDITION', 
                 'item_category': 'T-Shirts', 
                 'price': 34.99,
-                'image_url': 'https://i.imgur.com/hs0Lbe0.jpeg',
+                'image_url': 'https://i.imgur.com/QzTHbVB.png', // ΝΕΑ ΕΙΚΟΝΑ
                 'specs': { 'brand': 'NBD Wear', 'type': 'Oversized' }
             }
         };
@@ -116,18 +116,20 @@
         }
 
         // --- 4. ΛΕΙΤΟΥΡΓΙΑ ΑΝΑΖΗΤΗΣΗΣ ---
-        searchForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const query = searchInput.value.toLowerCase().trim();
-            const filteredProducts = {};
-            
-            for (const [id, product] of Object.entries(productsData)) {
-                if (product.item_name.toLowerCase().includes(query)) {
-                    filteredProducts[id] = product;
+        if(searchForm) {
+            searchForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const query = searchInput.value.toLowerCase().trim();
+                const filteredProducts = {};
+                
+                for (const [id, product] of Object.entries(productsData)) {
+                    if (product.item_name.toLowerCase().includes(query)) {
+                        filteredProducts[id] = product;
+                    }
                 }
-            }
-            renderProducts(filteredProducts);
-        });
+                renderProducts(filteredProducts);
+            });
+        }
 
         // --- 5. ΑΡΧΙΚΗ ΦΟΡΤΩΣΗ ΣΕΛΙΔΑΣ ---
         renderProducts(productsData);
