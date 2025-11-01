@@ -70,7 +70,7 @@ h1, h2, h3 {
     flex: 1;
     padding: 30px;
     overflow-y: auto; 
-    min-height: 2500px; /* Προσθήκη ύψους για scroll */
+    min-height: 2500px; /* Για να έχουμε scrollbar */
 }
 
 /* --- ΣΤΥΛ ΓΙΑ ΤΙΣ ΚΑΡΤΕΣ ΠΡΟΪΟΝΤΩΝ --- */
